@@ -16,6 +16,9 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
+            $table->foreignId('user_id');
+            $table->morphs('reportable');
+            $table->char('type');
             $table->timestamps();
         });
     }

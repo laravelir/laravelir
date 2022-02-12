@@ -31,6 +31,6 @@ class ObserverServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Ticket::observe(TicketObserver::class);
-        Freelancer::observe(FreelancerObserver::class);
+        // Freelancer::observe(FreelancerObserver::class);
     }
 }

@@ -16,7 +16,6 @@ class CreateSkillsTable extends Migration
             $table->string('title')->unique()->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
-
         });
     }
 

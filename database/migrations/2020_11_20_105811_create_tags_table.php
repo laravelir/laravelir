@@ -12,7 +12,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->index();
-            $table->string('name')->unique();
+            $table->string('title')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

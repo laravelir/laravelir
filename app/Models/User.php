@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Enum\AuthGuardEnum;
 use App\Traits\HasUUID;
+use App\Enum\AuthGuardEnum;
 use App\Models\UserProfile;
 use App\Traits\RouteKeyNameUUID;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -44,6 +45,8 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'username_changed_at' => 'datetime',
+        'password_changed_at' => 'datetime',
         'mobile_verified_at' => 'datetime',
     ];
 
@@ -52,19 +55,10 @@ class User extends Authenticatable
         return $this->hasOne(UserProfile::class);
     }
 
-    public function legal()
-    {
-        return $this->morphOne(LegalInfo::class, 'legalable');
-    }
 
     public function wallet()
     {
         return $this->morphOne(Wallet::class, 'walletable');
-    }
-
-    public function banks()
-    {
-        return $this->morphMany(Bankable::class, 'bankables');
     }
 
     public function activationCodes()
@@ -77,16 +71,6 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function seoProjects()
-    {
-        return $this->hasMany(SeoProject::class, 'user_id', 'id');
-    }
-
-    public function adwords()
-    {
-        return $this->hasMany(Adword::class, 'user_id', 'id');
-    }
-
     public function payments()
     {
         return $this->morphMany(Payment::class, 'paymentable');
@@ -95,11 +79,6 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->hasMany(Project::class);
-    }
-
-    public function businesses()
-    {
-        return $this->hasMany(BusinessInfo::class);
     }
 
     public function tickets()
@@ -117,29 +96,9 @@ class User extends Authenticatable
         return $this->morphedByMany(Discount::class, 'skillable');
     }
 
-    public function reportages()
-    {
-        return $this->hasMany(OrderReportage::class, 'user_id');
-    }
-
     public function packages()
     {
-        return DB::table('order_packages')->where('user_id', $this->id)->orderBy('created_at')->get();
-    }
-
-    public function getPackageOrders()
-    {
-        $ps = collect($this->packages());
-        $orders = $ps->map(function ($item) {
-            return ['title' => Package::find($item->package_id)->title];
-        });
-
-        return $orders;
-    }
-
-    public function factors()
-    {
-        return Factor::whereIn('payment_id', $this->payments->pluck('id')->toArray())->get();
+        return $this->hasMany(Package::class);
     }
 
     public function isAdmin()
@@ -169,16 +128,6 @@ class User extends Authenticatable
         return !!$this->mobile_verified_at;
     }
 
-    public function isNationalCardUploaded()
-    {
-        return !!$this->profile->national_card_image && !!$this->profile->national_code;
-    }
-
-    public function isNationalCardApproved()
-    {
-        return !!$this->profile->national_card_image &&  !!$this->profile->national_card_image_approved;
-    }
-
     public function isHaveNationalCode()
     {
         return !!$this->profile->national_code;
@@ -186,17 +135,7 @@ class User extends Authenticatable
 
     public function isActivate()
     {
-        return !! $this->isCurrentMobileActivated();
-    }
-
-    public function hasLegalInfo()
-    {
-        return !!$this->legal->completed;
-    }
-
-    public function hasBusinessInfo()
-    {
-        return !!$this->business->completed;
+        return !!$this->isEmailActivated();
     }
 
     public function isOnline()
@@ -244,24 +183,32 @@ class User extends Authenticatable
         return "/@{$this->username}";
     }
 
-    public function setPasswordAttribute($value)
+    public function password(): Attribute
     {
-        $this->attributes['password'] = bcrypt($value);
+        return new Attribute(
+            set: fn ($value) =>  $this->attributes['password'] = bcrypt($value),
+        );
     }
 
-    public function getFullNameAttribute()
+    public function fullname(): Attribute
     {
-        return $this->profile->fname . ' ' . $this->profile->lname;
+        return new Attribute(
+            get: fn () => $this->profile->fname . ' ' . $this->profile->lname,
+        );
     }
 
-    public function getLabelAttribute()
+    public function label(): Attribute
     {
-        return $this->profile->fname . ' ' . $this->profile->lname . ' - ' . $this->username;
+        return new Attribute(
+            get: fn () => $this->profile->fname . ' ' . $this->profile->lname . ' - ' . $this->username,
+        );
     }
 
-    public function getAvatarAttribute()
+    public function getAvatarAttribute(): Attribute
     {
-        return isset($this->profile->avatar) ? asset("/public/avatars/default.jpg") : asset($this->profile->avatar);
+        return new Attribute(
+            get: fn () => isset($this->profile->avatar) ? asset("/public/avatars/default.jpg") : asset($this->profile->avatar),
+        );
     }
 
     public static function generateUsername()
@@ -273,7 +220,7 @@ class User extends Authenticatable
             $chars    = array_merge($digits, $sChars, $cChars);
             $arrToStr = implode("", $chars);
             $shuf     = str_shuffle($arrToStr);
-            $username     = 'rsa_' . substr($shuf, 0, 8);
+            $username     = 'lir_' . substr($shuf, 0, 8);
             $exist    = true;
 
             if (!static::where('username', $username)->exists()) {

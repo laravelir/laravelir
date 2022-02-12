@@ -26,10 +26,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('password_changed_at')->nullable();
             $table->string('mobile')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
-            $table->timestamp('last_login_at')->nullable();
-            $table->timestamp('last_login_ip')->nullable();
-            $table->string('provider_id')->nullable();
-            $table->string('provider')->nullable();
             $table->string('opt')->nullable();
             $table->boolean('is_banned')->default(0);
             $table->timestamp('banned_at')->nullable();

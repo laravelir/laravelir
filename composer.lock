@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10920636397b9c81e050d9142e19b3d5",
+    "content-hash": "3cc44a2e0d919542e64e8f876062d1df",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -1316,6 +1316,131 @@
             "time": "2021-10-06T17:43:30+00:00"
         },
         {
+            "name": "hekmatinasser/notowo",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hekmatinasser/notowo.git",
+                "reference": "c51ad5dcedac966dd93ce558ac7e6a84e0020d6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hekmatinasser/notowo/zipball/c51ad5dcedac966dd93ce558ac7e6a84e0020d6d",
+                "reference": "c51ad5dcedac966dd93ce558ac7e6a84e0020d6d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Hekmatinasser\\Notowo\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasser Hekmati",
+                    "email": "hekmati.nasser@gmail.com"
+                }
+            ],
+            "description": "This Package helps developers change number to word for all language on Laravel freamwork PHP",
+            "keywords": [
+                "Notowo",
+                "laravel",
+                "n2w",
+                "number",
+                "word"
+            ],
+            "support": {
+                "issues": "https://github.com/hekmatinasser/notowo/issues",
+                "source": "https://github.com/hekmatinasser/notowo/tree/v1.0.1"
+            },
+            "time": "2017-09-22T13:41:16+00:00"
+        },
+        {
+            "name": "hekmatinasser/verta",
+            "version": "v1.12.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hekmatinasser/verta.git",
+                "reference": "90f29d061827355e090052d609972cac2dc50371"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hekmatinasser/verta/zipball/90f29d061827355e090052d609972cac2dc50371",
+                "reference": "90f29d061827355e090052d609972cac2dc50371",
+                "shasum": ""
+            },
+            "require": {
+                "hekmatinasser/notowo": "^1.0",
+                "illuminate/support": "^6.0|^8.0|^9.0",
+                "illuminate/validation": "^6.0|^8.0|^9.0",
+                "php": "^7.3|^8.0|^8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.9|^6.23|^7.0",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider"
+                    ],
+                    "aliases": {
+                        "Verta": "Hekmatinasser\\Verta\\Verta"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Hekmatinasser\\Verta\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasser Hekmati",
+                    "email": "hekmati.nasser@gmail.com"
+                }
+            ],
+            "description": "This Package helps developers to work with Jalali Datetime class for Laravel Framework PHP",
+            "keywords": [
+                "Jalali",
+                "Verta",
+                "date",
+                "datetime",
+                "laravel",
+                "shamsi"
+            ],
+            "support": {
+                "issues": "https://github.com/hekmatinasser/verta/issues",
+                "source": "https://github.com/hekmatinasser/verta/tree/v1.12.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/hekmatinasser",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-10T10:32:20+00:00"
+        },
+        {
             "name": "intervention/image",
             "version": "2.7.1",
             "source": {
@@ -2303,6 +2428,80 @@
                 "source": "https://github.com/miladimos/conf/tree/v0.5.7"
             },
             "time": "2021-10-15T23:21:17+00:00"
+        },
+        {
+            "name": "miladimos/laravel-toolkit",
+            "version": "v0.9.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/miladimos/laravel-toolkit.git",
+                "reference": "95d1887f227cf90afdb8fce431ba2043d56b498b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/miladimos/laravel-toolkit/zipball/95d1887f227cf90afdb8fce431ba2043d56b498b",
+                "reference": "95d1887f227cf90afdb8fce431ba2043d56b498b",
+                "shasum": ""
+            },
+            "require": {
+                "hekmatinasser/verta": "^1.12",
+                "intervention/image": "^2.7",
+                "php": "^7.4|^8.0",
+                "webpatser/laravel-uuid": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Miladimos\\Toolkit\\Providers\\ToolkitServiceProvider"
+                    ],
+                    "aliases": {
+                        "Toolkit": "Miladimos\\Toolkit\\Facade\\ToolkitFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Miladimos\\Toolkit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "miladimos",
+                    "email": "miladimos@outlook.com",
+                    "homepage": "https://github.com/miladimos",
+                    "role": "creator"
+                }
+            ],
+            "description": "a package for collections of custom toolkit",
+            "homepage": "https://github.com/miladimos/laravel-toolkit",
+            "keywords": [
+                "Laravel Support",
+                "laravel",
+                "laravel helper file",
+                "laravel packages",
+                "laravel-helper",
+                "laravel-helpers",
+                "laravel-package",
+                "laravel-toolkit",
+                "lumen packages",
+                "lumen support"
+            ],
+            "support": {
+                "issues": "https://github.com/miladimos/laravel-toolkit/issues",
+                "source": "https://github.com/miladimos/laravel-toolkit/tree/v0.9.8"
+            },
+            "funding": [
+                {
+                    "url": "https://idpay.ir/laravelir",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-12T22:31:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5927,6 +6126,64 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "webpatser/laravel-uuid",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webpatser/laravel-uuid.git",
+                "reference": "df92ebbc5ea71ee9e0d6e2861178be42ef7eb330"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/df92ebbc5ea71ee9e0d6e2861178be42ef7eb330",
+                "reference": "df92ebbc5ea71ee9e0d6e2861178be42ef7eb330",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.9.1",
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Webpatser\\Uuid\\UuidServiceProvider"
+                    ],
+                    "aliases": {
+                        "Uuid": "Webpatser\\Uuid\\Uuid"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webpatser\\Uuid\\": "src/Webpatser/Uuid/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Kempen",
+                    "email": "christoph@downsized.nl"
+                }
+            ],
+            "description": "Laravel package to generate and to validate a universally unique identifier (UUID) according to the RFC 4122 standard. Support for version 1, 3, 4 and 5 UUIDs are built-in.",
+            "homepage": "https://github.com/webpatser/laravel-uuid",
+            "keywords": [
+                "UUID RFC4122"
+            ],
+            "support": {
+                "issues": "https://github.com/webpatser/laravel-uuid/issues",
+                "source": "https://github.com/webpatser/laravel-uuid"
+            },
+            "time": "2021-03-09T07:19:24+00:00"
         }
     ],
     "packages-dev": [

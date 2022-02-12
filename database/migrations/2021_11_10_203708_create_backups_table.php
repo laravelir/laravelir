@@ -16,6 +16,10 @@ class CreateBackupsTable extends Migration
         Schema::create('backups', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
+            $table->char('disk');
+            $table->char('type');
+            $table->timestamp('start_at');
+            $table->timestamp('ended_at');
             $table->timestamps();
         });
     }

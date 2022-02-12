@@ -16,6 +16,8 @@ class CreateAdvertisesTable extends Migration
         Schema::create('advertises', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
+            $table->string('title');
+            $table->timestamp('expired_at');
             $table->softDeletes();
             $table->timestamps();
         });

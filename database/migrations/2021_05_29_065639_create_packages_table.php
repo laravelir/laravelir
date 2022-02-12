@@ -16,15 +16,12 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
+            $table->foreignId('user_id');
             $table->char('type');
             $table->string('title')->nullable();
             $table->text('description');
-            $table->string('price');
-            $table->string('dollar_price');
             $table->unsignedFloat('order');
             $table->string('header_color')->nullable();
-            $table->string('price_discount')->nullable();
-            $table->string('dollar_price_discount')->nullable();
             $table->boolean('vip')->default(false);
             $table->boolean('active')->default(true);
             $table->timestamps();
