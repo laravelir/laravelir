@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+use App\Traits\HasUUID;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Tag extends Model
+{
+    use HasFactory,
+        HasUUID;
+
+    protected $table = 'tags';
+
+    protected $fillable = ['name', 'active', 'uuid'];
+
+    // protected static function booted()
+    // {
+    //     static::addGlobalScope(new ActiveScope());
+    // }
+    // Tag::withoutGlobalScope('active')->get();
+
+    public function articles()
+    {
+        return $this->morphedByMany(Article::class, 'taggable', 'taggables');
+    }
+
+    // public function scopeActive($query)
+    // {
+    //     return $query->where('active', 1)
+    //                  ->where('status', 'published')
+    //                  ->whereNull('deleted_at');
+    // }
+
+    public function path()
+    {
+        return "/tags/$this->uuid";
+    }
+
+}
