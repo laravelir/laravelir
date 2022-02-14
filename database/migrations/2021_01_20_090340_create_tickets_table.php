@@ -14,10 +14,9 @@ class CreateTicketsTable extends Migration
             $table->uuid('uuid')->unique();
             $table->string('code')->unique();
             $table->foreignId('admin_id')->nullable();
-            $table->foreignId('parent_id')->nullable();
+            $table->foreignId('parent_id')->default(0);
             $table->foreignId('subject_id')->nullable();
             $table->foreignId('project_id')->nullable();
-            $table->char('project_type')->nullable();
             $table->string('title')->nullable();
             $table->text('body')->nullable();
             $table->string('attachment')->nullable();

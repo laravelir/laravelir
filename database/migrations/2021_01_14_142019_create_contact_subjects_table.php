@@ -12,7 +12,7 @@ class CreateContactSubjectsTable extends Migration
         Schema::create('contact_subjects', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->string('title')->nullable();
+            $table->string('title')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

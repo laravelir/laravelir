@@ -16,11 +16,9 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->string('title')->unique()->nullable();
-            $table->string('code')->nullable();
-            $table->string('locale')->nullable();
-            $table->string('currency')->nullable();
-            $table->boolean('rtl')->default(false);
+            $table->string('title')->unique();
+            $table->string('logo');
+            $table->string('hex')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

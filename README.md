@@ -22,6 +22,11 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Vehikl](https://vehikl.com/)**
 
 
+## نشان
+تیشرت 
+ماگ
+استیکر
+
 ## همکاری با ما
 
 Thank you for considering contributing to the Iran Laravel Community! The contribution guide can be found in the [Laravel documentation](https://laravelir.ir/docs/contributions).

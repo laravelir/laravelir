@@ -12,7 +12,7 @@ class CreateTicketSubjectsTable extends Migration
         Schema::create('ticket_subjects', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->index();
-            $table->string('title')->unique()->nullable();
+            $table->string('title')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

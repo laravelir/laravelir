@@ -16,7 +16,7 @@ class CreateAcquaintedUsTable extends Migration
         Schema::create('acquainted_us', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->string('title')->unique()->nullable();
+            $table->string('title')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

@@ -19,6 +19,7 @@ class CreateAccountDeleteRequestsTable extends Migration
             $table->morphs('deleteable');
             $table->boolean('approved')->default(0);
             $table->timestamp('approved_at')->nullable();
+            $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });
     }

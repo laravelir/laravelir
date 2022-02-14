@@ -13,7 +13,7 @@ class CreateSkillsTable extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->foreignId('parent_id')->default(0);
-            $table->string('title')->unique()->nullable();
+            $table->string('title')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

@@ -21,7 +21,6 @@ class CreateViewPointsTable extends Migration
             $table->string('role');
             $table->string('avatar_path')->nullable();
             $table->softDeletes();
-
             $table->timestamps();
         });
     }

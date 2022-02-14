@@ -22,7 +22,7 @@ class CreateGiftCodesTable extends Migration
             $table->string('code')->unique();
             $table->string('value');
             $table->char('currency')->default(CurrencyEnum::TOMAN);
-            $table->char('type')->default(GiftCodeTypeEnum::FOR_USER);
+            // $table->char('type')->default(GiftCodeTypeEnum::FOR_USER);
             $table->unsignedInteger('count_use')->default(0);
             $table->unsignedInteger('count_use_user')->default(1)->description('for each user');
             $table->unsignedInteger('used_count')->default(0);

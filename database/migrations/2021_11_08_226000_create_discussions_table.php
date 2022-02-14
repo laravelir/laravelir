@@ -1,7 +1,7 @@
 <?php
 
-use App\Enums\DiscussStatusEnum;
-use App\Enums\DiscussTypeEnum;
+use App\Enum\DiscussStatusEnum;
+use App\Enum\DiscussTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,8 +23,8 @@ class CreateDiscussionsTable extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('body');
-            $table->char('status')->default(DiscussStatusEnum::DRAFT);
-            $table->char('type')->default(DiscussTypeEnum::IDEAS);
+            // $table->char('status')->default(DiscussStatusEnum::DRAFT);
+            // $table->char('type')->default(DiscussTypeEnum::IDEAS);
             $table->boolean('pinned')->default(0);
             $table->unsignedInteger('view_count')->default(0);
             $table->timestamp('close_at')->nullable();

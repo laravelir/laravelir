@@ -16,16 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('country_id')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->string('username')->unique();
-            $table->timestamp('username_changed_at')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->timestamp('password_changed_at')->nullable();
-            $table->string('mobile')->nullable();
-            $table->timestamp('mobile_verified_at')->nullable();
+            $table->string('mobile')->unique()->nullable();
             $table->string('opt')->nullable();
             $table->boolean('is_banned')->default(0);
             $table->timestamp('banned_at')->nullable();

@@ -16,8 +16,8 @@ class CreateAchievementsUsersPivotTable extends Migration
         Schema::create('achievements_users_pivot', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->index();
-            $table->string('user_id')->unique();
-            $table->string('badge_id')->unique();
+            $table->foreignId('user_id')->unique();
+            $table->foreignId('achievement_id')->unique();
             $table->timestamp('obtaining_at');
         });
     }

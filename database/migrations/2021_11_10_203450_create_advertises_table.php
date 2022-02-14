@@ -17,6 +17,8 @@ class CreateAdvertisesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('title');
+            $table->string('link');
+            $table->string('description')->nullable();
             $table->timestamp('expired_at');
             $table->softDeletes();
             $table->timestamps();
