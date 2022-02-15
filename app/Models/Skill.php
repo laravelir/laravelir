@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\HasUUID;
-use App\Traits\RouteKeyNameUUID;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 
 class Skill extends Model
 {

@@ -12,9 +12,9 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->index()->unique();
+            $table->foreignId('parent_id')->default(0);
             $table->string('name')->unique()->nullable();
-            $table->string('description')->nullable();
-            $table->unsignedTinyInteger("percent")->default(0);
+            $table->string('hex')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

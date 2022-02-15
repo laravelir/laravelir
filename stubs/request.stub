@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Webmaster\Article;
+namespace {{ namespace }};
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleRequest extends FormRequest
+class {{ class }} extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class ArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,12 +24,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'          => 'required',
-            'description'    => 'required',
-            'body'           => 'required',
-            'thumbnail_path' => 'required',
-            'status'         => 'required',
-            'pinned'         => 'required',
+            //
         ];
     }
 }

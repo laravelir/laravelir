@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('podcasts', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
-            $table->foreignId('author_id');
-            $table->string('title')->unique();
-            $table->string('description')->unique();
-            $table->string('file_url')->unique();
-            $table->text('transcript');
-            $table->unsignedBigInteger('view_count')->default(0);
-            $table->boolean('active')->default(0);
+            $table->string('name');
+            $table->string('avatar');
+            $table->string('value');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('podcasts');
+        Schema::dropIfExists('sponsors');
     }
 };

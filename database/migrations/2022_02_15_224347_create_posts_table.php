@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('podcasts', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
+            $table->foreignId('admin_id')->nullable(); // who review and approved
             $table->foreignId('author_id');
+            $table->foreignId('category_id');
             $table->string('title')->unique();
-            $table->string('description')->unique();
-            $table->string('file_url')->unique();
-            $table->text('transcript');
+            $table->string('description', 300)->unique();
+            $table->text('body');
             $table->unsignedBigInteger('view_count')->default(0);
+            $table->timestamp('approved_at')->nullable();
             $table->boolean('active')->default(0);
             $table->timestamps();
         });
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('podcasts');
+        Schema::dropIfExists('posts');
     }
 };
