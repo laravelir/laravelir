@@ -126,23 +126,6 @@ class Project extends Model
         }
     }
 
-    public function tone()
-    {
-        switch ($this->tone) {
-            case ContentToneEnum::CONVERSATIONAL:
-                return 'محاوره ای';
-            case ContentToneEnum::FORMAL:
-                return 'رسمی (ادبی)';
-            case ContentToneEnum::INFORMAL:
-                return 'غیر رسمی (دوستانه)';
-            case ContentToneEnum::THIRD_PERSON:
-                return 'سوم شخص';
-            default:
-                # code...
-                break;
-        }
-    }
-
     public function isProjectDone()
     {
 

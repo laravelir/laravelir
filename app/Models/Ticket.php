@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use App\Enum\OrderTypeEnum;
 use App\Enum\TicketPriorityEnum;
-use App\Enum\TicketStatusEnum;
-use App\Traits\HasUUID;
-use App\Traits\RouteKeyNameUUID;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ticket extends Model

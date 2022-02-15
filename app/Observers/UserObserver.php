@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Models\UserMeta;
 
 class UserObserver
 {
@@ -15,7 +16,7 @@ class UserObserver
      */
     public function creating(User $user)
     {
-        $user->username = $user->generateUsername();
+        //
     }
 
     /**
@@ -30,15 +31,11 @@ class UserObserver
             'user_id' => $user->id
         ]);
 
-        $user->legal()->create([
-            'legalable_id' => $user->id,
-            'legalable_type' => User::class
+        UserMeta::create([
+            'metaable_id' => $user->id,
+            'metaable_type' => get_class($user),
         ]);
 
-        $user->wallet()->create([
-            'walletable_id' => $user->id,
-            'walletable_type' => User::class
-        ]);
     }
 
     /**

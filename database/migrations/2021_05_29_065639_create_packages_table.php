@@ -18,10 +18,9 @@ class CreatePackagesTable extends Migration
             $table->uuid('uuid')->unique();
             $table->foreignId('user_id');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->unsignedFloat('order');
             $table->string('main_keyword');
-            $table->string('description')->nullable();
             $table->string('link')->nullable();
             $table->string('rate')->nullable();
             $table->char('type');

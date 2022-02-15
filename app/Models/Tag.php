@@ -26,6 +26,11 @@ class Tag extends Model
         return $this->morphedByMany(Article::class, 'taggable', 'taggables');
     }
 
+    public function podcasts()
+    {
+        return $this->morphedByMany(Podcast::class, 'taggable', 'taggables');
+    }
+
     // public function scopeActive($query)
     // {
     //     return $query->where('active', 1)

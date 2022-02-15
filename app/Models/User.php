@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Traits\HasUUID;
 use App\Enum\AuthGuardEnum;
 use App\Models\UserProfile;
-use App\Traits\RouteKeyNameUUID;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,9 +52,13 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne(UserProfile::class);
+        return $this->hasOne(Profile::class);
     }
 
+    public function metas()
+    {
+        return $this->morphOne(UserMeta::class, 'metaable');
+    }
 
     public function wallet()
     {
@@ -204,10 +208,10 @@ class User extends Authenticatable
         );
     }
 
-    public function getAvatarAttribute(): Attribute
+    public function avatar(): Attribute
     {
         return new Attribute(
-            get: fn () => isset($this->profile->avatar) ? asset("/public/avatars/default.jpg") : asset($this->profile->avatar),
+            get: fn () => isset($this->profile->avatar_path) ? $this->profile->avatar_path : asset("/public/avatars/default.jpg"),
         );
     }
 

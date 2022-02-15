@@ -579,6 +579,10 @@
       	})).render();
       });
       // @formatter:on
+
+
     </script>
+    @livewireScripts
+
   </body>
 </html>
