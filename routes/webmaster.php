@@ -25,28 +25,28 @@ use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsContro
 
 
 
-Route::group(['prefix' => 'webmaster', 'middleware' => ['auth:web', 'admin']], function () {
-    Route::get('', [WebmasterController::class, 'webmaster'])->name('webmaster.index');
+Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []], function () {
+    Route::get('', [WebmasterController::class, 'webmaster'])->name('index');
 
-    Route::get('/roles/assign', [RoleController::class, 'assignForm'])->name('webmaster.roles.assign.form');
-    Route::post('/roles/assign', [RoleController::class, 'assign'])->name('webmaster.roles.assign');
+    Route::get('/roles/assign', [RoleController::class, 'assignForm'])->name('roles.assign.form');
+    Route::post('/roles/assign', [RoleController::class, 'assign'])->name('roles.assign');
 
-    Route::post('/tickets/reply/{ticket}', [TicketController::class, 'reply'])->name('webmaster.tickets.reply');
-    Route::post('/tickets/done/{ticket}', [TicketController::class, 'done'])->name('webmaster.tickets.done');
-    Route::post('/tickets/open/{ticket}', [TicketController::class, 'open'])->name('webmaster.tickets.open');
-    Route::get('/tickets/create/freelancer', [TicketController::class, 'createFreelancer'])->name('webmaster.tickets.create.freelancer');
-    Route::post('/tickets/store/freelancer', [TicketController::class, 'storeFreelancer'])->name('webmaster.tickets.store.freelancer');
+    Route::post('/tickets/reply/{ticket}', [TicketController::class, 'reply'])->name('tickets.reply');
+    Route::post('/tickets/done/{ticket}', [TicketController::class, 'done'])->name('tickets.done');
+    Route::post('/tickets/open/{ticket}', [TicketController::class, 'open'])->name('tickets.open');
+    Route::get('/tickets/create/freelancer', [TicketController::class, 'createFreelancer'])->name('tickets.create.freelancer');
+    Route::post('/tickets/store/freelancer', [TicketController::class, 'storeFreelancer'])->name('tickets.store.freelancer');
     Route::resource('tickets', TicketController::class, ['as' => 'webmaster'])->except(['update', 'edit']);
 
-    Route::get('/jobs/requests', [WebmasterController::class, 'jobRequests'])->name('webmaster.jobs.requests');
-    Route::get('/jobs/requests/{job}', [WebmasterController::class, 'jobRequestsShow'])->name('webmaster.jobs.requests.show');
+    Route::get('/jobs/requests', [WebmasterController::class, 'jobRequests'])->name('jobs.requests');
+    Route::get('/jobs/requests/{job}', [WebmasterController::class, 'jobRequestsShow'])->name('jobs.requests.show');
 
     Route::resource('projects', ProjectController::class, [
         'as' => 'webmaster'
     ])->except(['store', 'update', 'edit']);
 
 
-    Route::get('/contacts', [ContactUsController::class, 'index'])->name('webmaster.contacts.index');
+    Route::get('/contacts', [ContactUsController::class, 'index'])->name('contacts.index');
 
     Route::resources([
         'users' => UserController::class,
@@ -66,7 +66,5 @@ Route::group(['prefix' => 'webmaster', 'middleware' => ['auth:web', 'admin']], f
         'languages' => LanguageController::class,
         'acquainted' => AcquaintedUsController::class,
         'packages' => PackageController::class,
-    ], [
-        'as' => 'webmaster'
     ]);
 });

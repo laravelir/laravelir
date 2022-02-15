@@ -29,31 +29,6 @@ function getCategory($id)
     return Category::find($id);
 }
 
-function getAddon($id)
-{
-    return Addons::find($id);
-}
-
-function getReportage($id)
-{
-    return \App\Models\Reportage::find($id);
-}
-
-function getProduct($id)
-{
-    return \App\Models\Product::find($id);
-}
-
-function getBusiness($id)
-{
-    return \App\Models\BusinessInfo::find($id);
-}
-
-function getReportageCamp($id)
-{
-    return \App\Models\OrderReportage::find($id);
-}
-
 function getFreelancer($id)
 {
     return \App\Models\Freelancer::findOrFail($id);
@@ -246,46 +221,6 @@ function getReportageOrderStatus($status)
     }
 }
 
-function getOrderType($type)
-{
-    switch ($type) {
-        case \App\Enum\OrderTypeEnum::CONTENT:
-            return 'محتوا';;
-        case \App\Enum\OrderTypeEnum::ADWORDS:
-            return 'تبلیغات گوگل';
-        case \App\Enum\OrderTypeEnum::PACKAGE:
-            return 'پکیج';
-        case \App\Enum\OrderTypeEnum::REPORTAGE:
-            return 'رپورتاژ';
-        case \App\Enum\OrderTypeEnum::SEO:
-            return 'سئو';
-        default:
-            # code...
-            break;
-    }
-}
-
-function getContentFormat($type, $locale = 'fa')
-{
-    switch ($type) {
-        case \App\Enum\ContentFormatEnum::REPORTAGE:
-            return $locale == 'fa' ? 'رپرتاژ خبری' : 'Reportage';
-        case \App\Enum\ContentFormatEnum::ARTICLE_BLOG:
-            return $locale == 'fa' ? 'مقاله و پست وبلاگ' : 'Blog Article';
-        case \App\Enum\ContentFormatEnum::OTHER:
-            return $locale == 'fa' ? 'سایر موارد' : 'Other';
-        case \App\Enum\ContentFormatEnum::SHOP_DESCRIPTION:
-            return $locale == 'fa' ? 'توضیحات محصول فروشگاهی' : 'Shop Descripion';
-        case \App\Enum\ContentFormatEnum::WEBSITE:
-            return $locale == 'fa' ? 'محتوای صفحات وب سایت' : 'Website Content';
-        case \App\Enum\ContentFormatEnum::SOCIAL_CONTENT:
-            return $locale == 'fa' ? 'محتوای شبکه های اجتماعی' : 'Social Content';
-        default:
-            # code...
-            break;
-    }
-}
-
 function currentLocale()
 {
     return App::getLocale();
@@ -353,24 +288,6 @@ function isGlobalDiscountAvailable($user_id, $discount_id, $user_type = 'user')
             'discountable_id' => Freelancer::class,
             'discount_id' => $discount_id,
         ])->exists();
-    }
-}
-
-function getContentTone($type, $locale = 'fa')
-{
-    switch ($type) {
-        case \App\Enum\ContentToneEnum::FORMAL:
-            return $locale == 'fa' ? 'رسمی' : 'Formal';
-        case \App\Enum\ContentToneEnum::INFORMAL:
-            return $locale == 'fa' ? 'غیر رسمی' : 'Informal';
-        case \App\Enum\ContentToneEnum::THIRD_PERSON:
-            return $locale == 'fa' ? 'سوم شخص' : 'Thrid Person';
-        case \App\Enum\ContentToneEnum::CONVERSATIONAL:
-            return $locale == 'fa' ? 'محاوره ای' : 'Conversational';
-
-        default:
-            # code...
-            break;
     }
 }
 

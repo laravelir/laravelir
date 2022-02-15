@@ -19,20 +19,20 @@ class WebmasterController extends Controller
         $fromDate = Carbon::now()->startOfMonth()->toDateString();
         $tillDate = Carbon::now()->endOfMonth()->toDateString();
 
-        $latestUsers = User::latest()->take(10)->get();
-        $latestPayments = Payment::latest()->take(10)->get();
-        $latestFreelancers = Freelancer::latest()->take(10)->get();
-        $latestTickets = Ticket::latest()->take(10)->get();
+        // $latestUsers = User::latest()->take(10)->get();
+        // $latestPayments = Payment::latest()->take(10)->get();
+        // $latestFreelancers = Freelancer::latest()->take(10)->get();
+        // $latestTickets = Ticket::latest()->take(10)->get();
 
-        $freelancersCount = Freelancer::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
-        $usersCount = User::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
-        $ticketsCount = Ticket::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
-        $newTicketsCount = Ticket::where('status', SeoProjectStatusEnum::NEW)->get()->count();
-        $contentOrderCount = Project::get()->count();
-        $contentOrders = Project::get();
+        // $freelancersCount = Freelancer::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
+        // $usersCount = User::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
+        // $ticketsCount = Ticket::whereBetween('created_at', [$fromDate, $tillDate])->get()->count();
+        // $newTicketsCount = Ticket::where('status', SeoProjectStatusEnum::NEW)->get()->count();
+        // $contentOrderCount = Project::get()->count();
+        // $contentOrders = Project::get();
 
-        $cashMonth = Payment::where('payment', 1)->whereBetween('created_at', [$fromDate, $tillDate])->sum('amount');
-        $cashAll = Payment::where('payment', 1)->sum('amount');
+        // $cashMonth = Payment::where('payment', 1)->whereBetween('created_at', [$fromDate, $tillDate])->sum('amount');
+        // $cashAll = Payment::where('payment', 1)->sum('amount');
 
 
         return view('webmaster.index', get_defined_vars());
