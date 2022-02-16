@@ -16,9 +16,10 @@ class CreateAdvertisesTable extends Migration
         Schema::create('advertises', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
-            $table->string('title');
+            $table->foreignId('partner_id');
             $table->string('link');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
+            $table->char('type')->nullable();
             $table->timestamp('expired_at');
             $table->softDeletes();
             $table->timestamps();

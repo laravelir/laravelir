@@ -12,7 +12,7 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::post('login', [LoginController::class, 'login'])->name('login');
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
     Route::post('register', [RegisterController::class, 'register'])->name('register');
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::post('password/email', [ForgotPasswordController::class, 'forgotPasswordEmail'])->name('password.email');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('password/reset', [ResetPasswordController::class, 'resetPasswordEmail'])->name('password.update');

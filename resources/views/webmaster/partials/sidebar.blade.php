@@ -5,13 +5,15 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a href=".">
-                <img src="./static/logo-white.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                <img src="{{ asset('/statics/shared/images/laravel-logolockup-rgb-red.svg') }}" alt="Tabler"
+                    class="navbar-brand-image" width="110" height="32" style="width: 60em!important;">
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">
             <div class="nav-item d-none d-lg-flex me-3">
                 <div class="btn-list">
-                    <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/laravelir/laravelir" class="btn" target="_blank"
+                        rel="noreferrer">
                         <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -204,7 +206,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
+                    <a class="nav-link" href="{{ route('webmaster.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -217,7 +219,24 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Home
+                            داشبورد
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="9 11 12 14 20 6" />
+                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            سایت
                         </span>
                     </a>
                 </li>
@@ -238,53 +257,385 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Interface
+                            کاربران
                         </span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item" href="./buttons.html">
-                                    Buttons
+                                    کاربران
                                 </a>
                                 <div class="dropend">
                                     <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
                                         data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                                         aria-expanded="false">
-                                        Cards
-                                        <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                        دستاورد ها
                                     </a>
                                     <div class="dropdown-menu">
                                         <a href="./card-actions.html" class="dropdown-item">
-                                            Card actions
-                                            <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                            دستاورد ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            تخصیص دستاورد
                                         </a>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="./maps-vector.html">
-                                    Vector maps
-                                    <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        ACL
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            نقش ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            سطح دسترسی ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            تخصیص نقش
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            محتوا
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    برچسب ها
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    دسته بندی ها
+                                </a>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        مقاله ها
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            مقاله ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            ثبت مقاله جدید
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        پادکست ها
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            پادکست ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            ثبت پادکست جدید
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        اخبار ها
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            اخبار ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            ثبت اخبار جدید
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        نظرات
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            همه نظرات
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            در انتظار تایید
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            گفت و گو ها
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    گفت و گو ها
                                 </a>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./form-elements.html">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <polyline points="9 11 12 14 20 6" />
-                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Forms
+                            تیکت ها
                         </span>
                     </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    تیکت ها
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    ارسال تیکت برای کاربر
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    موضوع ها
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            مالی
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    کد تخفیف ها
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            همکاران
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    نقطه نظرات
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    همکاران
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    حامیان مالی
+                                </a>
+                                <a class="dropdown-item" href="./buttons.html">
+                                    تبلیغات
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            متفرقه
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="./buttons.html">
+                                    مهارت ها
+                                </a>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        تماس با ما
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            پیام ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            موضوعات
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                        aria-expanded="false">
+                                        سوالات متداول
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            سوال ها
+                                        </a>
+                                        <a href="./card-actions.html" class="dropdown-item">
+                                            گروه ها
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                <line x1="12" y1="12" x2="20" y2="7.5" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                                <line x1="12" y1="12" x2="4" y2="7.5" />
+                                <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            پیشرفته
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    گزارش ها
+                                </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    سئو
+                                </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    آمار
+                                </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    پشتیبان گیری
+                                </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    لاگ ها
+                                </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                    تنظیمات
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./changelog.html">

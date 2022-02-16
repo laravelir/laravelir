@@ -31,8 +31,9 @@ class SocialiteController extends Controller
         try {
 
             $socialiteUser  = $this->getSocialiteUser($provider);
+            $provider_id = UserMeta::where('provider_id', $socialiteUser->getId())->first();
 
-            $existUser = UserMeta::where('provider_id', $socialiteUser->getId())->first();
+            $existUser = $provider_id != null ? User::find($provider_id->metaable_id) : false;
 
             if ($existUser) {
 

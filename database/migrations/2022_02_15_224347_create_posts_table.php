@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('body');
             $table->unsignedBigInteger('view_count')->default(0);
             $table->timestamp('approved_at')->nullable();
+            $table->boolean('sponsored')->default(0);
             $table->boolean('active')->default(0);
             $table->timestamps();
         });

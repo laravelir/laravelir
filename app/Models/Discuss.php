@@ -37,19 +37,15 @@ class Discuss extends Model
         return $this->hasOne(Discuss::class, 'id', 'parent_id')->withDefault(['title' => '---']);
     }
 
-    /**
-     * Returns a list of the children categories.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'category_id');
+    }
+
     public function children()
     {
         return $this->hasMany(Discuss::class, 'parent_id', 'id');
-    }
-
-    public function categories()
-    {
-        return $this->morphedByMany(Category::class, 'categoriable');
     }
 
     public function tags()

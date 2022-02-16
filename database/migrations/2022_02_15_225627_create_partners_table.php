@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name');
+            $table->string('description');
+            $table->string('link');
             $table->string('logo_path');
             $table->boolean('active')->default(true);
             $table->timestamps();

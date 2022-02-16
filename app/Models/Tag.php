@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\HasUUID;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,6 +29,11 @@ class Tag extends Model
     public function podcasts()
     {
         return $this->morphedByMany(Podcast::class, 'taggable', 'taggables');
+    }
+
+    public function discussions()
+    {
+        return $this->morphedByMany(Discuss::class, 'taggable', 'taggables');
     }
 
     // public function scopeActive($query)

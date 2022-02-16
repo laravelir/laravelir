@@ -71,7 +71,7 @@
                     <div class="hr-text">یا</div>
                     <div class="row">
                         <div class="col">
-                            <a href="#" class="btn btn-white w-100">
+                            <a href="{{ route('auth.socialite', ['provider' => 'github']) }}" class="btn btn-white w-100">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"

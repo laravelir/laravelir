@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('file_url')->unique();
             $table->text('transcript');
             $table->unsignedBigInteger('view_count')->default(0);
+            $table->boolean('sponsored')->default(0);
             $table->boolean('active')->default(0);
             $table->timestamps();
         });
