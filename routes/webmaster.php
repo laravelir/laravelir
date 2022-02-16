@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Webmaster\Achievement\AchievementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Webmaster\Tag\TagController;
 use App\Http\Controllers\Webmaster\City\CityController;
@@ -22,8 +23,8 @@ use App\Http\Controllers\Webmaster\Ticket\TicketSubjectController;
 use App\Http\Controllers\Webmaster\Freelancer\FreelancerController;
 use App\Http\Controllers\Webmaster\Permission\PermissionController;
 use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsController;
-
-
+use App\Http\Controllers\Webmaster\News\NewsController;
+use App\Http\Controllers\Webmaster\Post\PostController;
 
 Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []], function () {
     Route::get('', [WebmasterController::class, 'webmaster'])->name('index');
@@ -31,12 +32,17 @@ Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []]
     Route::get('/roles/assign', [RoleController::class, 'assignForm'])->name('roles.assign.form');
     Route::post('/roles/assign', [RoleController::class, 'assign'])->name('roles.assign');
 
+    Route::get('/achievements/assign', [AchievementController::class, 'assignForm'])->name('achievements.assign.form');
+    Route::post('/achievements/assign', [AchievementController::class, 'assign'])->name('achievements.assign');
+
     Route::post('/tickets/reply/{ticket}', [TicketController::class, 'reply'])->name('tickets.reply');
     Route::post('/tickets/done/{ticket}', [TicketController::class, 'done'])->name('tickets.done');
     Route::post('/tickets/open/{ticket}', [TicketController::class, 'open'])->name('tickets.open');
-    Route::get('/tickets/create/freelancer', [TicketController::class, 'createFreelancer'])->name('tickets.create.freelancer');
-    Route::post('/tickets/store/freelancer', [TicketController::class, 'storeFreelancer'])->name('tickets.store.freelancer');
-    Route::resource('tickets', TicketController::class, ['as' => 'webmaster'])->except(['update', 'edit']);
+    Route::resource('tickets', TicketController::class)->except(['update', 'edit']);
+
+    Route::get('/statistics', [RoleController::class, 'assignForm'])->name('advanced.statistics');
+    Route::get('/logs', [RoleController::class, 'assignForm'])->name('advanced.logs');
+    Route::get('/settings', [RoleController::class, 'assignForm'])->name('advanced.settings');
 
     Route::get('/jobs/requests', [WebmasterController::class, 'jobRequests'])->name('jobs.requests');
     Route::get('/jobs/requests/{job}', [WebmasterController::class, 'jobRequestsShow'])->name('jobs.requests.show');
@@ -50,15 +56,26 @@ Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []]
 
     Route::resources([
         'users' => UserController::class,
+        'sponsors' => UserController::class,
+        'view-points' => UserController::class,
+        'partners' => UserController::class,
+        'faqs' => UserController::class,
+        'faq-groups' => UserController::class,
+        'achievements' => AchievementController::class,
         'freelancers' => FreelancerController::class,
         'roles' => RoleController::class,
         'permissions' => PermissionController::class,
         'payments' => PaymentController::class,
+        'news' => NewsController::class,
+        'advertises' => NewsController::class,
+        'podcasts' => PostController::class,
+        'posts' => PostController::class,
         'tags' => TagController::class,
         'skills' => SkillController::class,
         'categories' => CategoryController::class,
         'subjects' => TicketSubjectController::class,
         'discounts' => DiscountController::class,
+        'discussions' => DiscountController::class,
         'comments' => CommentController::class,
         'countries' => CountryController::class,
         'provinces' => ProvinceController::class,

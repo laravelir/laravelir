@@ -263,7 +263,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.users.index') }}">
                                     کاربران
                                 </a>
                                 <div class="dropend">
@@ -273,10 +273,11 @@
                                         دستاورد ها
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.achievements.index') }}" class="dropdown-item">
                                             دستاورد ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.achievements.assign.form') }}"
+                                            class="dropdown-item">
                                             تخصیص دستاورد
                                         </a>
                                     </div>
@@ -288,13 +289,13 @@
                                         ACL
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.roles.index') }}" class="dropdown-item">
                                             نقش ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.permissions.index') }}" class="dropdown-item">
                                             سطح دسترسی ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.roles.assign.form') }}" class="dropdown-item">
                                             تخصیص نقش
                                         </a>
 
@@ -327,10 +328,10 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.tags.index') }}">
                                     برچسب ها
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.categories.index') }}">
                                     دسته بندی ها
                                 </a>
                                 <div class="dropend">
@@ -340,10 +341,10 @@
                                         مقاله ها
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.posts.index') }}" class="dropdown-item">
                                             مقاله ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.posts.create') }}" class="dropdown-item">
                                             ثبت مقاله جدید
                                         </a>
                                     </div>
@@ -355,10 +356,10 @@
                                         پادکست ها
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.podcasts.index') }}" class="dropdown-item">
                                             پادکست ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.podcasts.index') }}" class="dropdown-item">
                                             ثبت پادکست جدید
                                         </a>
                                     </div>
@@ -370,10 +371,10 @@
                                         اخبار ها
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.news.index') }}" class="dropdown-item">
                                             اخبار ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.news.index') }}" class="dropdown-item">
                                             ثبت اخبار جدید
                                         </a>
                                     </div>
@@ -385,10 +386,10 @@
                                         نظرات
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.comments.index') }}" class="dropdown-item">
                                             همه نظرات
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.comments.index') }}" class="dropdown-item">
                                             در انتظار تایید
                                         </a>
                                     </div>
@@ -420,7 +421,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.discussions.index') }}">
                                     گفت و گو ها
                                 </a>
                             </div>
@@ -450,13 +451,13 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.tickets.index') }}">
                                     تیکت ها
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.tickets.create') }}">
                                     ارسال تیکت برای کاربر
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.subjects.index') }}">
                                     موضوع ها
                                 </a>
                             </div>
@@ -486,7 +487,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.users.index') }}">
                                     کد تخفیف ها
                                 </a>
                             </div>
@@ -516,16 +517,16 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.view-points.index') }}">
                                     نقطه نظرات
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.partners.index') }}">
                                     همکاران
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.sponsors.index') }}">
                                     حامیان مالی
                                 </a>
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.advertises.index') }}">
                                     تبلیغات
                                 </a>
                             </div>
@@ -555,7 +556,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./buttons.html">
+                                <a class="dropdown-item" href="{{ route('webmaster.skills.index') }}">
                                     مهارت ها
                                 </a>
                                 <div class="dropend">
@@ -565,10 +566,10 @@
                                         تماس با ما
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.contacts.index') }}" class="dropdown-item">
                                             پیام ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.index') }}" class="dropdown-item">
                                             موضوعات
                                         </a>
                                     </div>
@@ -580,10 +581,10 @@
                                         سوالات متداول
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.faqs.index') }}" class="dropdown-item">
                                             سوال ها
                                         </a>
-                                        <a href="./card-actions.html" class="dropdown-item">
+                                        <a href="{{ route('webmaster.faq-groups.index') }}" class="dropdown-item">
                                             گروه ها
                                         </a>
                                     </div>
@@ -621,16 +622,16 @@
                                 <a class="dropdown-item" href="{{ route('webmaster.index') }}">
                                     سئو
                                 </a>
-                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                <a class="dropdown-item" href="{{ route('webmaster.advanced.statistics') }}">
                                     آمار
                                 </a>
                                 <a class="dropdown-item" href="{{ route('webmaster.index') }}">
                                     پشتیبان گیری
                                 </a>
-                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                <a class="dropdown-item" href="{{ route('webmaster.advanced.logs') }}">
                                     لاگ ها
                                 </a>
-                                <a class="dropdown-item" href="{{ route('webmaster.index') }}">
+                                <a class="dropdown-item" href="{{ route('webmaster.advanced.settings') }}">
                                     تنظیمات
                                 </a>
                             </div>
