@@ -8,9 +8,7 @@ final class ContentTypeEnum
 {
     use GetConstantsEnum;
 
-    // نوع نگارش
-
-    const TRANSLATE = 't'; // ترجمه
-    const COMPILATION = 'c';  // تالیف
-    const BOTH = 'b'; // گردآوری و ترجمه
+    const ARTICLE = 'a'; // ترجمه
+    const REPORTAGE = 'b'; // گردآوری و ترجمه
+    const NEWS = 'c';  // تالیف
 }

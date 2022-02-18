@@ -8,7 +8,6 @@ final class CurrencyEnum
 {
     use GetConstantsEnum;
 
-    const DOLLAR = 'd'; // دیپلم
-    const TOMAN = 't'; // فوق دیپلم
-
+    const DOLLAR = 'd';
+    const TOMAN = 't';
 }

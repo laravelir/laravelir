@@ -9,7 +9,7 @@ final class PortfolioTypeEnum
     use GetConstantsEnum;
 
     const TEXT         = 't';
-    const INFOGRAPHIC  = 'i';
+    const IDEOGRAPHIC  = 'i';
     const SOUND        = 's';
     const VIDEO        = 'v';
 }

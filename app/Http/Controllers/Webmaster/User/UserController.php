@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $users = User::latest()->get();
 
-        return view('webmaster.users.all', compact('users'));
+        return view('webmaster.users.index', compact('users'));
     }
 
     public function create()
