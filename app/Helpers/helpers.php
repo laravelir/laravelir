@@ -406,9 +406,9 @@ function getTicketStatus($status)
     $locale = currentLocale();
 
     switch ($status) {
-        case \App\Enum\TicketStatusEnum::NEW:
+        case \App\Enum\TicketStatusEnum::SNEW:
             return $locale == 'fa' ? 'جدید' : 'New';
-        case \App\Enum\TicketStatusEnum::WAIT_FOR_USER:
+        case \App\Enum\TicketStatusEnum::WAIT_FOR_ANSWER:
             return $locale == 'fa' ? 'منتظر پاسخ کاربر' : 'Wait for user';
         case \App\Enum\TicketStatusEnum::IN_PROGRESS:
             return $locale == 'fa' ? 'درحال پیگیری ' : 'In Progress';

@@ -5,10 +5,13 @@
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    Overview
+                    <ol class="breadcrumb" aria-label="breadcrumbs">
+                        <li class="breadcrumb-item"><a href="{{ route('webmaster.index') }}">خانه</a></li>
+                        @yield('breadcrumb')
+                    </ol>
                 </div>
                 <h2 class="page-title">
-                    Combo layout
+                    @yield('page-title')
                 </h2>
             </div>
             <!-- Page title actions -->

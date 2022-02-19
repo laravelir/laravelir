@@ -7,6 +7,7 @@
                 <div class="page-pretitle">
                     <ol class="breadcrumb" aria-label="breadcrumbs">
                         <li class="breadcrumb-item"><a href="{{ route('site.index') }}">خانه</a></li>
+                        @yield('breadcrumb')
                     </ol>
                 </div>
                 <h2 class="page-title">
