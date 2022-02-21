@@ -32,13 +32,21 @@ class SocialiteController extends Controller
 
             $socialiteUser  = $this->getSocialiteUser($provider);
             $provider_id = UserMeta::where('provider_id', $socialiteUser->getId())->first();
-
+            $usernameExist = User::where('username', $socialiteUser->getNickname())->first();
             $existUser = $provider_id != null ? User::find($provider_id->metaable_id) : false;
+
 
             if ($existUser) {
 
                 Auth::login($existUser, true);
                 $existUser->metas->update([
+                    'last_login_at' => now(),
+                ]);
+
+                return redirect()->route('site.index')->with('success', 'با موفقیت وارد شدید');
+            } elseif ($usernameExist) {
+                Auth::login($usernameExist, true);
+                $usernameExist->metas->update([
                     'last_login_at' => now(),
                 ]);
 
