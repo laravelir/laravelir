@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-md navbar-light d-print-none">
+ <header class="navbar navbar-expand-md navbar-light d-print-none">
     <div class="container-xl">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
             <span class="navbar-toggler-icon"></span>
@@ -176,7 +176,58 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('site.discussions.index') }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <polyline points="9 11 12 14 20 6" />
+                                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                گفت و گو
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('site.podcasts.index') }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <polyline points="9 11 12 14 20 6" />
+                                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                پادکست ها
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('site.posts.index') }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <polyline points="9 11 12 14 20 6" />
+                                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                پست ها
+                            </span>
+                        </a>
+                    </li>
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -239,24 +290,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./form-elements.html">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <polyline points="9 11 12 14 20 6" />
-                                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Form elements
-                            </span>
-                        </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="false">

@@ -8,7 +8,7 @@
                     <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a>
                     </li>
                     <li class="list-inline-item"><a href="https://github.com/laravelir/laravelir" target="_blank"
-                            class="link-secondary" rel="noopener">Source code</a></li>
+                            class="link-secondary" rel="noopener">شرایط استفاده</a></li>
                     <li class="list-inline-item">
                         <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary"
                             rel="noopener">
@@ -33,7 +33,7 @@
                         همه حقوق محفوط است.
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://github.com/laravelir/laravelir/blob/master/CHANGELOG.md" class="link-secondary"
+                        <a href="{{ route('site.changelog') }}" class="link-secondary"
                             rel="noopener">
                             v1.0.0
                         </a>

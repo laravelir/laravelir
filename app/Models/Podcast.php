@@ -4,10 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Miladimos\Toolkit\Traits\HasAuthor;
+use Miladimos\Toolkit\Traits\HasSlug;
+use Miladimos\Toolkit\Traits\HasTags;
+use Miladimos\Toolkit\Traits\HasUUID;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 
 class Podcast extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        HasAuthor,
+        HasSlug,
+        HasUUID,
+        RouteKeyNameUUID,
+        HasTags;
 
     protected $table = 'podcasts';
 
@@ -20,13 +30,8 @@ class Podcast extends Model
     //     'synonym_words' => 'array',
     // ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags()
-    {
-        return $this->morphedByMany(Tag::class, 'taggable');
-    }
+    // public function tags()
+    // {
+    //     return $this->morphedByMany(Tag::class, 'taggable');
+    // }
 }

@@ -26,6 +26,18 @@ class SiteController extends Controller
         return view('site.index');
     }
 
+    public function changelog()
+    {
+        SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
+        SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
+        OpenGraph::addProperty('type', 'website');
+        JsonLd::addImage(asset("/statics/shared/images/logo.png"));
+        OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
+        TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
+
+        return view('site.pages.changelog');
+    }
+
     public function aboutUs()
     {
         SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
