@@ -14,6 +14,7 @@ use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,8 @@ class User extends Authenticatable
         Notifiable,
         HasUUID,
         HasRoles,
-        RouteKeyNameUUID;
+        RouteKeyNameUUID,
+        HasApiTokens;
 
     protected $table = 'users';
 
