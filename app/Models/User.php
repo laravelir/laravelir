@@ -219,7 +219,7 @@ class User extends Authenticatable
     public function avatar(): Attribute
     {
         return new Attribute(
-            get: fn () => isset($this->profile->avatar_path) ? $this->profile->avatar_path : asset("/public/avatars/default.jpg"),
+            get: fn () => isset($this->profile->avatar_path) ? $this->profile->avatar_path : url("/uploads/avatars/default.png"),
         );
     }
 

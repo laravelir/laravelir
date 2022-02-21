@@ -10,9 +10,9 @@
                         @yield('breadcrumb')
                     </ol>
                 </div>
-                <h2 class="page-title">
+                <div class="page-title">
                     @yield('page-title')
-                </h2>
+                </div>
             </div>
             <!-- Page title actions -->
             <div class="col-auto ms-auto d-print-none">
