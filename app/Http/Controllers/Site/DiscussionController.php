@@ -6,6 +6,7 @@ use App\Models\Package;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Discuss;
 use App\Models\Podcast;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -13,7 +14,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 
-class PodcastController extends Controller
+class DiscussionController extends Controller
 {
     public function index()
     {
@@ -24,7 +25,8 @@ class PodcastController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        return view('site.index');
+        $discussions = Discuss::where('parent_id', 0)->latest()->paginate(20);
+        return view('site.discussions.index', compact('discussions'));
     }
 
     public function show(Podcast $podcast)
@@ -38,6 +40,4 @@ class PodcastController extends Controller
 
         return view('site.index');
     }
-
-
 }

@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\PostController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\PodcastController;
-use App\Http\Controllers\Site\DiscussionController;
 use App\Http\Controllers\Site\User\UserController;
+use App\Http\Controllers\Site\DiscussionController;
 
 Route::group(['as' => 'site.'], function () {
     Route::get('', [SiteController::class, 'index'])->name('index');
