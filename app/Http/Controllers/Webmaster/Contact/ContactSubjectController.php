@@ -12,17 +12,13 @@ class ContactSubjectController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('موضوع تماس با ما ها');
-
         $subjects = ContactSubject::latest()->paginate(10);
-        return view('webmaster.contact-subjects.all', compact('subjects'));
+        return view('webmaster.miscellaneous.contactus.subjects.index', compact('subjects'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت موضوع تماس با ما جدید');
-
-        return view('webmaster.subjects.create');
+        return view('webmaster.miscellaneous.contactus.subjects.create');
     }
 
     public function store(Request $request)
@@ -37,24 +33,17 @@ class ContactSubjectController extends Controller
         ];
         $subject->save();
 
-        return redirect()->route('webmaster.contact-subjects.index')->with([
-            'message' => 'دپارتمان ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.subjects.index')->with('toast_success', __('messages.contacts.subjects.updated'));
     }
 
     public function show(ContactSubject $subject)
     {
-        $this->seo()->setTitle('جزییات موضوع تماس با ما ');
-
-        return view('webmaster.contact-subjects.show', compact('country'));
+        return view('webmaster.miscellaneous.contactus.subjects.show', compact('country'));
     }
 
     public function edit(ContactSubject $subject)
     {
-        $this->seo()->setTitle('ویرایش موضوع تماس با ما');
-
-        return view('webmaster.contact-subjects.edit', compact('subject'));
+        return view('webmaster.miscellaneous.contactus.subjects.edit', compact('subject'));
     }
 
     public function update(Request $request, ContactSubject $subject)
@@ -69,10 +58,7 @@ class ContactSubjectController extends Controller
             'en' => $request->en_title,
         ];
         $subject->save();
-        return redirect()->route('webmaster.contact-subjects.index')->with([
-            'message' => 'دپارتمان ویرایش شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.subjects.index')->with('toast_success', __('messages.contacts.subjects.updated'));
     }
 
     public function destroy(ContactSubject $subject)

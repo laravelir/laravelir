@@ -11,16 +11,12 @@ class CityController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('کتابخانه');
-
         $cities = City::latest()->paginate(10);
-        return view('webmaster.citys.all', compact('cities'));
+        return view('webmaster.cities.index', compact('cities'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت کتاب جدید');
-
         return view('webmaster.cities.create');
     }
 
@@ -33,14 +29,12 @@ class CityController extends Controller
 
     public function show(City $city)
     {
-        $this->seo()->setTitle('جزییات شهر ');
 
         return view('webmaster.cities.show', compact('city'));
     }
 
     public function edit(City $city)
     {
-        $this->seo()->setTitle('ویرایش شهر');
 
         return view('webmaster.cities.edit', compact('city'));
     }
@@ -50,7 +44,7 @@ class CityController extends Controller
         $city->update($request->only('title', 'description'));
         return redirect()->route('webmaster.cities.index')->with('success', 'شهر مورد نظر با موفقیت ویرایش شد.');
     }
-    
+
     public function destroy(City $city)
     {
         $city->delete();

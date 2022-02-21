@@ -14,17 +14,13 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('سطح دسترسی ها');
-
         $permissions = Permission::latest()->get();
 
-        return view('webmaster.acl.permissions.all', compact('permissions'));
+        return view('webmaster.acl.permissions.index', compact('permissions'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت سطح دسترسی جدید');
-
         return view('webmaster.acl.permissions.create');
     }
 
@@ -61,19 +57,16 @@ class PermissionController extends Controller
         $permission = Permission::create($request->all());
 
         // $permission->syncRoles($request->roles);
-        return redirect()->route('webmaster.permissions.index')->with('success', 'سطح دسترسی مورد نظر با موفقیت ایجاد شد.');
+        return redirect()->route('webmaster.permissions.index')->with('toast_success', 'سطح دسترسی مورد نظر با موفقیت ایجاد شد.');
     }
 
     public function show(Permission $permission)
     {
-        $this->seo()->setTitle('جزییات سطح دسترسی');
-
         return view('webmaster.acl.permissions.show', compact('permission'));
     }
 
     public function edit(Permission $permission)
     {
-        $this->seo()->setTitle('ویرایش سطح دسترسی');
         $roles = Role::latest()->get();
 
         return view('webmaster.acl.permissions.edit', compact('roles', 'permission'));
@@ -83,7 +76,7 @@ class PermissionController extends Controller
     {
         $permission->update($request->all());
         $permission->syncRoles($request->roles);
-        return redirect()->route('webmaster.permissions.index')->with('success', 'سطح دسترسی مورد نظر با موفقیت ویرایش شد.');
+        return redirect()->route('webmaster.permissions.index')->with('toast_success', 'سطح دسترسی مورد نظر با موفقیت ویرایش شد.');
     }
 
     public function destroy(Permission $permission)

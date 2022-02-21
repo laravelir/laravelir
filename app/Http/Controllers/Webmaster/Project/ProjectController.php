@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::latest()->get();
-        return view('webmaster.projects.all', compact('projects',));
+        return view('webmaster.projects.index', compact('projects',));
     }
 
     public function show(Project $project)

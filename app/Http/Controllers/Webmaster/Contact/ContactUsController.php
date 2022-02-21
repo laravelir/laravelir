@@ -11,17 +11,13 @@ class ContactUsController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('پیام های تماس با ها');
-
         $contacts = ContactUs::latest()->get();
-        return view('webmaster.contacts.all', compact('contacts'));
+        return view('webmaster.miscellaneous.contactus.messages.index', compact('contacts'));
     }
 
     public function show(ContactUs $contact)
     {
-        $this->seo()->setTitle('پیام های تماس با ها');
-
-        return view('webmaster.contacts.show', compact('contact'));
+        return view('webmaster.miscellaneous.contactus.messages.show', compact('contact'));
     }
 
     public function destroy(ContactUs $contact)

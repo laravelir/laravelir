@@ -13,7 +13,6 @@ class FreelancerController extends Controller
 {
     public function index()
     {
-        $this->seo()->setTitle('فریلنسر ها');
 
         $freelancers = Freelancer::latest()->get();
 
@@ -22,8 +21,6 @@ class FreelancerController extends Controller
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت فریلنسر جدید');
-
         return view('webmaster.freelancers.create');
     }
 
@@ -50,23 +47,17 @@ class FreelancerController extends Controller
             ]);
         }
 
-        return redirect()->route('webmaster.freelancers.index')->with([
-            'message' => 'فریلنسر ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.achievements.index')->with('toast_success', __('messages.achievements.updated'));
+
     }
 
     public function show(Freelancer $freelancer)
     {
-        $this->seo()->setTitle('اطلاعات فریلنسر');
-
         return view('webmaster.freelancers.show', compact('freelancer'));
     }
 
     public function edit(Freelancer $freelancer)
     {
-        $this->seo()->setTitle('ویرایش فریلنسر');
-
         return view('webmaster.freelancers.edit', compact('freelancer'));
     }
 
@@ -135,10 +126,7 @@ class FreelancerController extends Controller
 
         $freelancer->update($data);
 
-        return redirect()->route('webmaster.freelancers.index')->with([
-            'message' => 'فریلنسر ویرایش شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.achievements.index')->with('toast_success', __('messages.achievements.updated'));
     }
 
     public function portfolioApprove(Portfolio $portfolio)

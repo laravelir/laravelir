@@ -12,20 +12,16 @@ class SkillController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('مهارت ها');
-
         $skills = Skill::latest()->paginate(10);
 
-        return view('webmaster.skills.all', compact('skills'));
+        return view('webmaster.miscellaneous.skills.index', compact('skills'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت مهارت جدید');
-
         $skills = Skill::latest()->get();
 
-        return view('webmaster.skills.create', compact('skills'));
+        return view('webmaster.miscellaneous.skills.create', compact('skills'));
     }
 
     public function store(Request $request)
@@ -36,18 +32,8 @@ class SkillController extends Controller
             'active' => $request->boolean('active') ? true : false,
         ]);
 
-        $skill->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
 
-        $skill->save();
-
-
-        return redirect()->route('webmaster.skills.index')->with([
-            'message' => 'مهارت ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.skills.index')->with('toast_success', __('messages.skills.created'));
     }
 
     public function show(Skill $skill)
@@ -57,11 +43,9 @@ class SkillController extends Controller
 
     public function edit(Skill $skill)
     {
-        $this->seo()->setTitle('ویرایش مهارت');
-
         $skills = Skill::where('id', '!=', $skill->id)->get();
 
-        return view('webmaster.skills.edit', compact('skill', 'skills'));
+        return view('webmaster.miscellaneous.skills.edit', compact('skill', 'skills'));
     }
     public function update(Request $request, Skill $skill)
     {
@@ -70,17 +54,7 @@ class SkillController extends Controller
             'active' => $request->boolean('active') ? true : false,
         ]);
 
-        $skill->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
-
-        $skill->save();
-
-        return redirect()->route('webmaster.skills.index')->with([
-            'message' => 'مهارت ویرایش شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.skills.index')->with('toast_success', __('messages.skills.created'));
     }
 
     public function destroy(Skill $skill)

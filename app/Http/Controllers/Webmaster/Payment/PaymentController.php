@@ -7,10 +7,9 @@ use App\Models\Payment;
 
 class PaymentController extends Controller
 {
-
     public function index()
     {
         $payments = Payment::latest()->paginate(20);
-        return view('webmaster.financials.payments.all', compact('payments'));
+        return view('webmaster.financial.payments.index', compact('payments'));
     }
 }

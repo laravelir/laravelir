@@ -17,10 +17,8 @@ class TicketController extends WebmasterController
 
     public function index()
     {
-        $this->seo()->setTitle('تیکت ها');
-
         $tickets = Ticket::where('is_reply', 0)->latest()->get();
-        return view('webmaster.tickets.tickets.all', compact('tickets'));
+        return view('webmaster.tickets.tickets.index', compact('tickets'));
     }
 
     public function show(Ticket $ticket)
@@ -32,12 +30,6 @@ class TicketController extends WebmasterController
     {
         $users = User::get();
         return view('webmaster.tickets.tickets.create', compact('users'));
-    }
-
-    public function createFreelancer()
-    {
-        $freelancers = Freelancer::get();
-        return view('webmaster.tickets.tickets.freelancer-create', compact('freelancers'));
     }
 
     public function reply(Request $request, Ticket $ticket)
@@ -76,10 +68,7 @@ class TicketController extends WebmasterController
 
         event(new SendNewTicketEvent($details));
 
-        return redirect()->route('webmaster.tickets.index')->with([
-            'message' => 'پاسخ ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.tickets.index')->with('toast_success', __('messages.tickets.created'));
     }
 
     public function done(Ticket $ticket)
@@ -118,7 +107,7 @@ class TicketController extends WebmasterController
             'admin_id'        => $user->id,
             'ticketable_id'   => $request->user_id,
             'ticketable_type' => User::class,
-            'status'          => TicketStatusEnum::NEW,
+            'status'          => TicketStatusEnum::SNEW,
             'is_admin'        => true
         ]);
 
@@ -139,51 +128,12 @@ class TicketController extends WebmasterController
         event(new SendNewTicketEvent($details));
 
 
-        return redirect()->route('webmaster.tickets.index')->with([
-            'message' => 'تیکت ثبت شد',
-            'type' => 'success'
-        ]);
-    }
-
-    public function storeFreelancer(Request $request)
-    {
-        $user = auth(AuthGuardEnum::USER)->user();
-
-        $ticket = Ticket::create([
-            'title'            => $request->title,
-            'body'            => $request->body,
-            'admin_id'        => $user->id,
-            'ticketable_id'   => $request->user_id,
-            'ticketable_type' => Freelancer::class,
-            'status'          => TicketStatusEnum::NEW,
-            'is_admin'        => true
-        ]);
-
-        if ($request->hasFile('file')) {
-            $uploadedFilePath = $this->uploadOneFile($request->file('file'), 'tickets\attachment');
-            $ticket->update([
-                'attachment' => $uploadedFilePath
-            ]);
-        }
-
-        $details = [
-            'user_type' => 'freelancer',
-            'user' => $ticket->ticketable,
-            'title' => $ticket->title,
-            'type'  => 'ticket'
-        ];
-
-        event(new SendNewTicketEvent($details));
-
-        return redirect()->route('webmaster.tickets.index')->with([
-            'message' => 'تیکت ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.tickets.index')->with('toast_success', __('messages.tickets.created'));
     }
 
     public function destroy(Ticket $ticket)
     {
         $ticket->delete();
-        return redirect()->route('webmaster.tickets.tickets.all')->with('success', 'تیکت مورد نظر با موفقیت ایجاد شد.');
+        return redirect()->route('webmaster.tickets.tickets.all')->with('toast_success', 'تیکت مورد نظر با موفقیت ایجاد شد.');
     }
 }

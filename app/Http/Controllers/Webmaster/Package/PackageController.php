@@ -12,9 +12,9 @@ class PackageController extends Controller
 {
     public function index()
     {
-        $packages = Package::latest()->get();
+        $packages = Package::latest()->paginate(8);
 
-        return view('webmaster.packages.all', compact('packages'));
+        return view('webmaster.packages.index', compact('packages'));
     }
 
     public function create()
@@ -36,22 +36,11 @@ class PackageController extends Controller
             'vip'            => $request->has('vip') ? true : false,
         ]);
 
-        $package->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
-
-        $package->save();
-
-        return redirect()->route('webmaster.packages.index')->with([
-            'message' => 'پکیج ثبت شد',
-            'type' => 'success'
-        ]);;
+        return redirect()->route('webmaster.packages.index')->with('toast_success', __('messages.packages.created'));
     }
 
     public function show(Package $package)
     {
-
         return view('webmaster.packages.show', compact('package'));
     }
 
@@ -73,17 +62,8 @@ class PackageController extends Controller
             'vip'            => $request->has('vip') ? true : false,
         ]);
 
-        $package->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
 
-        $package->save();
-
-        return redirect()->route('webmaster.packages.index')->with([
-            'message' => 'پکیج ویرایش شد',
-            'type' => 'success'
-        ]);;
+        return redirect()->route('webmaster.packages.index')->with('toast_success', __('messages.packages.updated'));
     }
 
     public function destroy(Package $package)
@@ -93,19 +73,5 @@ class PackageController extends Controller
         return response()->json([
             'message' => 'عملیات موفقیت آمیز بود'
         ], Response::HTTP_OK);
-    }
-
-    public function orders()
-    {
-        $orders = DB::table('order_packages')->get();
-        return view('webmaster.packages.orders', compact('orders'));
-    }
-
-    public function orderShow($package)
-    {
-        $package = DB::table('order_packages')->where([
-            'id' => $package,
-        ])->first();
-        return view('webmaster.packages.order-show', compact('package'));
     }
 }

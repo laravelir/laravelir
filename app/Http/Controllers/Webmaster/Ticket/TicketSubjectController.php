@@ -12,23 +12,17 @@ class TicketSubjectController extends WebmasterController
 
     public function index()
     {
-        $this->seo()->setTitle('دپارتمان تیکت ها');
-
         $subjects = TicketSubject::get();
         return view('webmaster.tickets.subjects.all', compact('subjects'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('دپارتمان تیکت ها');
-
         return view('webmaster.tickets.subjects.create');
     }
 
     public function edit(TicketSubject $subject)
     {
-        $this->seo()->setTitle('دپارتمان تیکت ها');
-
         return view('webmaster.tickets.subjects.edit', compact('subject'));
     }
 
@@ -37,13 +31,6 @@ class TicketSubjectController extends WebmasterController
         $subject = TicketSubject::create([
             'active' => $request->boolean('active') ? true : false,
         ]);
-
-        $subject->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
-
-        $subject->save();
 
         return redirect()->route('webmaster.subjects.index')->with('toast_success', 'دپارتمان تیکت مورد نظر با موفقیت ایجاد شد.');
     }
@@ -54,12 +41,7 @@ class TicketSubjectController extends WebmasterController
             'active' => $request->boolean('active') ? true : false,
         ]);
 
-        $subject->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
 
-        $subject->save();
         return redirect()->route('webmaster.subjects.index')->with('toast_success', 'دپارتمان تیکت مورد نظر با موفقیت بروزرسانی شد.');
     }
 

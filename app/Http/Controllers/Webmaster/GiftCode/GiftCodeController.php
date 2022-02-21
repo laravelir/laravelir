@@ -1,31 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Webmaster\Discount;
+namespace App\Http\Controllers\Webmaster\GiftCode;
 
 use App\Models\Freelancer;
 use App\Models\User;
-use App\Models\Discount;
+use App\Models\GiftCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class DiscountController extends Controller
+class GiftCodeController extends Controller
 {
     public function index()
     {
-        $this->seo()->setTitle('کد هدیه ها');
-
-        $discounts = Discount::latest()->paginate(10);
-        return view('webmaster.discounts.all', compact('discounts'));
+        $giftCodes = GiftCode::latest()->paginate(10);
+        return view('webmaster.financial.giftcodes.index', compact('giftCodes'));
     }
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت کد هدیه جدید');
-
         $users    = User::latest()->get();
         $freelancers    = Freelancer::latest()->get();
-        return view('webmaster.discounts.create', compact('users', 'freelancers'));
+        return view('webmaster.financial.giftcodes.create', compact('users', 'freelancers'));
     }
 
     public function store(Request $request)
@@ -42,40 +38,29 @@ class DiscountController extends Controller
             'infinity'    => $request->has('infinity') ? true : false,
             'active'      => $request->has('active') ? true : false,
         ];
-        $discount = Discount::create($data);
+        $giftCode = GiftCode::create($data);
 
         if (isset($request->users)) {
-            $discount->users()->sync($request->users);
+            $giftCode->users()->sync($request->users);
         }
 
-        if (isset($request->freelancers)) {
-            $discount->freelancers()->sync($request->freelancers);
-        }
-
-        return redirect()->route('webmaster.discounts.index')->with([
-            'message' => 'کد هدیه ثبت شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.giftcodes.index')->with('toast_success', __('messages.giftcodes.updated'));
     }
 
-    public function show(Discount $discount)
+    public function show(GiftCode $giftCode)
     {
-        $this->seo()->setTitle('جزییات کد هدیه');
-
-        return view('webmaster.discounts.show', compact('discount'));
+        return view('webmaster.giftCodes.show', compact('giftCode'));
     }
 
-    public function edit(Discount $discount)
+    public function edit(GiftCode $giftCode)
     {
-        $this->seo()->setTitle('ویرایش کد هدیه');
-
         $users = User::latest()->get();
         $freelancers    = Freelancer::latest()->get();
 
-        return view('webmaster.discounts.edit', compact('discount', 'users', 'freelancers'));
+        return view('webmaster.giftCodes.edit', compact('giftCode', 'users', 'freelancers'));
     }
 
-    public function update(Request $request, Discount $discount)
+    public function update(Request $request, GiftCode $giftCode)
     {
         $data = [
             'title'       => $request->title,
@@ -89,26 +74,23 @@ class DiscountController extends Controller
             'infinity'    => $request->has('infinity') ? true : false,
             'active'      => $request->has('active') ? true : false,
         ];
-        $discount->update($data);
+        $giftCode->update($data);
 
         isset($request->users)
-            ? $discount->users()->sync($request->users)
-            : $discount->users()->detach();
+            ? $giftCode->users()->sync($request->users)
+            : $giftCode->users()->detach();
 
         isset($request->freelancers)
-            ? $discount->freelancers()->sync($request->freelancers)
-            : $discount->freelancers()->detach();
+            ? $giftCode->freelancers()->sync($request->freelancers)
+            : $giftCode->freelancers()->detach();
 
 
-        return redirect()->route('webmaster.discounts.index')->with([
-            'message' => 'کد هدیه ویرایش شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.giftcodes.index')->with('toast_success', __('messages.giftcodes.updated'));
     }
 
-    public function destroy(Discount $discount)
+    public function destroy(GiftCode $giftCode)
     {
-        $discount->delete();
+        $giftCode->delete();
         return response()->json([
             'message' => 'عملیات موفقیت آمیز بود'
         ], Response::HTTP_OK);

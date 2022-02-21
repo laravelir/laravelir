@@ -55,11 +55,8 @@ class UserController extends Controller
         // if ($request->has('notify_email')) {
         //  $user->notify();
         // }
+        return redirect()->route('webmaster.users.index')->with('toast_success', __('messages.users.created'));
 
-        return redirect()->route('webmaster.users.index')->with([
-            'message' => __('messages.users.create'),
-            'type' => 'success'
-        ]);
     }
 
     public function show(User $user)
@@ -140,10 +137,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('webmaster.users.index')->with([
-            'message' => 'کاربر ویرایش شد',
-            'type' => 'success'
-        ]);
+        return redirect()->route('webmaster.users.index')->with('toast_success', __('messages.users.updated'));
     }
 
     public function destroy(User $user)

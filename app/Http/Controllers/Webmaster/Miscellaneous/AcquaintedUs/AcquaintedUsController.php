@@ -12,8 +12,6 @@ class AcquaintedUsController extends Controller
 
     public function index()
     {
-        $this->seo()->setTitle('نحوه آشنایی با ما ها');
-
         $acquaints = AcquaintedUs::latest()->get();
 
         return view('webmaster.acquaints.all', compact('acquaints'));
@@ -21,8 +19,6 @@ class AcquaintedUsController extends Controller
 
     public function create()
     {
-        $this->seo()->setTitle('ثبت نحوه آشنایی با ما جدید');
-
         return view('webmaster.acquaints.create');
     }
 
@@ -49,8 +45,6 @@ class AcquaintedUsController extends Controller
 
     public function edit(AcquaintedUs $acquainted)
     {
-        $this->seo()->setTitle('ویرایش نحوه آشنایی با ما');
-
         return view('webmaster.acquaints.edit', compact("acquainted"));
     }
 

@@ -3,13 +3,7 @@
 namespace App\Http\Controllers\Webmaster;
 
 use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Ticket;
-use App\Models\Payment;
-use App\Models\Project;
-use App\Models\Freelancer;
 use App\Models\JobRequest;
-use App\Enum\SeoProjectStatusEnum;
 use App\Http\Controllers\Controller;
 
 class WebmasterController extends Controller
