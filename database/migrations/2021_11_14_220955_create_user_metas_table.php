@@ -24,11 +24,10 @@ class CreateUserMetasTable extends Migration
             $table->string('provider_id')->nullable(); // github
             $table->string('provider_token')->nullable(); // github
             $table->string('provider_refresh_token')->nullable(); // github
-            $table->timestamp('register_at')->nullable();
             $table->timestamp('username_changed_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('password_changed_at')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
+            $table->timestamp('password_changed_at')->nullable();
             $table->timestamps();
         });
     }

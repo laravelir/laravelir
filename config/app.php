@@ -172,6 +172,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -181,6 +182,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
 
@@ -198,15 +200,16 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Image' => Intervention\Image\Facades\Image::class,
-        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
-        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
-        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'Image'       => Intervention\Image\Facades\Image::class,
+        'SEOMeta'     => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'   => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'     => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'      => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         // or
-        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+        'SEO'         => Artesaos\SEOTools\Facades\SEOTools::class,
+        'ReCaptcha'   => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+        'Alert'       => RealRashid\SweetAlert\Facades\Alert::class,
 
     ])->toArray(),
 

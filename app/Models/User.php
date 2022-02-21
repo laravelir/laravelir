@@ -112,7 +112,7 @@ class User extends Authenticatable
 
     public function isMobileActivated($mobile)
     {
-        if ($this->where('mobile', $mobile)->first() && !is_null($this->mobile_verified_at))
+        if ($this->where('mobile', $mobile)->first() && !is_null($this->metas->mobile_verified_at))
             return true;
         return false;
     }
@@ -124,12 +124,12 @@ class User extends Authenticatable
 
     public function isEmailActivated()
     {
-        return !!$this->email_verified_at;
+        return !!$this->metas->email_verified_at;
     }
 
     public function isCurrentMobileActivated()
     {
-        return !!$this->mobile_verified_at;
+        return !!$this->metas->mobile_verified_at;
     }
 
     public function isHaveNationalCode()
@@ -137,10 +137,16 @@ class User extends Authenticatable
         return !!$this->profile->national_code;
     }
 
-    public function isActivate()
+    public function scopeActivate()
     {
         return !!$this->isEmailActivated();
     }
+
+    public function accountStatus()
+    {
+        return !!$this->isEmailActivated();
+    }
+
 
     public function isOnline()
     {
@@ -232,11 +238,6 @@ class User extends Authenticatable
                 return $username;
             }
         } while ($exist);
-    }
-
-    public function scopeActivate($query, $arg)
-    {
-        return $query->where('email_verified_at', $arg);
     }
 
     public function generateUserToken($token)

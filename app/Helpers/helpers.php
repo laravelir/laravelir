@@ -310,7 +310,7 @@ function getGender($gender)
 {
     if ($gender === 'f') return 'زن';
     if ($gender === 'm') return 'مرد';
-    if ($gender === 'b') return 'هردو';
+    if ($gender === 'u') return 'نا مشخص';
 }
 
 // return user or freelancer
@@ -494,18 +494,14 @@ function getPercent($value, $percent)
     return (int)round(($percent / 100) * $value);
 }
 
-function getFreelancerRate($freelancer_id)
-{
-    return Project::where([
-        'status' => ContentOrderStatusEnum::DONE,
-        'freelancer_id' => $freelancer_id
-    ])->avg('rate');
-}
-
 function getFreelancerSkill($freelancer_id, $skill_id)
 {
     return DB::table('freelancer_skills')->where([
         'freelancer_id' => $freelancer_id,
         'skill_id' => $skill_id,
     ])->first();
+}
+
+function isInvalidInput($field) {
+    return "@error($field) is-invalid @enderror";
 }

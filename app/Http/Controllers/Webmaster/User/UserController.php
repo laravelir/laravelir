@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Webmaster\User\UserRequest;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -24,21 +25,11 @@ class UserController extends Controller
         return view('webmaster.users.create');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-
-        // $request->validate([
-        //     'email' => ['required', 'email', 'string', 'max:255', 'unique:users,email'],
-        //     'mobile' => ['required', 'string', 'min:11', 'max:11', 'unique:users,mobile'],
-        //     'password' => ['required', 'confirmed', 'min:8'],
-        //     'fname' => ['required'],
-        //     'lname' => ['required'],
-        //     'is_admin' => ['nullable'],
-        //     'active' => ['nullable'],
-        // ]);
-
+        $request->validated();
         $user = User::create([
-            'mobile'    => $request->mobile,
+            'mobile'    => $request->mobile ?? null,
             'email'    => $request->email,
             'password' => $request->password,
             'is_admin' => $request->has('is_admin') ? true : false,
@@ -49,15 +40,25 @@ class UserController extends Controller
             'lname'    => $request->lname,
         ]);
 
+
         if ($request->has('active')) {
-            $user->markEmailAsVerified();
-            $user->update([
-                'mobile_verified_at' => now()
+            $user->metas->update([
+                'email_verified_at' => now(),
             ]);
+
+            if ($request->has('mobile')) {
+                $user->metas->update([
+                    'mobile_verified_at' => now(),
+                ]);
+            }
         }
 
+        // if ($request->has('notify_email')) {
+        //  $user->notify();
+        // }
+
         return redirect()->route('webmaster.users.index')->with([
-            'message' => 'کاربر ثبت شد',
+            'message' => __('messages.users.create'),
             'type' => 'success'
         ]);
     }
@@ -158,7 +159,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        DB::transaction(function() use($user){
+        DB::transaction(function () use ($user) {
 
             $user->delete();
         });

@@ -579,5 +579,9 @@
      });
      // @formatter:on
    </script>
+
+@livewireScripts
+@include('sweetalert::alert')
+
  </body>
 </html>

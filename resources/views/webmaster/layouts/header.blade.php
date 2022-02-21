@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Laravelir - پنل مدیریت | @yield('title')</title>
     <!-- CSS files -->
     <link href="{{ asset('/statics/shared/dist/css/tabler.rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/statics/shared/dist/css/tabler-flags.rtl.min.css') }}" rel="stylesheet" />
@@ -22,6 +22,8 @@
     <link href="{{ asset('/statics/shared/dist/css/demo.rtl.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('/statics/shared/css/fonts.css') }}" rel="stylesheet" />
+
+    @livewireStyles
 
 </head>
 

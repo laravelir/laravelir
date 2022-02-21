@@ -14,14 +14,16 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'fname' => 'required',
+            'fname' => 'required|min:2',
             'lname' => 'required',
-            'avatar' => 'nullable|image',
-            'roles' => 'required|array',
             'username' => 'required|unique:users,username',
+            'mobile' => 'nullable|unique:users,mobile',
             'email' => 'required|unique:users,email',
-            'password' => 'required|confirmed|min:8',
-            'active' => 'required|boolean',
+            'password' => 'required|min:8',
+            'active' => 'nullable',
+            'is_admin' => 'nullable',
+            'notify_email' => 'nullable',
+            // 'roles' => 'required|array',
         ];
     }
 }
