@@ -368,21 +368,6 @@
                                     <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
                                         data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                                         aria-expanded="false">
-                                        اخبار ها
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a href="{{ route('webmaster.news.index') }}" class="dropdown-item">
-                                            اخبار ها
-                                        </a>
-                                        <a href="{{ route('webmaster.news.index') }}" class="dropdown-item">
-                                            ثبت اخبار جدید
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="dropend">
-                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                                        aria-expanded="false">
                                         نظرات
                                     </a>
                                     <div class="dropdown-menu">

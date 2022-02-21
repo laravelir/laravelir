@@ -46,7 +46,7 @@
                             <th>Role</th>
                             <th>Status</th>
                             <th>Created at</th>
-                            <th class="w-1">Actions</th>
+                            <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>

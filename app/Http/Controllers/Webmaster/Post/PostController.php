@@ -21,23 +21,27 @@ use App\Http\Controllers\Controller;
 use App\Enum\ContentPostStatusEnum;
 use App\Events\Shared\Ticket\SendNewTicketEvent;
 use App\Events\Site\Content\ContentOrderApprovedEvent;
-use App\Notifications\Shared\Content\ContentOrderDisapprovedNotification;
-use App\Notifications\Shared\Content\ContentOrderToFreelancersNotification;
-use App\Notifications\Shared\Content\ContentAttachmentDisapprovedNotification;
+use App\Models\Category;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
-        return view('webmaster.posts.index', compact('posts'));
+        $posts = Post::latest()->paginate(8);
+        return view('webmaster.content.posts.index', compact('posts'));
+    }
+
+    public function create()
+    {
+        $categories = Category::active()->get();
+        $authors = User::get();
+
+        return view('webmaster.content.posts.create', compact('authors', 'categories'));
     }
 
     public function show(Post $post)
     {
-        $freelancers = Freelancer::get();
-
-        return view('webmaster.posts.show', compact('post', 'freelancers'));
+        return view('webmaster.content.posts.show', compact('post'));
     }
 
     public function destroy(Post $post)

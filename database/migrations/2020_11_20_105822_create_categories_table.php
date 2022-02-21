@@ -13,8 +13,9 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->uuid('uuid')->index()->unique();
             $table->foreignId('parent_id')->default(0);
-            $table->string('name')->unique()->nullable();
-            $table->string('hex')->nullable();
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->string('color_hex')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

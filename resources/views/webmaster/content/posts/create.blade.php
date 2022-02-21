@@ -1,50 +1,73 @@
 @extends('webmaster.layouts.master')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
-    <li class="breadcrumb-item active"><a href="#">ثبت کاربر</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.posts.index') }}">پستان</a></li>
+    <li class="breadcrumb-item active"><a href="#">ثبت پست</a></li>
 @endsection
 
 @section('title')
-    ثبت کاربر
+    ثبت پست
 @endsection
 
 @section('page-title')
-    ثبت کاربر
+    ثبت پست
 @endsection
 
 @section('content')
     <div class="col-md-7 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ثبت کاربر</h3>
+                <h3 class="card-title">ثبت پست</h3>
 
             </div>
             <div class="card-body">
                 @include('shared.errors')
 
-                <form action="{{ route('webmaster.users.store') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('webmaster.posts.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="form-group mb-3">
-                                <label class="form-label" for="fname">نام</label>
+                                <label class="form-label" for="fname">عنوان</label>
                                 <input type="text" class="form-control " name="fname" id="fname"
                                     value="{{ old('fname') }}" required>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="lname">نام خانوادگی</label>
-                                <input type="text" class="form-control" name="lname" id="lname" required
-                                    value="{{ old('lname') }}">
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="mb-4">
+                                <label class="form-label">دسته بندی والد</label>
+                                <select type="text" class="form-select" placeholder="دسته بندی والد را انتخاب کنید"
+                                    id="parent_id" name="parent_id" required>
+                                    <option value="0" selected>بدون والد</option>
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id }}"
+                                            data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->logo_path }}&quot; &gt;&lt;/&gt;">
+                                            {{ $item->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-4">
+                                <label class="form-label">نویسنده</label>
+                                <select type="text" class="form-select" placeholder="نویسنده را انتخاب کنید"
+                                    id="author_id" name="author_id" required>
+                                    @foreach ($authors as $item)
+                                        <option value="{{ $item->id }}"
+                                            data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->avatar }}&quot; &gt;&lt;/&gt;">
+                                            {{ $item->label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-3">
-                                <label class="form-label" for="username">نام کاربری</label>
-                                <input type="text" class="form-control" name="username" id="username" required
-                                    value="{{ old('username') }}">
+                                <label class="form-label" for="postname">نام پستی</label>
+                                <input type="text" class="form-control" name="postname" id="postname" required
+                                    value="{{ old('postname') }}">
                             </div>
                         </div>
                     </div>
@@ -74,7 +97,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">ایمیل و موبایل کاربر فعال شده باشد</span>
+                                    <span class="col">ایمیل و موبایل پست فعال شده باشد</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="active" checked>
@@ -88,7 +111,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">کاربر ادمین باشد.</span>
+                                    <span class="col">پست ادمین باشد.</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="is_admin">
@@ -102,7 +125,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
+                                    <span class="col">ثبت شدن را به پست اطلاع بده (ایمیل)</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="notify_email">

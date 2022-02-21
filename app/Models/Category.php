@@ -15,15 +15,15 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    // protected $fillable = ['name', 'parent_id', 'active', 'description', 'uuid', 'thumbnail', 'percent'];
+    // protected $fillable = ['title', 'parent_id', 'active', 'uuid',  'color_hex'];
 
     protected $guarded = [];
 
     protected $casts = [
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
-    // public $translatable = ['name'];
+    // public $translatable = ['title'];
 
     public function parent()
     {

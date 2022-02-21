@@ -18,6 +18,7 @@ return new class extends Migration
             $table->uuid('uuid');
             $table->foreignId('author_id');
             $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->string('description')->unique();
             $table->string('file_url')->unique();
             $table->text('transcript');
