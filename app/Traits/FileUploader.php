@@ -59,12 +59,12 @@ trait FileUploader
                 $uploadedFile->move($dirPath, $finalFileName);
 
 
-                return $uploadPath . $this->ds . $finalFileName;
+                return url($uploadPath . $this->ds . $finalFileName);
             }
 
             $uploadedFile->move($dirPath, $fileName);
 
-            return $uploadPath . $this->ds . $fileName;
+            return url($uploadPath . $this->ds . $fileName);
         }
 
         return false;
@@ -101,12 +101,12 @@ trait FileUploader
 
                 $image->save($dirPath . $this->ds . $finalFileName);
 
-                return $uploadPath . $this->ds . $finalFileName;
+                return url($uploadPath . $this->ds . $finalFileName);
             }
 
             $image->save($fullUploadedPath);
 
-            return $uploadPath . $this->ds . $fileName;
+            return url($uploadPath . $this->ds . $fileName);
         }
 
         return false;
@@ -128,5 +128,4 @@ trait FileUploader
     {
         Storage::disk($disk)->delete($folder . $filename);
     }
-
 }

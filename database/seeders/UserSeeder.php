@@ -10,48 +10,40 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // User::factory()->times(10)->create()->each(function ($user) {
-        //     $user->profile()->update(UserProfile::factory()->make()->toArray());
-        // });
-
 
         $user1 = User::create([
-            'email' => 'iamalisafari@gmail.com',
-            'password' => '375787777Ali',
-            'mobile' => '09103982879',
-            'is_admin' => true,
-            'email_verified_at' => now(),
-            'mobile_verified_at' => now(),
+            'email' => 'testuser@gmail.com',
+            'username' => 'testuser',
+            'password' => '12344321',
+            'mobile' => '',
+            'is_admin' => false,
         ]);
 
         $user1->profile()->update([
-            'fname' => 'علی',
-            'lname' => 'صفری',
+            'fname' => 'کاربر',
+            'lname' => 'تست',
         ]);
 
-        $user1->wallet()->update([
-            'amount' => 50000000,
-            'dollar_amount' => 200,
+        $user1->metas()->update([
+            'email_verified_at' => now(),
         ]);
 
         $user2 = User::create([
-            'email' => 'milad.jafari6210@gmail.com',
-            'password' => '!password!',
-            'mobile' => '09376686365',
+            'email' => 'miladimos@gmail.com',
+            'username' => 'miladimos',
+            'password' => 'password',
             'is_admin' => true,
-            'email_verified_at' => now(),
-            'mobile_verified_at' => now(),
         ]);
 
         $user2->profile()->update([
-            'fname' => 'میلاد',
-            'lname' => 'جعفری',
+            'fname' => 'کاربر',
+            'lname' => 'میلادیموس',
         ]);
 
-        $user2->wallet()->update([
-            'amount' => 50000000,
-            'dollar_amount' => 200,
+        $user2->metas()->update([
+            'email_verified_at' => now(),
         ]);
+
 
         // factory(User::class, 10)->create()->each(function ($user) {
         //     $user->profile()->update(factory(UserProfile::class)->make()->toArray());

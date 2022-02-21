@@ -27,6 +27,8 @@
 
     @livewireStyles
 
+    @yield('styles')
+
 </head>
 
 <body class="border-top-wide border-danger">

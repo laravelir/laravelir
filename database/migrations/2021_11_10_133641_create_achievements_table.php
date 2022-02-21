@@ -18,7 +18,7 @@ class CreateAchievementsTable extends Migration
             $table->uuid('uuid')->index();
             $table->string('title')->unique();
             $table->string('description')->unique();
-            $table->string('logo_path')->unique();
+            $table->string('logo_path')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

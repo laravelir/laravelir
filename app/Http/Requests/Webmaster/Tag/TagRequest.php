@@ -14,7 +14,7 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:tags|min:3|max:30',
+            'name' => 'required|unique:tags,title|min:3|max:30',
             'active' => 'nullable'
         ];
     }

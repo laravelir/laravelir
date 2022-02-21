@@ -25,6 +25,8 @@
 
     @livewireStyles
 
+    @yield('styles')
+
 </head>
 
 <body>

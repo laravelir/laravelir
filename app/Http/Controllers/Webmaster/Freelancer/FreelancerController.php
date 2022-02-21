@@ -29,15 +29,7 @@ class FreelancerController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'email' => ['required', 'email', 'string', 'max:255', 'unique:users,email'],
-        //     'mobile' => ['required', 'string', 'min:11', 'max:11', 'unique:users,mobile'],
-        //     'password' => ['required', 'confirmed', 'min:8'],
-        //     'fname' => ['required'],
-        //     'lname' => ['required'],
-        //     'official' => ['nullable'],
-        //     'active' => ['nullable'],
-        // ]);
+
 
         $freelancer = Freelancer::create([
             'mobile'   => $request->mobile,

@@ -12,6 +12,7 @@
                 <div class="card-body text-center p-sm-5">
                     <h1 class="">Laravelir</h1>
                     <p class="text-muted">وارد شوید</p>
+                    @include('shared.errors')
                 </div>
                 <div class="hr-text hr-text-center hr-text-spaceless">ورود</div>
                 <form action="{{ route('auth.login') }}" method="post">

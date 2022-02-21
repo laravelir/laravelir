@@ -505,3 +505,7 @@ function getFreelancerSkill($freelancer_id, $skill_id)
 function isInvalidInput($field) {
     return "@error($field) is-invalid @enderror";
 }
+
+function getImagePath($path) {
+    //
+}

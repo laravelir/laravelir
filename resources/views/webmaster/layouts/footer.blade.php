@@ -581,7 +581,10 @@
    </script>
 
 @livewireScripts
+
 @include('sweetalert::alert')
+
+@yield('scripts')
 
  </body>
 </html>

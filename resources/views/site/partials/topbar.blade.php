@@ -139,7 +139,7 @@
             @else
             <div class="nav-item d-none d-md-flex me-3">
                 <div class="btn-list">
-                    <a href="{{ route('auth.login.form') }}" class="btn" target="_blank" rel="noreferrer">
+                    <a href="{{ route('auth.login.form') }}" class="btn" rel="noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <circle cx="12" cy="7" r="4"></circle>

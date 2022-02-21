@@ -27,7 +27,6 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $request->validated();
         $user = User::create([
             'mobile'    => $request->mobile ?? null,
             'email'    => $request->email,
@@ -89,16 +88,6 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        // $request->validate([
-        //     'email' => ['required', 'email', 'string', 'max:255', 'unique:users,email'],
-        //     'mobile' => ['required', 'string', 'min:11', 'max:11', 'unique:users,mobile'],
-        //     'password' => ['required', 'confirmed', 'min:8'],
-        //     'fname' => ['required'],
-        //     'lname' => ['required'],
-        //     'is_admin' => ['nullable'],
-        //     'active' => ['nullable'],
-        // ]);
-
 
         $data = [
             'mobile' => $request->mobile,

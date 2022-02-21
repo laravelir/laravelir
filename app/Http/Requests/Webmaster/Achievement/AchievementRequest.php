@@ -27,7 +27,8 @@ class AchievementRequest extends FormRequest
             'title'       => 'required|unique:achievements,title',
             'description' => 'required',
             'logo_path'   => 'required',
-            'type'        => 'required',
+            'active'   => 'nullable',
+            'notify'   => 'nullable',
         ];
     }
 }
