@@ -19,14 +19,11 @@ Route::group(['as' => 'site.'], function () {
 
     Route::get('/packages', [SiteController::class, 'packagesPage'])->name('pages.packages');
 
-
     Route::get('/podcasts', [PodcastController::class, 'index'])->name('podcasts.index');
     Route::get('/podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
-    Route::get('/discussions', [DiscussionController::class, 'index'])->name('discussions.index');
-    Route::get('/discussions/{discussion}', [DiscussionController::class, 'show'])->name('discussions.show');
-
+    Route::resource('discussions', DiscussionController::class)->only(['index', 'show', 'create', 'store']);
 });
