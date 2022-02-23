@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webmaster\Role;
+namespace App\Http\Controllers\Webmaster\Acl\Role;
 
 use App\Models\Role;
 use App\Models\Permission;

@@ -1,4 +1,4 @@
-@extends('site.discussions.layout')
+@extends('site.layouts.master')
 
 @section('title')
     گفتگو ها

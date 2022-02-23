@@ -41,10 +41,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Info</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
+                            <th>عنوان</th>
+                            <th>عنوان فارسی</th>
                             <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
@@ -55,30 +53,11 @@
                                 <td>
                                     <div class="text-muted">{{ $roles->firstItem() + $key }}</div>
                                 </td>
-                                <td data-label="Name">
-                                    <div class="d-flex py-1 align-items-center">
-                                        <span class="avatar me-2"
-                                            style="background-image: url({{ $value->avatar }})"></span>
-                                        <div class="flex-fill">
-                                            <div class="font-weight-medium"><a
-                                                    href="{{ $value->url() }}">{{ $value->rolename }}</a></div>
-                                            <div class="text-muted">{{ $value->full_name }}</div>
-                                        </div>
-                                    </div>
+                                <td>
+                                    <div>{{ $value->name }}</div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->email }}</div>
-                                </td>
-                                <td>
-                                    User
-                                </td>
-                                <td>
-                                    @if ($value->active)
-                                        <span class="badge bg-green">فعال</span>
-
-                                    @else
-                                        <span class="badge bg-red">غیر فعال</span>
-                                    @endif
+                                    {{ $value->fa_name }}
                                 </td>
                                 <td class="text-muted">
                                     {{ $value->created_at->format('Y/m/d H:i') }}

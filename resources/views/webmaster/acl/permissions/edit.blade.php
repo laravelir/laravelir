@@ -1,27 +1,27 @@
 @extends('webmaster.layouts.master')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
-    <li class="breadcrumb-item active"><a href="#">ویرایش کاربر</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.permissions.index') }}">سطح دسترسیان</a></li>
+    <li class="breadcrumb-item active"><a href="#">ویرایش سطح دسترسی</a></li>
 @endsection
 
 @section('title')
-    ویرایش کاربر
+    ویرایش سطح دسترسی
 @endsection
 
 @section('page-title')
-    ویرایش کاربر
+    ویرایش سطح دسترسی
 @endsection
 
 @section('content')
     <div class="col-md-7 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ویرایش کاربر</h3>
+                <h3 class="card-title">ویرایش سطح دسترسی</h3>
             </div>
             <div class="card-body">
                 @include('shared.errors')
-                <form action="{{ route('webmaster.users.update', $user) }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('webmaster.permissions.update', $permission) }}" enctype="multipart/form-data" method="post">
                     @csrf
                     @method('put')
                     <div class="row">
@@ -29,21 +29,21 @@
                             <div class="form-group mb-3">
                                 <label class="form-label" for="fname">نام</label>
                                 <input type="text" class="form-control" name="fname" id="fname" required
-                                    value="{{ old('fname') ?? $user->profile->fname }}">
+                                    value="{{ old('fname') ?? $permission->profile->fname }}">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-3">
                                 <label class="form-label" for="lname">نام خانوادگی</label>
                                 <input type="text" class="form-control" name="fname" id="fname" required
-                                    value="{{ old('lname') ?? $user->profile->lname }}">
+                                    value="{{ old('lname') ?? $permission->profile->lname }}">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-3">
-                                <label class="form-label" for="username">نام کاربری</label>
-                                <input type="text" class="form-control" name="username" id="password" required
-                                    value="{{ old('username') ?? $user->username }}">
+                                <label class="form-label" for="permissionname">نام سطح دسترسیی</label>
+                                <input type="text" class="form-control" name="permissionname" id="password" required
+                                    value="{{ old('permissionname') ?? $permission->permissionname }}">
                             </div>
                         </div>
                     </div>
@@ -52,14 +52,14 @@
                             <div class="form-group mb-3">
                                 <label class="form-label" for="email">ایمیل</label>
                                 <input type="email" class="form-control" name="email" id="email" required
-                                    value="{{ old('email') ?? $user->email }}">
+                                    value="{{ old('email') ?? $permission->email }}">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-3">
                                 <label class="form-label" for="mobile">شماره موبایل</label>
                                 <input type="text" class="form-control" name="mobile" id="mobile"
-                                    value="{{ old('mobile') ?? $user->mobile }}">
+                                    value="{{ old('mobile') ?? $permission->mobile }}">
                             </div>
                         </div>
                         <div class="col-4">
@@ -73,11 +73,11 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">ایمیل و موبایل کاربر فعال شده باشد</span>
+                                    <span class="col">ایمیل و موبایل سطح دسترسی فعال شده باشد</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="active"
-                                                @checked($user->activate())>
+                                                @checked($permission->activate())>
                                         </label>
                                     </span>
                                 </label>
@@ -88,11 +88,11 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">کاربر ادمین باشد.</span>
+                                    <span class="col">سطح دسترسی ادمین باشد.</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="is_admin"
-                                                @checked($user->is_admin)>
+                                                @checked($permission->is_admin)>
                                         </label>
                                     </span>
                                 </label>

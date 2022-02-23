@@ -41,10 +41,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Info</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
+                            <th>عنوان</th>
+                            <th>عنوان فارسی</th>
+                            <th>نقش مرتبط</th>
                             <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
@@ -55,22 +54,14 @@
                                 <td>
                                     <div class="text-muted">{{ $permissions->firstItem() + $key }}</div>
                                 </td>
-                                <td data-label="Name">
-                                    <div class="d-flex py-1 align-items-center">
-                                        <span class="avatar me-2"
-                                            style="background-image: url({{ $value->avatar }})"></span>
-                                        <div class="flex-fill">
-                                            <div class="font-weight-medium"><a
-                                                    href="{{ $value->url() }}">{{ $value->username }}</a></div>
-                                            <div class="text-muted">{{ $value->full_name }}</div>
-                                        </div>
-                                    </div>
+                                <td>
+                                    <div>{{ $value->name }}</div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->email }}</div>
+                                    {{ $value->fa_name }}
                                 </td>
                                 <td>
-                                    User
+                                    {{ $value->role->name }}
                                 </td>
                                 <td>
                                     @if ($value->active)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webmaster\Permission;
+namespace App\Http\Controllers\Webmaster\Acl\Permission;
 
 use App\Models\Permission;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $permissions = Permission::latest()->get();
+        $permissions = Permission::latest()->paginate(10);
 
         return view('webmaster.acl.permissions.index', compact('permissions'));
     }

@@ -1,29 +1,29 @@
 @extends('webmaster.layouts.master')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
-    <li class="breadcrumb-item active"><a href="#">ثبت کاربر</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.packages.index') }}">پکیجان</a></li>
+    <li class="breadcrumb-item active"><a href="#">ثبت پکیج</a></li>
 @endsection
 
 @section('title')
-    ثبت کاربر
+    ثبت پکیج
 @endsection
 
 @section('page-title')
-    ثبت کاربر
+    ثبت پکیج
 @endsection
 
 @section('content')
     <div class="col-md-7 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ثبت کاربر</h3>
+                <h3 class="card-title">ثبت پکیج</h3>
 
             </div>
             <div class="card-body">
                 @include('shared.errors')
 
-                <form action="{{ route('webmaster.users.store') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('webmaster.packages.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-4">
@@ -42,9 +42,9 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-3">
-                                <label class="form-label" for="username">نام کاربری</label>
-                                <input type="text" class="form-control" name="username" id="username" required
-                                    value="{{ old('username') }}">
+                                <label class="form-label" for="packagename">نام پکیجی</label>
+                                <input type="text" class="form-control" name="packagename" id="packagename" required
+                                    value="{{ old('packagename') }}">
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">ایمیل و موبایل کاربر فعال شده باشد</span>
+                                    <span class="col">ایمیل و موبایل پکیج فعال شده باشد</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="active" checked>
@@ -88,7 +88,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">کاربر ادمین باشد.</span>
+                                    <span class="col">پکیج ادمین باشد.</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="is_admin">
@@ -102,7 +102,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
+                                    <span class="col">ثبت شدن را به پکیج اطلاع بده (ایمیل)</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
                                             <input class="form-check-input" type="checkbox" name="notify_email">
