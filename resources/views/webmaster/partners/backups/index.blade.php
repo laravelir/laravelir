@@ -45,7 +45,7 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Created at</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>

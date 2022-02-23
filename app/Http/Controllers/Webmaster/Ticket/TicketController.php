@@ -134,6 +134,6 @@ class TicketController extends WebmasterController
     public function destroy(Ticket $ticket)
     {
         $ticket->delete();
-        return redirect()->route('webmaster.tickets.tickets.all')->with('toast_success', 'تیکت مورد نظر با موفقیت ایجاد شد.');
+        return redirect()->route('webmaster.tickets.tickets.index')->with('toast_success', 'تیکت مورد نظر با موفقیت ایجاد شد.');
     }
 }

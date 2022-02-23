@@ -14,7 +14,7 @@ class CountryController extends Controller
         $this->seo()->setTitle('کشور ها');
 
         $countries = Country::latest()->paginate(10);
-        return view('webmaster.countries.all', compact('countries'));
+        return view('webmaster.countries.index', compact('countries'));
     }
 
     public function create()

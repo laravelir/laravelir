@@ -2,16 +2,16 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.discussions.index') }}">گفتگو ها</a></li>
 @endsection
 
 @section('page-title')
-    کاربران
+    گفتگو ها
 @endsection
 
 @section('btn-list')
     {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+    <a href="{{ route('webmaster.discussions.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -21,7 +21,7 @@
         </svg>
         ثبت کاربر جدید
     </a>
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
+    <a href="{{ route('webmaster.discussions.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -41,36 +41,36 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Info</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Created at</th>
+                            <th>کاربر ثبت کننده</th>
+                            <th>عنوان</th>
+                            <th>دسته بندی</th>
+                            <th>وضعیت</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $key => $value)
+                        @forelse ($discussions as $key => $value)
                             <tr>
                                 <td>
-                                    <div class="text-muted">{{ $users->firstItem() + $key }}</div>
+                                    <div class="text-muted">{{ $discussions->firstItem() + $key }}</div>
                                 </td>
                                 <td data-label="Name">
                                     <div class="d-flex py-1 align-items-center">
                                         <span class="avatar me-2"
-                                            style="background-image: url({{ $value->avatar }})"></span>
+                                            style="background-image: url({{ $value->user->avatar }})"></span>
                                         <div class="flex-fill">
                                             <div class="font-weight-medium"><a
-                                                    href="{{ $value->url() }}">{{ $value->username }}</a></div>
-                                            <div class="text-muted">{{ $value->full_name }}</div>
+                                                    href="{{ $value->user->url() }}">{{ $value->user->username }}</a></div>
+                                            <div class="text-muted">{{ $value->user->full_name }}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->email }}</div>
+                                    <div>{{ $value->title }}</div>
                                 </td>
                                 <td>
-                                    User
+                                    <div>{{ $value->category->title }}</div>
                                 </td>
                                 <td>
                                     @if ($value->active)
@@ -91,11 +91,11 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.show', $value) }}">
+                                                    href="{{ route('webmaster.discussions.show', $value) }}">
                                                     نمایش
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.edit', $value) }}">
+                                                    href="{{ route('webmaster.discussions.edit', $value) }}">
                                                     ویرایش
                                                 </a>
                                             </div>
@@ -104,7 +104,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="mt-2">
-            {!! $users->links() !!}
+            {!! $discussions->links() !!}
         </div>
     </div>
 
@@ -124,7 +124,7 @@
                     <h5 class="modal-title">کاربر جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('webmaster.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('webmaster.discussions.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -142,8 +142,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">نام کاربری</label>
-                                    <input type="text" class="form-control" name="username" id="password" required>
+                                    <label class="form-label" for="discussionname">نام کاربری</label>
+                                    <input type="text" class="form-control" name="discussionname" id="password" required>
                                 </div>
                             </div>
                         </div>

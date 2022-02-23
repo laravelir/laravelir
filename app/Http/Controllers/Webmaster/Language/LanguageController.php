@@ -17,7 +17,7 @@ class LanguageController extends Controller
         $this->seo()->setTitle('زبان ها');
         $languages = Language::withoutGlobalScope(ActiveScope::class)->latest()->get();
 
-        return view('webmaster.languages.all', compact('languages'));
+        return view('webmaster.languages.index', compact('languages'));
     }
 
     public function create()

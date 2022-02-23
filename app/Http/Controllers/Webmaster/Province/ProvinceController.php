@@ -14,7 +14,7 @@ class ProvinceController extends Controller
         $this->seo()->setTitle('کتابخانه');
 
         $provinces = Province::latest()->paginate(10);
-        return view('webmaster.provinces.all', compact('provinces'));
+        return view('webmaster.provinces.index', compact('provinces'));
     }
 
     public function create()

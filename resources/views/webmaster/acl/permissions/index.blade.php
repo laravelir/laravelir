@@ -2,16 +2,16 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.permissions.index') }}">سطح دسترسی ها</a></li>
 @endsection
 
 @section('page-title')
-    کاربران
+    سطح دسترسی ها
 @endsection
 
 @section('btn-list')
     {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+    <a href="{{ route('webmaster.permissions.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -19,9 +19,9 @@
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
-        ثبت کاربر جدید
+        ثبت سطح دسترسی جدید
     </a>
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
+    <a href="{{ route('webmaster.permissions.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت سطح دسترسی جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -45,15 +45,15 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Created at</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $key => $value)
+                        @forelse ($permissions as $key => $value)
                             <tr>
                                 <td>
-                                    <div class="text-muted">{{ $users->firstItem() + $key }}</div>
+                                    <div class="text-muted">{{ $permissions->firstItem() + $key }}</div>
                                 </td>
                                 <td data-label="Name">
                                     <div class="d-flex py-1 align-items-center">
@@ -91,11 +91,11 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.show', $value) }}">
+                                                    href="{{ route('webmaster.permissions.show', $value) }}">
                                                     نمایش
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.edit', $value) }}">
+                                                    href="{{ route('webmaster.permissions.edit', $value) }}">
                                                     ویرایش
                                                 </a>
                                             </div>
@@ -104,7 +104,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ سطح دسترسیی ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="mt-2">
-            {!! $users->links() !!}
+            {!! $permissions->links() !!}
         </div>
     </div>
 
@@ -121,10 +121,10 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">کاربر جدید</h5>
+                    <h5 class="modal-title">سطح دسترسی جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('webmaster.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('webmaster.permissions.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">نام کاربری</label>
+                                    <label class="form-label" for="username">نام سطح دسترسیی</label>
                                     <input type="text" class="form-control" name="username" id="password" required>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">کاربر ادمین باشد.</span>
+                                        <span class="col">سطح دسترسی ادمین باشد.</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>
@@ -185,7 +185,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
+                                        <span class="col">ثبت شدن را به سطح دسترسی اطلاع بده (ایمیل)</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>

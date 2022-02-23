@@ -2,27 +2,26 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.subjects.index') }}">دپارتمان</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.acquaints.index') }}">نحوه آشنایی با ما</a></li>
 @endsection
 
 @section('page-title')
-    دپارتمان
+    نحوه آشنایی با ما
 @endsection
 
 @section('btn-list')
     {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-    <a href="{{ route('webmaster.subjects.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+    <a href="{{ route('webmaster.acquaints.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+            <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
-        ثبت دپارتمان جدید
+        ثبت کاربر جدید
     </a>
-    <a href="{{ route('webmaster.subjects.create') }}" class="btn btn-primary d-sm-none btn-icon"
-        aria-label="ثبت دپارتمان جدید">
+    <a href="{{ route('webmaster.acquaints.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -49,10 +48,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($subjects as $key => $value)
+                        @forelse ($acquaints as $key => $value)
                             <tr>
                                 <td>
-                                    <div class="text-muted">{{ $subjects->firstItem() + $key }}</div>
+                                    <div class="text-muted">{{ $acquaints->firstItem() + $key }}</div>
                                 </td>
                                 <td>
                                     <div>{{ $value->title }}</div>
@@ -76,11 +75,11 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.subjects.show', $value) }}">
+                                                    href="{{ route('webmaster.acquaints.show', $value) }}">
                                                     نمایش
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.subjects.edit', $value) }}">
+                                                    href="{{ route('webmaster.acquaints.edit', $value) }}">
                                                     ویرایش
                                                 </a>
                                             </div>
@@ -89,7 +88,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert type='' level='warning' message='تا کنون هیچ دپارتمانی ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ نحوه آشنایی با ما ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>
@@ -97,7 +96,7 @@
             </div>
         </div>
         <div class="mt-2">
-            {!! $subjects->links() !!}
+            {!! $acquaints->links() !!}
         </div>
     </div>
 
@@ -106,10 +105,10 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">دپارتمان جدید</h5>
+                    <h5 class="modal-title">کاربر جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('webmaster.subjects.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('webmaster.acquaints.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -127,8 +126,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="subjectname">نام دپارتمانی</label>
-                                    <input type="text" class="form-control" name="subjectname" id="password" required>
+                                    <label class="form-label" for="acquaintname">نام نحوه آشنایی با ما</label>
+                                    <input type="text" class="form-control" name="acquaintname" id="password" required>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +155,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">دپارتمان ادمین باشد.</span>
+                                        <span class="col">کاربر ادمین باشد.</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>
@@ -170,7 +169,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">ثبت شدن را به دپارتمان اطلاع بده (ایمیل)</span>
+                                        <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>

@@ -108,7 +108,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>

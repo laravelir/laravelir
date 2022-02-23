@@ -16,7 +16,7 @@ class FreelancerController extends Controller
 
         $freelancers = Freelancer::latest()->get();
 
-        return view('webmaster.freelancers.all', compact('freelancers'));
+        return view('webmaster.freelancers.index', compact('freelancers'));
     }
 
     public function create()

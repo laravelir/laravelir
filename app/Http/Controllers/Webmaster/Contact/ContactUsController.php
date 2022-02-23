@@ -11,7 +11,7 @@ class ContactUsController extends Controller
 
     public function index()
     {
-        $contacts = ContactUs::latest()->get();
+        $contacts = ContactUs::latest()->paginate(15);
         return view('webmaster.miscellaneous.contactus.messages.index', compact('contacts'));
     }
 

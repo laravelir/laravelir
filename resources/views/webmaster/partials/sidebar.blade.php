@@ -544,6 +544,9 @@
                                 <a class="dropdown-item" href="{{ route('webmaster.skills.index') }}">
                                     مهارت ها
                                 </a>
+                                <a class="dropdown-item" href="{{ route('webmaster.acquaints.index') }}">
+                                    نحوه آشنایی با ما
+                                </a>
                                 <div class="dropend">
                                     <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
                                         data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"

@@ -45,7 +45,7 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Created at</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
@@ -104,7 +104,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>

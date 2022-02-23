@@ -2,12 +2,12 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.faqs.index') }}">سوال متداولان</a></li>
-    <li class="breadcrumb-item"><a href="#">نمایش سوال متداول</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.acquaints.index') }}">نحوه آشنایی با ماان</a></li>
+    <li class="breadcrumb-item"><a href="#">نمایش نحوه آشنایی با ما</a></li>
 @endsection
 
 @section('page-title')
-    نمایش سوال متداول
+    نمایش نحوه آشنایی با ما
 @endsection
 
 @section('content')
@@ -18,15 +18,15 @@
                     <p class="h3 mx-auto text-center">اطلاعات پایه</p>
                     <hr>
                     <div class="col-6">
-                        <p>سوال : {{ $faq->qustion }}</p>
-                        <p>وضعیت : @if ($faq->active)
+                        <p>عنوان : {{ $acquaint->title }}</p>
+                        <p>وضعیت : @if ($acquaint->active)
                             <span class="badge bg-green">فعال</span> @else <span class="badge bg-warning">غیر فعال</span>
                             @endif
                         </p>
                     </div>
                     <div class="col-6">
-                        <p>پاسخ : {{ $faq->answer }}</p>
-                        <p>group : {{ $faq->group->title }}</p>
+                        <p>تاریخ ثبت : {{ $acquaint->created_at }}</p>
+                        <p>آخرین بروزرسانی : {{ $acquaint->updated_at }}</p>
                     </div>
                 </div>
             </div>

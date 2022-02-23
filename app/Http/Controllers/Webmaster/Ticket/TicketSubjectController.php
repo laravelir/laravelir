@@ -13,7 +13,7 @@ class TicketSubjectController extends WebmasterController
     public function index()
     {
         $subjects = TicketSubject::get();
-        return view('webmaster.tickets.subjects.all', compact('subjects'));
+        return view('webmaster.tickets.subjects.index', compact('subjects'));
     }
 
     public function create()

@@ -2,16 +2,16 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.payments.index') }}">پرداخت ها</a></li>
 @endsection
 
 @section('page-title')
-    کاربران
+    پرداخت ها
 @endsection
 
 @section('btn-list')
     {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+    <a href="{{ route('webmaster.payments.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -21,7 +21,7 @@
         </svg>
         ثبت کاربر جدید
     </a>
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
+    <a href="{{ route('webmaster.payments.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -45,15 +45,15 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Created at</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $key => $value)
+                        @forelse ($payments as $key => $value)
                             <tr>
                                 <td>
-                                    <div class="text-muted">{{ $users->firstItem() + $key }}</div>
+                                    <div class="text-muted">{{ $payments->firstItem() + $key }}</div>
                                 </td>
                                 <td data-label="Name">
                                     <div class="d-flex py-1 align-items-center">
@@ -61,7 +61,7 @@
                                             style="background-image: url({{ $value->avatar }})"></span>
                                         <div class="flex-fill">
                                             <div class="font-weight-medium"><a
-                                                    href="{{ $value->url() }}">{{ $value->username }}</a></div>
+                                                    href="{{ $value->url() }}">{{ $value->paymentname }}</a></div>
                                             <div class="text-muted">{{ $value->full_name }}</div>
                                         </div>
                                     </div>
@@ -91,11 +91,11 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.show', $value) }}">
+                                                    href="{{ route('webmaster.payments.show', $value) }}">
                                                     نمایش
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.edit', $value) }}">
+                                                    href="{{ route('webmaster.payments.edit', $value) }}">
                                                     ویرایش
                                                 </a>
                                             </div>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="mt-2">
-            {!! $users->links() !!}
+            {!! $payments->links() !!}
         </div>
     </div>
 
@@ -124,7 +124,7 @@
                     <h5 class="modal-title">کاربر جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('webmaster.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('webmaster.payments.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -142,8 +142,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">نام کاربری</label>
-                                    <input type="text" class="form-control" name="username" id="password" required>
+                                    <label class="form-label" for="paymentname">نام کاربری</label>
+                                    <input type="text" class="form-control" name="paymentname" id="password" required>
                                 </div>
                             </div>
                         </div>

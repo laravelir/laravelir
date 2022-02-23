@@ -2,16 +2,16 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.roles.index') }}">نقش ها</a></li>
 @endsection
 
 @section('page-title')
-    کاربران
+    نقش ها
 @endsection
 
 @section('btn-list')
     {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+    <a href="{{ route('webmaster.roles.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
             <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -19,9 +19,9 @@
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
-        ثبت کاربر جدید
+        ثبت نقش جدید
     </a>
-    <a href="{{ route('webmaster.users.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
+    <a href="{{ route('webmaster.roles.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت نقش جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -45,15 +45,15 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Created at</th>
+                            <th>تاریخ ثبت</th>
                             <th class="w-1">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $key => $value)
+                        @forelse ($roles as $key => $value)
                             <tr>
                                 <td>
-                                    <div class="text-muted">{{ $users->firstItem() + $key }}</div>
+                                    <div class="text-muted">{{ $roles->firstItem() + $key }}</div>
                                 </td>
                                 <td data-label="Name">
                                     <div class="d-flex py-1 align-items-center">
@@ -61,7 +61,7 @@
                                             style="background-image: url({{ $value->avatar }})"></span>
                                         <div class="flex-fill">
                                             <div class="font-weight-medium"><a
-                                                    href="{{ $value->url() }}">{{ $value->username }}</a></div>
+                                                    href="{{ $value->url() }}">{{ $value->rolename }}</a></div>
                                             <div class="text-muted">{{ $value->full_name }}</div>
                                         </div>
                                     </div>
@@ -91,11 +91,11 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.show', $value) }}">
+                                                    href="{{ route('webmaster.roles.show', $value) }}">
                                                     نمایش
                                                 </a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('webmaster.users.edit', $value) }}">
+                                                    href="{{ route('webmaster.roles.edit', $value) }}">
                                                     ویرایش
                                                 </a>
                                             </div>
@@ -104,7 +104,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert level='warning' message='تا کنون هیچ کاربری ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ نقشی ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="mt-2">
-            {!! $users->links() !!}
+            {!! $roles->links() !!}
         </div>
     </div>
 
@@ -121,10 +121,10 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">کاربر جدید</h5>
+                    <h5 class="modal-title">نقش جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('webmaster.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('webmaster.roles.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -142,8 +142,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">نام کاربری</label>
-                                    <input type="text" class="form-control" name="username" id="password" required>
+                                    <label class="form-label" for="rolename">نام نقشی</label>
+                                    <input type="text" class="form-control" name="rolename" id="password" required>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">کاربر ادمین باشد.</span>
+                                        <span class="col">نقش ادمین باشد.</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>
@@ -185,7 +185,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
+                                        <span class="col">ثبت شدن را به نقش اطلاع بده (ایمیل)</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>

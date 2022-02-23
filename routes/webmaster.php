@@ -23,6 +23,8 @@ use App\Http\Controllers\Webmaster\Ticket\TicketSubjectController;
 use App\Http\Controllers\Webmaster\Freelancer\FreelancerController;
 use App\Http\Controllers\Webmaster\Permission\PermissionController;
 use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsController;
+use App\Http\Controllers\Webmaster\Miscellaneous\Faq\FaqController;
+use App\Http\Controllers\Webmaster\Miscellaneous\Faq\FaqGroupController;
 use App\Http\Controllers\Webmaster\News\NewsController;
 use App\Http\Controllers\Webmaster\Post\PostController;
 
@@ -53,14 +55,17 @@ Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []]
 
 
     Route::get('/contacts', [ContactUsController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{contact}', [ContactUsController::class, 'show'])->name('contacts.show');
+    Route::post('/contacts', [ContactUsController::class, 'store'])->name('contacts.store');
 
     Route::resources([
         'users' => UserController::class,
         'sponsors' => UserController::class,
         'view-points' => UserController::class,
         'partners' => UserController::class,
-        'faqs' => UserController::class,
-        'faq-groups' => UserController::class,
+        'acquaints' => AcquaintedUsController::class,
+        'faqs' => FaqController::class,
+        'faq-groups' => FaqGroupController::class,
         'achievements' => AchievementController::class,
         'freelancers' => FreelancerController::class,
         'roles' => RoleController::class,

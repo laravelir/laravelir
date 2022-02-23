@@ -12,61 +12,50 @@ class AcquaintedUsController extends Controller
 
     public function index()
     {
-        $acquaints = AcquaintedUs::latest()->get();
+        $acquaints = AcquaintedUs::latest()->paginate(10);
 
-        return view('webmaster.acquaints.all', compact('acquaints'));
+        return view('webmaster.miscellaneous.acquaints.index', compact('acquaints'));
     }
 
     public function create()
     {
-        return view('webmaster.acquaints.create');
+        return view('webmaster.miscellaneous.acquaints.create');
     }
 
     public function store(Request $request)
     {
         $acquaint = AcquaintedUs::create([
+            'title' => $request->title,
             'active' => $request->has('active') ? true : false,
         ]);
 
-        $acquaint->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
-
-        $acquaint->save();
-
-        return redirect()->route('webmaster.acquainted.index')->with('toast_success', 'نحوه آشنایی با ما مورد نظر با موفقیت ایجاد شد.');
+        return redirect()->route('webmaster.acquaints.index')->with('toast_success', 'نحوه آشنایی با ما مورد نظر با موفقیت ایجاد شد.');
     }
 
     public function show(AcquaintedUs $acquaint)
     {
-        return view('webmaster.acquaints.show', compact('acquaint'));
+        return view('webmaster.miscellaneous.acquaints.show', compact('acquaint'));
     }
 
-    public function edit(AcquaintedUs $acquainted)
+    public function edit(AcquaintedUs $acquaint)
     {
-        return view('webmaster.acquaints.edit', compact("acquainted"));
+        return view('webmaster.miscellaneous.acquaints.edit', compact("acquaint"));
     }
 
-    public function update(Request $request, AcquaintedUs $acquainted)
+    public function update(Request $request, AcquaintedUs $acquaint)
     {
 
-        $acquainted->update([
+        $acquaint->update([
+            'title' => $request->title,
             'active' => $request->has('active') ? true : false,
         ]);
 
-        $acquainted->title = [
-            'fa' => $request->title,
-            'en' => $request->en_title,
-        ];
-
-        $acquainted->save();
-        return redirect()->route('webmaster.acquainted.index')->with('toast_success', 'نحوه آشنایی با ما مورد نظر با موفقیت ویرایش شد.');
+        return redirect()->route('webmaster.acquaints.index')->with('toast_success', 'نحوه آشنایی با ما مورد نظر با موفقیت ویرایش شد.');
     }
 
-    public function destroy(AcquaintedUs $acquainted)
+    public function destroy(AcquaintedUs $acquaint)
     {
-        $acquainted->delete();
+        $acquaint->delete();
         return response()->json([
             'message' => 'عملیات موفقیت آمیز بود'
         ], Response::HTTP_OK);

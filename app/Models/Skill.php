@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 
 class Skill extends Model
 {
     use HasUUID,
-        HasTranslations,
         RouteKeyNameUUID;
 
     protected $table = 'skills';
@@ -19,7 +17,6 @@ class Skill extends Model
 
     protected $guarded = [];
 
-    public $translatable = ['title'];
 
     public function parent()
     {
