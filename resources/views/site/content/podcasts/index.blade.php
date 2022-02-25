@@ -4,6 +4,11 @@
     پادکست ها
 @endsection
 
+@section('breadcrumb')
+    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
+    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+@endsection
+
 @section('page-modal')
     <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

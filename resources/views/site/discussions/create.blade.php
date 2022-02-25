@@ -11,6 +11,11 @@
     </div>
 @endsection
 
+@section('breadcrumb')
+    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
+    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+@endsection
+
 @section('styles')
     <!-- Theme included stylesheets -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">

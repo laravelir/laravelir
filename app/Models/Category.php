@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Arr;
 use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
 // use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 
 class Category extends Model
 {
     use HasFactory,
-        HasUUID;
+        HasUUID,
+        Sluggable,
+        RouteKeyNameUUID;
 
     protected $table = 'categories';
 
@@ -96,5 +100,19 @@ class Category extends Model
     public function scopeActive($query)
     {
         return $query->where('active', 1);
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

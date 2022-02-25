@@ -26,20 +26,15 @@
                 <form action="{{ route('webmaster.podcasts.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="form-group mb-3">
                                 <label class="form-label" for="title">عنوان</label>
                                 <input type="text" class="form-control " name="title" id="title"
                                     value="{{ old('title') }}" required>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="lname">نام خانوادگی</label>
-                                <input type="text" class="form-control" name="lname" id="lname" required
-                                    value="{{ old('lname') }}">
-                            </div>
-                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-5">
                             <div class="mb-4">
                                 <label class="form-label">دسته بندی والد</label>
@@ -52,22 +47,6 @@
                                             {{ $item->title }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="email">ایمیل</label>
-                                <input type="email" class="form-control" name="email" id="email" required
-                                    value="{{ old('email') }}">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="mobile">شماره موبایل</label>
-                                <input type="text" class="form-control" name="mobile" id="mobile"
-                                    value="{{ old('mobile') }}">
                             </div>
                         </div>
                         <div class="col-4">

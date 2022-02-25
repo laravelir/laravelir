@@ -11,6 +11,12 @@
     </div>
 @endsection
 
+
+@section('breadcrumb')
+    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
+    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+@endsection
+
 @section('btn-list')
     <div class="col-auto ms-auto d-print-none">
         <div class="d-flex">

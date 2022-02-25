@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webmaster\Tag;
+namespace App\Http\Controllers\Webmaster\Content\Tag;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;

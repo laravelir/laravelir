@@ -1,5 +1,9 @@
 @extends('site.layouts.master')
 
+@section('page-title')
+
+@endsection
+
 @section('content')
 <div class="col-lg-9 mx-auto">
     <div class="card card-lg">

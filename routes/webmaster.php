@@ -1,32 +1,34 @@
 <?php
 
-use App\Http\Controllers\Webmaster\Achievement\AchievementController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Webmaster\Tag\TagController;
 use App\Http\Controllers\Webmaster\City\CityController;
-use App\Http\Controllers\Webmaster\Acl\Role\RoleController;
+use App\Http\Controllers\Webmaster\News\NewsController;
 use App\Http\Controllers\Webmaster\User\UserController;
 use App\Http\Controllers\Webmaster\WebmasterController;
 use App\Http\Controllers\Webmaster\Skill\SkillController;
+use App\Http\Controllers\Webmaster\Acl\Role\RoleController;
 use App\Http\Controllers\Webmaster\Ticket\TicketController;
 use App\Http\Controllers\Webmaster\Comment\CommentController;
+use App\Http\Controllers\Webmaster\Content\Tag\TagController;
 use App\Http\Controllers\Webmaster\Country\CountryController;
 use App\Http\Controllers\Webmaster\Package\PackageController;
 use App\Http\Controllers\Webmaster\Payment\PaymentController;
 use App\Http\Controllers\Webmaster\Project\ProjectController;
-use App\Http\Controllers\Webmaster\Category\CategoryController;
 use App\Http\Controllers\Webmaster\Contact\ContactUsController;
+use App\Http\Controllers\Webmaster\Content\Post\PostController;
 use App\Http\Controllers\Webmaster\Discount\DiscountController;
 use App\Http\Controllers\Webmaster\Language\LanguageController;
 use App\Http\Controllers\Webmaster\Province\ProvinceController;
 use App\Http\Controllers\Webmaster\Ticket\TicketSubjectController;
 use App\Http\Controllers\Webmaster\Freelancer\FreelancerController;
-use App\Http\Controllers\Webmaster\Acl\Permission\PermissionController;
-use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsController;
 use App\Http\Controllers\Webmaster\Miscellaneous\Faq\FaqController;
+use App\Http\Controllers\Webmaster\Achievement\AchievementController;
+use App\Http\Controllers\Webmaster\Content\Podcast\PodcastController;
+use App\Http\Controllers\Webmaster\Acl\Permission\PermissionController;
+use App\Http\Controllers\Webmaster\Content\Category\CategoryController;
 use App\Http\Controllers\Webmaster\Miscellaneous\Faq\FaqGroupController;
-use App\Http\Controllers\Webmaster\News\NewsController;
-use App\Http\Controllers\Webmaster\Post\PostController;
+use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsController;
 
 Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []], function () {
     Route::get('', [WebmasterController::class, 'webmaster'])->name('index');
@@ -71,9 +73,8 @@ Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []]
         'roles' => RoleController::class,
         'permissions' => PermissionController::class,
         'payments' => PaymentController::class,
-        'news' => NewsController::class,
         'advertises' => NewsController::class,
-        'podcasts' => PostController::class,
+        'podcasts' => PodcastController::class,
         'posts' => PostController::class,
         'tags' => TagController::class,
         'skills' => SkillController::class,

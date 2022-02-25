@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-4">
                             <div class="mb-4">
                                 <label class="form-label">دسته بندی والد</label>
                                 <select type="text" class="form-select" placeholder="دسته بندی والد را انتخاب کنید"
@@ -56,40 +56,19 @@
                                     id="author_id" name="author_id" required>
                                     @foreach ($authors as $item)
                                         <option value="{{ $item->id }}"
-                                            data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->avatar }}&quot; &gt;&lt;/&gt;">
+                                            @if ($item->id == user()->id) selected @endif>
                                             {{ $item->label }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="postname">نام پستی</label>
-                                <input type="text" class="form-control" name="postname" id="postname" required
-                                    value="{{ old('postname') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="email">ایمیل</label>
-                                <input type="email" class="form-control" name="email" id="email" required
-                                    value="{{ old('email') }}">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="mobile">شماره موبایل</label>
-                                <input type="text" class="form-control" name="mobile" id="mobile"
-                                    value="{{ old('mobile') }}">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="password">رمز عبور</label>
-                                <input type="password" class="form-control" name="password" id="password" required>
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label class="form-label">نوع پست</label>
+                                <select type="text" class="form-select" placeholder="نوع پست را انتخاب کنید" id="type"
+                                    name="type" required>
+                                    <option value="">پکیج</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -111,24 +90,10 @@
                         <div class="col-lg-6">
                             <div>
                                 <label class="row">
-                                    <span class="col">پست ادمین باشد.</span>
+                                    <span class="col">پست فعال و قابل مشاهده باشد</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
-                                            <input class="form-check-input" type="checkbox" name="is_admin">
-                                        </label>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div>
-                                <label class="row">
-                                    <span class="col">ثبت شدن را به پست اطلاع بده (ایمیل)</span>
-                                    <span class="col-auto">
-                                        <label class="form-check form-check-single form-switch">
-                                            <input class="form-check-input" type="checkbox" name="notify_email">
+                                            <input class="form-check-input" type="checkbox" name="active">
                                         </label>
                                     </span>
                                 </label>

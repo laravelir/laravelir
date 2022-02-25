@@ -11,6 +11,12 @@
     </div>
 @endsection
 
+
+@section('breadcrumb')
+    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
+    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+@endsection
+
 @section('btn-list')
     <div class="col-auto ms-auto d-print-none">
         <div class="d-flex">
@@ -84,6 +90,7 @@
                     <div class="card-body p-4 text-center">
                         <a href="{{ $item->url() }}"><img class="avatar avatar-xl mb-3 avatar-rounded"
                                 src="{{ $item->avatar }}" /></a>
+                        {{-- <span class="avatar avatar-xl mb-3 avatar-rounded">JL</span> --}}
                         <h3 class="m-0 mb-1"><a href="{{ $item->url() }}">{{ $item->username }}</a></h3>
                         <div class="text-muted">{{ $item->full_name }}</div>
                         <div class="mt-3">

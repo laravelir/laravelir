@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Webmaster\Post;
+namespace App\Http\Controllers\Webmaster\Content\Post;
 
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Post;
-use Webpatser\Uuid\Uuid;
-use App\Enum\CurrencyEnum;
 use App\Models\Freelancer;
-use App\Enum\AuthGuardEnum;
 use App\Enum\OrderTypeEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,12 +13,13 @@ use App\Enum\TicketStatusEnum;
 use App\Enum\PostDoTypeEnum;
 use App\Enum\TicketPriorityEnum;
 use Illuminate\Support\Facades\DB;
-use App\Enum\ContentOrderStatusEnum;
+use App\Enum\PostStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Enum\ContentPostStatusEnum;
 use App\Events\Shared\Ticket\SendNewTicketEvent;
 use App\Events\Site\Content\ContentOrderApprovedEvent;
 use App\Models\Category;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -34,9 +32,10 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::active()->get();
+        $tags = Tag::active()->get();
         $authors = User::get();
 
-        return view('webmaster.content.posts.create', compact('authors', 'categories'));
+        return view('webmaster.content.posts.create', compact('authors', 'categories', 'tags'));
     }
 
     public function show(Post $post)
@@ -57,7 +56,7 @@ class PostController extends Controller
     {
         $order->update([
             'approved' => 1,
-            'status' => ContentOrderStatusEnum::IN_PROGRESS,
+            'status' => PostStatusEnum::APPROVED,
         ]);
 
         if ($order->type_of_do_post == PostDoTypeEnum::BY_RASA) {

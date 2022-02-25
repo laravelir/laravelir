@@ -62,6 +62,7 @@ class SiteController extends Controller
         return view('site.pages.contact-us');
     }
 
+
     public function packagesPage()
     {
         SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
@@ -73,6 +74,19 @@ class SiteController extends Controller
 
         $packages = Package::active()->orderBy('order')->get();
         return view('site.pages.landing.dm-packages', compact('packages'));
+    }
+
+    public function pricingPage()
+    {
+        SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
+        SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
+        OpenGraph::addProperty('type', 'website');
+        JsonLd::addImage(asset("/statics/shared/images/logo.png"));
+        OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
+        TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
+
+        $packages = Package::active()->orderBy('order')->get();
+        return view('site.pages.landings.pricing', compact('packages'));
     }
 
     public function contactUsStore(Request $request)

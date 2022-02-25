@@ -30,8 +30,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
-        SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
+        SEOTools::setTitle($post->title);
+        SEOTools::setDescription($post->title);
         OpenGraph::addProperty('type', 'website');
         JsonLd::addImage(asset("/statics/shared/images/logo.png"));
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));

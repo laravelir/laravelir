@@ -15,6 +15,7 @@ Route::group(['as' => 'site.'], function () {
     Route::post('/jobs/request', [SiteController::class, 'jobRequestStore'])->name('jobs.request.store');
     Route::get('/about-us', [SiteController::class, 'aboutUs'])->name('about-us');
     Route::get('/changelog', [SiteController::class, 'changelog'])->name('changelog');
+    Route::get('/pricing', [SiteController::class, 'pricingPage'])->name('pricing');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
     Route::get('/packages', [SiteController::class, 'packagesPage'])->name('pages.packages');
@@ -23,7 +24,7 @@ Route::group(['as' => 'site.'], function () {
     Route::get('/podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/posts/1', [PostController::class, 'show'])->name('posts.show');
 
     Route::resource('discussions', DiscussionController::class)->only(['index', 'show', 'create', 'store']);
 });
