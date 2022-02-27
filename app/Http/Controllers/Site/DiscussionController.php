@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Discuss;
-use App\Models\Podcast;
+use App\Models\Discuss;
 use App\Models\Tag;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -42,10 +42,10 @@ class DiscussionController extends Controller
 
         $categories = Category::get();
         $tags = Tag::get();
-        return view('site.discussions.create', compact( 'tags', 'categories'));
+        return view('site.discussions.create', compact('tags', 'categories'));
     }
 
-    public function show(Podcast $podcast)
+    public function show(Discuss $discuss)
     {
         SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
         SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
@@ -54,6 +54,6 @@ class DiscussionController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        return view('site.index');
+        return view('site.discussions.show', compact('discuss'));
     }
 }
