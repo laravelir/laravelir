@@ -324,11 +324,9 @@ class CategorySeeder extends Seeder
             $category = Category::create([
                 'id' => $item['id'],
                 'active' => $item['active'],
-                'percent' => $item['percent'],
+                'title' => $item['name']['fa'],
             ]);
 
-            $category->name = $item['name'];
-            $category->save();
         }
     }
 }

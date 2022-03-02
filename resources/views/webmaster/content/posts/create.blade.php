@@ -13,6 +13,59 @@
     ثبت پست
 @endsection
 
+
+@section('styles')
+    <!-- Theme included stylesheets -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    {{-- <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"> --}}
+
+    <style>
+        .editor-container {
+            direction: rtl !important;
+        }
+
+    </style>
+@endsection
+
+@section('scripts')
+    <!-- Main Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        var editor = new Quill('#editor-body', {
+            modules: {
+                toolbar: [
+
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'link', 'code-block'],
+                    [{
+                        'direction': 'rtl'
+                    }],
+                    [{
+                        'list': 'ordered'
+                    }, {
+                        'list': 'bullet'
+                    }],
+                ],
+            },
+            theme: 'snow' // or 'bubble'
+        });
+
+        editor.format('direction', 'rtl');
+        editor.format('align', 'right');
+
+        var body = document.getElementById('body');
+
+        editor.on('text-change', function() {
+            body.value = editor.root.innerHTML;
+        });
+
+
+
+    </script>
+@endsection
+
+
 @section('content')
     <div class="col-md-7 mx-auto">
         <div class="card">
@@ -28,7 +81,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
-                                <label class="form-label" for="fname">عنوان</label>
+                                <label class="form-label required" for="fname">عنوان</label>
                                 <input type="text" class="form-control " name="fname" id="fname"
                                     value="{{ old('fname') }}" required>
                             </div>
@@ -37,7 +90,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="mb-4">
-                                <label class="form-label">دسته بندی والد</label>
+                                <label class="form-label required">دسته بندی والد</label>
                                 <select type="text" class="form-select" placeholder="دسته بندی والد را انتخاب کنید"
                                     id="parent_id" name="parent_id" required>
                                     <option value="0" selected>بدون والد</option>
@@ -51,7 +104,7 @@
                         </div>
                         <div class="col-5">
                             <div class="mb-4">
-                                <label class="form-label">نویسنده</label>
+                                <label class="form-label required">نویسنده</label>
                                 <select type="text" class="form-select" placeholder="نویسنده را انتخاب کنید"
                                     id="author_id" name="author_id" required>
                                     @foreach ($authors as $item)
@@ -64,13 +117,48 @@
                         </div>
                         <div class="col-3">
                             <div class="mb-4">
-                                <label class="form-label">نوع پست</label>
-                                <select type="text" class="form-select" placeholder="نوع پست را انتخاب کنید" id="type"
-                                    name="type" required>
-                                    <option value="">پکیج</option>
+                                <label class="form-label required">نوع پست</label>
+                                <select class="form-select" placeholder="نوع پست را انتخاب کنید" id="type" name="type"
+                                    required>
+                                    <option value="a">آموزش</option>
+                                    <option value="b">رپرتاژ</option>
+                                    <option value="c">پکیج</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="body">متن </label>
+                                <input type="hidden" name="body" id="body">
+                                <div id="editor-body" class="editor-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-12">
+                            <div class="mb-3">
+                              <label class="form-label">Simple selectgroup</label>
+                              <div class="form-selectgroup">
+                                <label class="form-selectgroup-item">
+                                  <input type="checkbox" name="name" value="HTML" class="form-selectgroup-input" checked>
+                                  <span class="form-selectgroup-label">HTML</span>
+                                </label>
+                                <label class="form-selectgroup-item">
+                                  <input type="checkbox" name="name" value="CSS" class="form-selectgroup-input">
+                                  <span class="form-selectgroup-label">CSS</span>
+                                </label>
+                                <label class="form-selectgroup-item">
+                                  <input type="checkbox" name="name" value="PHP" class="form-selectgroup-input">
+                                  <span class="form-selectgroup-label">PHP</span>
+                                </label>
+                                <label class="form-selectgroup-item">
+                                  <input type="checkbox" name="name" value="JavaScript" class="form-selectgroup-input">
+                                  <span class="form-selectgroup-label">JavaScript</span>
+                                </label>
+                              </div>
+                            </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">

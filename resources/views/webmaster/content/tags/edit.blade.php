@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-label" for="title">عنوان</label>
                                 <input type="text" class="form-control" name="title" id="title" required
-                                    value="{{ old('title') ?? $tag->name }}">
+                                    value="{{ old('title') ?? $tag->title }}">
                             </div>
                         </div>
                     </div>

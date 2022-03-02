@@ -9,6 +9,10 @@ class TagSeeder extends Seeder
 {
     public function run()
     {
-        Tag::factory()->count(30)->create();
+        $tags = collect(['php', 'laravel', 'programming', 'فلاتر', 'dart', 'برنامه نویسی']);
+
+        $tags->each(function ($item) {
+            Tag::create(['title' => $item]);
+        });
     }
 }

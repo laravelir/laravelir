@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Webmaster\Content\Tag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use App\Http\Requests\Webmaster\Tag\TagRequest;
-use App\Scopes\ActiveScope;
-use Illuminate\Http\Response;
 
 // use App\Repositories\Tag\TagEloquentRepositoryInterface;
 
@@ -60,9 +60,10 @@ class TagController extends Controller
         $tag->update([
             'title' => $request->title,
             'slug' => $request->slug,
-            'active' => $request->boolean('active')
+            'active' => $request->boolean('active') ? true : false,
         ]);
-        return redirect()->route('webmaster.tags.index')->with('toast_success', __('messages.tags.updated'));
+        return Response::success('webmaster.tags.index', __('messages.tags.updated'));
+        // return redirect()->route('webmaster.tags.index')->with('toast_success', __('messages.tags.updated'));
     }
 
     public function destroy(Tag $tag)
@@ -70,6 +71,6 @@ class TagController extends Controller
         $tag->delete();
         return response()->json([
             'message' => 'عملیات موفقیت آمیز بود'
-        ], Response::HTTP_OK);
+        ], HttpResponse::HTTP_OK);
     }
 }

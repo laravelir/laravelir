@@ -24,6 +24,7 @@
     <link href="{{ asset('/statics/shared/dist/css/tabler-vendors.rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/statics/shared/dist/css/demo.rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/statics/shared/css/fonts.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/statics/shared/css/customs.css') }}" rel="stylesheet" />
 
     @livewireStyles
 

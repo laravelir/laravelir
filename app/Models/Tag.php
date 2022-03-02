@@ -17,7 +17,7 @@ class Tag extends Model
 
     protected $table = 'tags';
 
-    protected $fillable = ['name', 'active', 'uuid'];
+    protected $fillable = ['title', 'active', 'uuid', 'slug'];
 
     // protected static function booted()
     // {
@@ -55,7 +55,7 @@ class Tag extends Model
         return url($this->path());
     }
 
-   /**
+    /**
      * Return the sluggable configuration array for this model.
      *
      * @return array

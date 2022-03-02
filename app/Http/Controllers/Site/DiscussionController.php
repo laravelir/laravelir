@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Package;
-use App\Models\ContactUs;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Discuss;
 use App\Models\Discuss;
 use App\Models\Tag;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
+use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 
 class DiscussionController extends Controller
@@ -55,5 +52,13 @@ class DiscussionController extends Controller
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
         return view('site.discussions.show', compact('discuss'));
+    }
+
+    public function delete(Discuss $discuss)
+    {
+        $discuss->delete();
+        return response()->json([
+            'message' => 'عملیات موفقیت آمیز بود'
+        ], HttpResponse::HTTP_OK);
     }
 }

@@ -163,9 +163,18 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <div>
-                    <form action=""></form>
+            <div class="card card-lg mt-3">
+                <div class="card-header d-flex justify-content-between align-items-baseline">
+                    <div><p class="h3">نظرات</p></div>
+                    <div>
+                        <a href="" class="btn btn-sm btn-bitbucket">افزودن نظر</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+
+                    </div>
+                    <div class="text-center h3">هنوز هیچ نظری ثبت نشده است!</div>
                 </div>
             </div>
         </div>
