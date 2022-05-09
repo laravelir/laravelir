@@ -30,7 +30,7 @@
                         <div class="my-3">
                             <label class="form-label">رمز عبور
                                 <span class="form-label-description">
-                                    <a href="./forgot-password.html">رمز عبورم را فراموش کردم!</a>
+                                    <a href="{{ route('auth.password.forgot') }}">رمز عبورم را فراموش کردم!</a>
                                 </span>
                             </label>
                             <div class="input-group input-group-flat">
@@ -57,7 +57,7 @@
                             </label>
                         </div>
                         <div class="form-footer">
-                            <button type="submit" class="btn btn-primary w-100">ثبت نام</button>
+                            <button type="submit" class="btn btn-primary w-100">ورود</button>
                             <span class="form-label-description mt-2">
                                 <a href="{{ route('auth.register.form') }}">حساب کاربری نداری؟ ثبت نام کن</a>
                             </span>

@@ -12,7 +12,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 
-class UserController extends Controller
+class AccountController extends Controller
 {
     public function index()
     {
@@ -25,7 +25,7 @@ class UserController extends Controller
 
         $users = User::latest()->paginate(18);
 
-        return view('site.users.index', compact('users'));
+        return view('site.users.account.index', compact('users'));
     }
 
     public function show(User $user)

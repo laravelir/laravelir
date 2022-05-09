@@ -107,6 +107,11 @@ class User extends Authenticatable
         return $this->hasMany(Package::class);
     }
 
+    public function discussions()
+    {
+        return $this->hasMany(Discuss::class);
+    }
+
     public function isAdmin()
     {
         return !!$this->is_admin;

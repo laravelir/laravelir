@@ -25,7 +25,19 @@ class ProjectController extends Controller
 
         $projects = Project::active()->orderBy('order')->get();
 
-        return view('site.content.projects.index', compact('projects'));
+        return view('site.users.account.projects.index', compact('projects'));
+    }
+
+    public function edit(Project $project)
+    {
+        SEOTools::setTitle($project->title);
+        SEOTools::setDescription($project->title);
+        OpenGraph::addProperty('type', 'website');
+        JsonLd::addImage(asset("/statics/shared/images/logo.png"));
+        OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
+        TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
+
+        return view('site.users.account.projects.edit', compact('project'));
     }
 
     public function show(Project $project)
@@ -37,6 +49,6 @@ class ProjectController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        return view('site.content.projects.show', compact('project'));
+        return view('site.users.account.projects.show', compact('project'));
     }
 }

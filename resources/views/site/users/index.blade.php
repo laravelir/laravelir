@@ -13,14 +13,14 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
-    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">توسعه دهنگان</a></li>
+    {{-- <li class="breadcrumb-item active"><a href="#">توسعه دهنگان</a></li> --}}
 @endsection
 
 @section('btn-list')
     <div class="col-auto ms-auto d-print-none">
         <div class="d-flex">
-            <input type="search" class="form-control d-inline-block w-9 me-3" placeholder="جست و جو" />
+            {{-- <input type="search" class="form-control d-inline-block w-9 me-3" placeholder="جست و جو" /> --}}
             <a href="#" class="btn btn-primary d-none">
                 <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -57,7 +57,6 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-center">
                                     <a class="dropdown-item" href="#">Edit user</a>
-                                    <a class="dropdown-item" href="#">Change permissions</a>
                                     <a class="dropdown-item text-danger" href="#">Delete user</a>
                                 </div>
                             </div>
@@ -74,7 +73,7 @@
                                 </svg>
                                 Follow
                             </a>
-                            <a href="#" class="btn btn-sm">
+                            {{-- <a href="#" class="btn btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-minus"
                                     width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -84,7 +83,7 @@
                                     <line x1="16" y1="11" x2="22" y2="11" />
                                 </svg>
                                 UnFollow
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                     <div class="card-body p-4 text-center">
@@ -93,9 +92,9 @@
                         {{-- <span class="avatar avatar-xl mb-3 avatar-rounded">JL</span> --}}
                         <h3 class="m-0 mb-1"><a href="{{ $item->url() }}">{{ $item->username }}</a></h3>
                         <div class="text-muted">{{ $item->full_name }}</div>
-                        <div class="mt-3">
+                        {{-- <div class="mt-3">
                             <span class="badge bg-purple-lt">Owner</span>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="d-flex">
                         <a href="#" class="card-btn">
@@ -107,12 +106,10 @@
                                 <rect x="3" y="5" width="18" height="14" rx="2" />
                                 <polyline points="3 7 12 13 21 7" />
                             </svg>
-                            Chat
+                            گفتگو
                         </a>
                         <a href="#" class="card-btn">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/phone -->
-
-                            Profile
+                            پروفایل
                         </a>
                     </div>
                 </div>

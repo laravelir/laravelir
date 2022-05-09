@@ -123,6 +123,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="ribbon bg-red">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                <!-- SVG icon code -->
+                              </div>
                         </div>
                     </div>
                 @empty

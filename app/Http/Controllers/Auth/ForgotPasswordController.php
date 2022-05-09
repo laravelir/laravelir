@@ -39,7 +39,6 @@ class ForgotPasswordController extends Controller
 
     public function forgotPasswordEmail(Request $request)
     {
-        // dd("ss");
         $request->validate([
             'email' => 'required|email',
         ]);

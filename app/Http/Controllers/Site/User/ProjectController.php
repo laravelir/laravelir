@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Site\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Project;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
 
-class UserController extends Controller
+class ProjectController extends Controller
 {
     public function index()
     {
@@ -23,12 +23,12 @@ class UserController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        $users = User::latest()->paginate(18);
+        $projects = Project::latest()->paginate(18);
 
-        return view('site.users.index', compact('users'));
+        return view('site.projects.index', compact('projects'));
     }
 
-    public function show(User $user)
+    public function show(Project $project)
     {
         SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
         SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
@@ -37,6 +37,6 @@ class UserController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        return view('site.users.profile', compact('user'));
+        return view('site.projects.profile', compact('project'));
     }
 }
