@@ -6,9 +6,11 @@ use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\PodcastController;
 use App\Http\Controllers\Site\User\UserController;
 use App\Http\Controllers\Site\DiscussionController;
+use App\Http\Controllers\Site\ProjectController;
 
 Route::group(['as' => 'site.'], function () {
     Route::get('', [SiteController::class, 'index'])->name('index');
+    Route::get('/faqs', [SiteController::class, 'faqs'])->name('pages.faqs');
     Route::get('/contact', [SiteController::class, 'contactUs'])->name('contact-us');
     Route::post('/contact', [SiteController::class, 'contactUsStore'])->name('contact-us.store');
     Route::get('/jobs', [SiteController::class, 'jobRequest'])->name('jobs.request');
@@ -18,7 +20,8 @@ Route::group(['as' => 'site.'], function () {
     Route::get('/pricing', [SiteController::class, 'pricingPage'])->name('pricing');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-    Route::get('/packages', [SiteController::class, 'packagesPage'])->name('pages.packages');
+    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
     Route::get('/podcasts', [PodcastController::class, 'index'])->name('podcasts.index');
     Route::get('/podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');

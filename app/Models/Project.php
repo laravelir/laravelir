@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\HasUUID;
-use App\Enum\ContentToneEnum;
-use App\Traits\RouteKeyNameUUID;
+
 use Illuminate\Support\Facades\DB;
 use App\Enum\ContentOrderStatusEnum;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
+use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
@@ -31,11 +31,6 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function freelancer()
-    {
-        return $this->belongsTo(Freelancer::class);
     }
 
     public function category()
@@ -94,21 +89,6 @@ class Project extends Model
         return !!$this->attachment_file;
     }
 
-    public function getDeliveryTime()
-    {
-        if ($this->count === 1 || $this->count <= 5) {
-            return '۱ تا ۳ روز کاری';
-        } else if ($this->count === 6 || $this->count <= 10) {
-            return '۳ تا ۵ روز کاری';
-        } else if ($this->count === 11 || $this->count <= 20) {
-            return '۶ تا ۱۱ روز کاری';
-        } else if ($this->count === 21 || $this->count <= 40) {
-            return '۱۲ تا ۲۰ روز کاری';
-        } else if ($this->count === 41 || $this->count <= 100) {
-            return '۲۰ تا ۳۰ روز کاری';
-        }
-    }
-
     public function status($locale = 'fa')
     {
         switch ($this->status) {
@@ -136,6 +116,21 @@ class Project extends Model
                 'customer_approved' => true,
             ])->count() == $this->count;
         }
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 
 }

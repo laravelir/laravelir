@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Artisan;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
@@ -60,20 +61,6 @@ class SiteController extends Controller
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
         return view('site.pages.contact-us');
-    }
-
-
-    public function packagesPage()
-    {
-        SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
-        SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
-        OpenGraph::addProperty('type', 'website');
-        JsonLd::addImage(asset("/statics/shared/images/logo.png"));
-        OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
-        TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
-
-        $packages = Package::active()->orderBy('order')->get();
-        return view('site.pages.landing.dm-packages', compact('packages'));
     }
 
     public function pricingPage()
