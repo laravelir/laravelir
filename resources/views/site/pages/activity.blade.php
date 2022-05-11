@@ -1,3 +1,14 @@
+@extends('site.layouts.master')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">توسعه دهنگان</a></li>
+    {{-- <li class="breadcrumb-item active"><a href="#">توسعه دهنگان</a></li> --}}
+@endsection
+
+
+@section('content')
+
+@endsection
 <div class="row justify-content-center">
     <div class="col-8">
         <div class="card">

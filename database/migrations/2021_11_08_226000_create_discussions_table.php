@@ -20,6 +20,7 @@ class CreateDiscussionsTable extends Migration
             $table->uuid('uuid')->unique();
             $table->morphs('discussionable');
             $table->foreignId('parent_id')->default(0);
+            $table->foreignId('category_id')->default(0);
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('body');

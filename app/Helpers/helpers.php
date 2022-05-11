@@ -2,21 +2,22 @@
 
 use App\Models\User;
 use App\Models\Addons;
+use App\Models\Project;
 use App\Enum\GradesEnum;
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\Language;
 use App\Enum\AgesTypeEnum;
-use App\Enum\ContentOrderStatusEnum;
 use App\Enum\CurrencyEnum;
 use App\Models\Freelancer;
 use App\Enum\ProjectDoTypeEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use App\Enum\ContentOrderStatusEnum;
 use App\Enum\PackageOrderStatusEnum;
+use Illuminate\Support\Facades\Route;
 use App\Enum\ReportageOrderStatusEnum;
 use App\Enum\SeoProjectTechnologyEnum;
-use App\Models\Discount;
-use App\Models\Project;
 use Illuminate\Support\Facades\Session;
 
 function getLanguage($id)
@@ -27,6 +28,11 @@ function getLanguage($id)
 function getCategory($id)
 {
     return Category::find($id);
+}
+
+function getTag($id)
+{
+    return \App\Models\Tag::findOrFail($id);
 }
 
 function getFreelancer($id)
@@ -332,6 +338,18 @@ function getContentOrder($id)
     return DB::table('content_order_reportage_selected')->where([
         'reportage_ordered_id' => $id
     ])->first();
+}
+
+
+
+if (!function_exists('isActive')) {
+    function isActive($key, $class = 'active')
+    {
+        if (is_array($key)) {
+            return in_array(Route::currentRouteName(), $key) ? $class : '';
+        }
+        return Route::currentRouteName() == $key ? $class : '';
+    }
 }
 
 function hasPaymentFactor($payment_id)

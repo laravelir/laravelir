@@ -17,7 +17,9 @@ class Tag extends Model
 
     protected $table = 'tags';
 
-    protected $fillable = ['title', 'active', 'uuid', 'slug'];
+    // protected $fillable = ['title', 'active', 'uuid', 'slug'];
+
+    protected $guarded = [];
 
     // protected static function booted()
     // {

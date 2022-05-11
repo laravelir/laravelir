@@ -18,11 +18,11 @@ class CreateProjectsTable extends Migration
             $table->uuid('uuid')->unique();
             $table->foreignId('user_id');
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->unsignedFloat('order');
             $table->string('main_keyword');
             $table->string('link')->nullable();
-            $table->string('rate')->nullable();
+            $table->float('rate')->nullable();
             $table->char('type');
             $table->char('status')->default('n');
             $table->boolean('approved')->default(false);

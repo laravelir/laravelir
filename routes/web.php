@@ -38,9 +38,11 @@ Route::group(['as' => 'site.'], function () {
 Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'auth'], function () {
 
     Route::get('/', [AccountController::class, 'index'])->name('index');
-
-
-    // Route::get('/', [AccountController::class, 'index'])->name('index');
+    Route::get('/edit', [AccountController::class, 'editForm'])->name('edit.form');
+    Route::put('/edit', [AccountController::class, 'edit'])->name('edit');
+    Route::get('/password/change', [AccountController::class, 'passwordChangeForm'])->name('password.change.form');
+    Route::post('/password/change', [AccountController::class, 'passwordChange'])->name('password.change');
+    Route::get('/favorites', [AccountController::class, 'editForm'])->name('favorites.index');
 
     Route::resources([
         'discussions' => DiscussionController::class,

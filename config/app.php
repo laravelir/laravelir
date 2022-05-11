@@ -185,6 +185,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
+        App\Providers\MacroableServiceProvider::class,
 
     ],
 

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Discuss;
 use App\Models\Tag;
+use App\Models\Discuss;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Illuminate\Support\Facades\Response;
 use Artesaos\SEOTools\Facades\TwitterCard;
+use App\Http\Requests\Site\User\DiscussRequest;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 
@@ -52,6 +55,24 @@ class DiscussionController extends Controller
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
         return view('site.discussions.show', compact('discuss'));
+    }
+
+    public function store(DiscussRequest $request)
+    {
+        // dd($request->all());
+        DB::transaction(function () use ($request) {
+            $discuss = user()->discussions()->create($request->only(['title', 'category_id', 'body']));
+            $tags = collect($request->tags);
+            $tags->each(function ($i) use ($discuss){
+               DB::table('taggables')->insert([
+                'tag_id' => $i,
+                'taggable_id' => $discuss->id,
+                'taggable_type' => get_class($discuss),
+               ]);
+            });
+        });
+
+        return Response::success('site.discussions.index', 'گفتگو با موفقیت ثبت شد.');
     }
 
     public function delete(Discuss $discuss)

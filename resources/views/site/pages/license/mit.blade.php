@@ -1,3 +1,11 @@
+@extends('site.layouts.master')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">توسعه دهنگان</a></li>
+    {{-- <li class="breadcrumb-item active"><a href="#">توسعه دهنگان</a></li> --}}
+@endsection
+
+@section('content')
 <div class="page-wrapper">
     <div class="container-xl">
       <!-- Page title -->
@@ -104,3 +112,5 @@
         </div>
       </div>
     </div>
+
+@endsection

@@ -21,10 +21,6 @@ class CreateFaqsTable extends Migration
             $table->string('answer')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
-
-            $table->foreign('group_id')
-                ->references('id')->on('faq_groups')
-                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

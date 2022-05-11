@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Miladimos\Toolkit\Traits\HasUUID;
 use Miladimos\Toolkit\Traits\RouteKeyNameUUID;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\DB;
 
 class Discuss extends Model
 {
@@ -37,10 +38,9 @@ class Discuss extends Model
         return $this->hasOne(Discuss::class, 'id', 'parent_id')->withDefault(['title' => '---']);
     }
 
-
     public function category()
     {
-        return $this->hasOne(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function children()
@@ -50,7 +50,11 @@ class Discuss extends Model
 
     public function tags()
     {
-        return $this->morphedByMany(Tag::class, 'taggable');
+        // return $this->morphedByMany(Tag::class, 'taggable');
+        return DB::table('taggables')->where([
+            'taggable_id' => $this->id,
+            'taggable_type' => Discuss::class,
+        ])->pluck('tag_id');
     }
 
     public function hasTag($tagId)

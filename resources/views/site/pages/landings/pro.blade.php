@@ -2,6 +2,10 @@
 
 @section('page-title')
 @endsection
+@section('breadcrumb')
+    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">توسعه دهنگان</a></li>
+    {{-- <li class="breadcrumb-item active"><a href="#">توسعه دهنگان</a></li> --}}
+@endsection
 
 @section('content')
     <div class="row row-cards">

@@ -24,8 +24,10 @@ class DiscussRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:discussions,title',
-            'body' => 'required|min:10',
+            'title' => 'required|min:8',
+            'body' => 'required|min:30',
+            'tags' => 'required',
+            'category_id' => 'required',
         ];
     }
 }

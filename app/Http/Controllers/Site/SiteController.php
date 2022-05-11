@@ -6,6 +6,8 @@ use App\Models\Package;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\FaqGroup;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Artisan;
@@ -107,7 +109,8 @@ class SiteController extends Controller
 
     public function faqs()
     {
-        return view('site.pages.faqs');
+        $groups = FaqGroup::latest()->get();
+        return view('site.pages.faqs', compact('groups'));
     }
 
     public function down()

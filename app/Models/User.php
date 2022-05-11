@@ -92,6 +92,11 @@ class User extends Authenticatable
         return $this->morphMany(Ticket::class, 'ticketable');
     }
 
+    public function discussions()
+    {
+        return $this->morphMany(Discuss::class, 'discussionable');
+    }
+
     public function discounts()
     {
         return $this->morphedByMany(Discount::class, 'discountable', 'discountables');
@@ -107,10 +112,6 @@ class User extends Authenticatable
         return $this->hasMany(Package::class);
     }
 
-    public function discussions()
-    {
-        return $this->hasMany(Discuss::class);
-    }
 
     public function isAdmin()
     {

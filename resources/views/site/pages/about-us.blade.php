@@ -4,6 +4,12 @@
 
 @endsection
 
+@section('breadcrumb')
+    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">توسعه دهنگان</a></li>
+    {{-- <li class="breadcrumb-item active"><a href="#">توسعه دهنگان</a></li> --}}
+@endsection
+
+
 @section('content')
 <div class="col-lg-9 mx-auto">
     <div class="card card-lg">

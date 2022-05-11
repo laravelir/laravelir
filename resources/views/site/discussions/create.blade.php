@@ -6,20 +6,23 @@
 
 @section('page-title')
     <div class="">
-        گفتگو ها
-        <p class="text-muted mt-1" style="font-size: .7rem !important;">ثبت گفت</p>
+        ثبت گفتگو جدید
+        {{-- <p class="text-muted mt-1" style="font-size: .7rem !important;">ثبت گفت</p> --}}
     </div>
 @endsection
 
 @section('breadcrumb')
-    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
-    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+    <li class="breadcrumb-item "><a href="{{ route('site.discussions.index') }}">گفتگو ها</a></li>
+    <li class="breadcrumb-item active"><a href="#">ثبت گفتگو جدید</a></li>
 @endsection
 
 @section('styles')
     <!-- Theme included stylesheets -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     {{-- <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"> --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.2/dist/css/tom-select.css" rel="stylesheet">
+
 
     <style>
         .editor-container {
@@ -30,11 +33,13 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.2/dist/js/tom-select.complete.min.js"></script>
+
     <!-- Main Quill library -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <script>
-        var editor = new Quill('#editor-description', {
+        var editor = new Quill('#editor-body', {
             modules: {
                 toolbar: [
 
@@ -56,10 +61,25 @@
         editor.format('direction', 'rtl');
         editor.format('align', 'right');
 
-        var description = document.getElementById('description');
+        var body = document.getElementById('body');
 
         editor.on('text-change', function() {
-            description.value = editor.root.innerHTML;
+            body.value = editor.root.innerHTML;
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            new TomSelect("#tom-select", {
+                create: true,
+                sortField: {
+                    field: "text",
+                    direction: "asc"
+                }
+            });
+
+            new TomSelect("#tom-tags", {
+                maxItems: 5
+            });
         });
     </script>
 @endsection
@@ -87,7 +107,7 @@
 
 @section('content')
     <div class="row g-4">
-        <div class="col-3">
+        {{-- <div class="col-3 d-none">
             <form action="" method="get">
                 <div class="subheader mb-2">دسته بندی ها</div>
                 <div class="list-group list-group-transparent mb-3">
@@ -134,24 +154,24 @@
                     </a>
                 </div>
             </form>
-        </div>
-        <div class="col-md-9">
+        </div> --}}
+        <div class="col-md-9 mx-auto">
             <div class="card my-3 shadow-sm">
                 <div class="card-header">
                     <div>
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <span class="avatar"
-                                    style="background-image: url(https://picsum.photos/536/354)"></span>
+                                    style="background-image: url({{ user()->avatar }})"></span>
                             </div>
                             <div class="col">
-                                <div class="card-title">کاربر حرفه ای</div>
-                                <div class="card-subtitle" style="font-size: .8rem !important;"><a href="">username@</a>
+                                <div class="card-title">{{ user()->full_name }}</div>
+                                <div class="card-subtitle" style="font-size: .8rem !important;"><a href="">{{ user()->username }}@</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-actions btn-actions ">
+                    <div class="card-actions btn-actions d-none">
                         <div class="d-flex align-items-center align-baseline">
                             <span class="text-muted" style="font-size: .7rem !important;">10</span>
                             <a href="#" class="" title="تعداد پاسخ ها">
@@ -203,8 +223,8 @@
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="editor-escription">متن پیام</label>
-                                    <input type="hidden" name="description" id="description">
-                                    <div id="editor-description" class="editor-container"></div>
+                                    <input type="hidden" name="body" id="body">
+                                    <div id="editor-body" class="editor-container"></div>
                                 </div>
                             </div>
                         </div>
@@ -213,25 +233,25 @@
                                 <div class="mb-4">
                                     <label class="form-label">دسته بندی </label>
                                     <select type="text" class="form-select" placeholder="دسته بندی  را انتخاب کنید"
-                                        id="category_id" name="category_id" required>
+                                        id="tom-select" name="category_id" required>
+                                        <option value="0">دسته بندی مورد نظر را انتخاب کنید.</option>
                                         @foreach ($categories as $item)
-                                            <option value="{{ $item->id }}"> {{ $item->title }}</option>
+                                            <option value="{{ $item->id }}"> {{ $item->title }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div>
-                                    <label class="row">
-                                        <span class="col">ایمیل و موبایل کاربر فعال شده باشد</span>
-                                        <span class="col-auto">
-                                            <label class="form-check form-check-single form-switch">
-                                                <input class="form-check-input" type="checkbox" name="active" checked>
-                                            </label>
-                                        </span>
-                                    </label>
+                            <div class="col-7">
+                                <div class="mb-4">
+                                    <label class="form-label">برچسب های مرتبط </label>
+                                    <select type="text" class="form-select" placeholder="برچسب های مرتبط  را انتخاب کنید"
+                                        id="tom-tags" name="tags[]" multiple required>
+                                        @foreach ($tags as $item)
+                                            <option value="{{ $item->id }}"> {{ $item->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
