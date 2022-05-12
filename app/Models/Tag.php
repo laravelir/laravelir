@@ -49,7 +49,7 @@ class Tag extends Model
 
     public function path()
     {
-        return "/tags/$this->uuid";
+        return "/tags/$this->slug";
     }
 
     public function url()

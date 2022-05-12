@@ -71,7 +71,7 @@
                                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                                     <path d="M16 11h6m-3 -3v6" />
                                 </svg>
-                                Follow
+                                دنبال کردن
                             </a>
                             {{-- <a href="#" class="btn btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-minus"
@@ -109,7 +109,7 @@
                             گفتگو
                         </a>
                         <a href="#" class="card-btn">
-                            پروفایل
+                            پروژه ها
                         </a>
                     </div>
                 </div>

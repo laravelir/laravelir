@@ -18,30 +18,33 @@
 
 @section('btn-list')
     <div class="col-auto ms-auto d-print-none">
-        <div class="d-flex">
-            {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
-            <a href="{{ route('site.discussions.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
-                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-                ثبت گفتگو جدید
-            </a>
-            <a href="{{ route('site.discussions.create') }}" class="btn btn-primary d-sm-none btn-icon"
-                aria-label="ثبت گفتگو جدید">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        @auth
+            <div class="d-flex">
+                {{-- data-bs-toggle="modal data-bs-target="#modal-new" --}}
+                <a href="{{ route('site.discussions.create') }}" class="btn btn-primary d-none d-sm-inline-block" " >
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-            </a>
-        </div>
+                    </svg>
+                    ثبت گفتگو جدید
+                </a>
+                <a href="{{ route('site.discussions.create') }}" class="btn btn-primary d-sm-none btn-icon"
+                    aria-label="ثبت گفتگو جدید">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                </a>
+            </div>
+
+        @endauth
     </div>
 @endsection
 
@@ -116,7 +119,7 @@
                             <div class="d-flex align-items-center align-baseline">
                                 <span class="text-muted"
                                     style="font-size: .7rem !important;">{{ $item->children()->count() }}</span>
-                                <a href="#" class="" title="تعداد پاسخ ها">
+                                <span class="" title="تعداد پاسخ ها">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-message-circle" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -127,12 +130,12 @@
                                         <line x1="8" y1="12" x2="8" y2="12.01"></line>
                                         <line x1="16" y1="12" x2="16" y2="12.01"></line>
                                     </svg>
-                                </a>
+                                </span>
                             </div>
                             <div class="d-flex align-items-center align-baseline mx-1">
                                 <span class="text-muted"
                                     style="font-size: .7rem !important;">{{ $item->view_count }}</span>
-                                <a href="#" class="">
+                                <span class="">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -142,10 +145,10 @@
                                             d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7">
                                         </path>
                                     </svg>
-                                </a>
+                                </span>
                             </div>
                             <div class="d-flex align-items-center align-baseline mx-1">
-                                <a href=""><span
+                                <a href="{{ $item->category->url() }}"><span
                                         class="badge badge-outline text-purple">{{ $item->category->title }}</span></a>
                             </div>
                         </div>
@@ -157,11 +160,11 @@
                             <div>
                                 <div class="form-selectgroup">
                                     @foreach ($item->tags() as $item)
-                                       <a href="{{ getTag($item)->url() }}">
-                                        <label class="form-selectgroup-item">
-                                            <span class="form-selectgroup-label">{{ getTag($item)->title }}</span>
-                                        </label>
-                                       </a>
+                                        <a href="{{ getTag($item)->url() }}">
+                                            <label class="form-selectgroup-item">
+                                                <span class="form-selectgroup-label">{{ getTag($item)->title }}</span>
+                                            </label>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>

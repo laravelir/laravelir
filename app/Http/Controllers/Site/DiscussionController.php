@@ -45,7 +45,7 @@ class DiscussionController extends Controller
         return view('site.discussions.create', compact('tags', 'categories'));
     }
 
-    public function show(Discuss $discuss)
+    public function show($slug)
     {
         SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
         SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
@@ -54,6 +54,7 @@ class DiscussionController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
+        $discuss = Discuss::where('slug', $slug)->first();
         return view('site.discussions.show', compact('discuss'));
     }
 

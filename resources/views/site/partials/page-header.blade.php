@@ -10,7 +10,7 @@
                         @yield('breadcrumb')
                     </ol>
                 </div>
-                <div class="page-title">
+                <div class="page-title my-3">
                     @yield('page-title')
                 </div>
             </div>
