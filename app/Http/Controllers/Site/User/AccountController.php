@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Site\User;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Support\Facades\Response;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 class AccountController extends Controller
 {

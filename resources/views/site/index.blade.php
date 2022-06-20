@@ -25,6 +25,101 @@
                     <div class="row g-2 d-flex align-items-center justify-content-between">
                         <div class="col">
                             <h2 class="page-title">
+                                پست ها
+                            </h2>
+                            <div class="text-muted mt-1">{{ $posts->count() }} پست</div>
+                        </div>
+                        <!-- Page title actions -->
+                        <div class="col col-md-auto ms-auto d-print-none">
+                            <div class="d-flex">
+                                <a href="{{ route('site.posts.index') }}" class="btn btn-primary">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <line x1="12" y1="5" x2="12" y2="19" />
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                    </svg>
+                                    همه پست ها
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row row-cards my-3">
+                    @forelse ($posts as $item)
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card card-sm">
+                            <a href="{{ $item->url() }}" class="d-block"><img src="{{ $item->thumbnail }}"
+                                    class="card-img-top"></a>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        {{-- <a href="{{ $item->url() }}"><span class="avatar me-3 rounded"
+                                                style="background-image: url({{ $item->thumbnail }})"></span></a> --}}
+                                        <div>
+                                            <div><a href="{{ $item->url() }}" class="text-reset">{{ $item->title }}</a></div>
+                                            <div class="d-flex justify-content-center">
+                                                <div class="">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-eye" width="20" height="20"
+                                                        viewBox="0 0 30 30" stroke-width="1.5" stroke="#000000" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <circle cx="12" cy="12" r="2" />
+                                                        <path
+                                                            d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                                                    </svg>
+                                                    <span class="text-muted"
+                                                        style="font-size: .7rem !important;">{{ $item->view_count }}</span>
+                                                </div>
+                                                <div class="">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-message-2" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="2" stroke="#000000"
+                                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M12 20l-3 -3h-2a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-2l-3 3" />
+                                                        <line x1="8" y1="9" x2="16" y2="9" />
+                                                        <line x1="8" y1="13" x2="14" y2="13" />
+                                                    </svg>
+                                                    <span class="text-muted"
+                                                        style="font-size: .7rem !important;">{{ $item->view_count }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex  flex-column">
+                                        <div class="badge badge-outline bg-lime-lt mb-1"
+                                            style="font-size: .7rem !important;">{{ $item->type() }}</div>
+                                        <div class="text-muted" style="font-size: .7rem !important;">زمان مطالعه: 5
+                                            دقیقه</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <x-alert type='' level='warning' message='هنوز پستی ثبت نشده است.'></x-alert>
+                @endforelse
+
+                </div>
+
+            </div>
+        </div>
+
+
+        {{-- <div>
+            <div class="col-12">
+                <div class="page-header d-print-none">
+                    <div class="row g-2 d-flex align-items-center justify-content-between">
+                        <div class="col">
+                            <h2 class="page-title">
                                 پروژه ها
                             </h2>
                             <div class="text-muted mt-1">1-12 of 241 پروژه</div>
@@ -146,7 +241,8 @@
                 </div>
 
             </div>
-        </div>
+        </div> --}}
+
 
 
 
@@ -173,28 +269,23 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-10">
-                            <h3 class="h1">Tabler Icons</h3>
-                            <div class="markdown text-muted">
-                                All icons come from the Tabler Icons set and are MIT-licensed. Visit
-                                <a href="https://tabler-icons.io" target="_blank" rel="noopener">tabler-icons.io</a>,
-                                download any of the 1518 icons in SVG, PNG or&nbsp;React and use them in
-                                your favourite design tools.
-                            </div>
+                            <h3 class="h1">جامعه توسعه دهنگان لاراول</h3>
+                            <div class="markdown text-muted">مکانی برای اشتراک گذاری پروژه ه و تجربه و سوالات توسعه دهنگان لاراول</div>
                             <div class="mt-3">
-                                <a href="https://tabler-icons.io" class="btn btn-primary" target="_blank"
-                                    rel="noopener">Download icons</a>
+                                <a href="{{ route('auth.login.form') }}" class="btn btn-primary" target="_blank"
+                                    rel="noopener">ورود</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        {{-- <div class="col-md-6 col-lg-4">
             <a href="https://laravelir.ir/sponsors" class="card card-sponsor" target="_blank" rel="noopener"
                 style="background-image: url({{ asset('/statics/shared/images/sponsor-banner-homepage.svg') }})"
                 aria-label="Sponsor Tabler!">
                 <div class="card-body"></div>
             </a>
-        </div>
+        </div> --}}
     </div>
 @endsection

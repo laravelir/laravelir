@@ -6,8 +6,8 @@ use App\Models\Package;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
 use App\Models\FaqGroup;
+use App\Models\Post;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Artisan;
@@ -26,7 +26,8 @@ class SiteController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
-        return view('site.index');
+        $posts = Post::active()->latest()->get();
+        return view('site.index', compact('posts'));
     }
 
     public function changelog()

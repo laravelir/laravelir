@@ -210,7 +210,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('site.projects.index') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
@@ -226,7 +226,7 @@
                                 پروژه ها
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('site.posts.index') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">

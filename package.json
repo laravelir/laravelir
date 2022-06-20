@@ -20,6 +20,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "@tabler/core": "^1.0.0-beta9",
         "alpinejs": "^3.10.2",
         "tom-select": "^2.0.2"
     }
