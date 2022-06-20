@@ -2,7 +2,7 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('webmaster.categories.index') }}">دسته بندیان</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.categories.index') }}">دسته بندی ها</a></li>
     <li class="breadcrumb-item"><a href="#">نمایش دسته بندی</a></li>
 @endsection
 

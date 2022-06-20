@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->string('description', 300)->unique();
             $table->text('body');
             $table->unsignedBigInteger('view_count')->default(0);
             $table->timestamp('approved_at')->nullable();

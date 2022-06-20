@@ -38,6 +38,27 @@ class PostController extends Controller
         return view('webmaster.content.posts.create', compact('authors', 'categories', 'tags'));
     }
 
+    public function store(Request $request)
+    {
+        $post = Post::create(array_merge(
+            $request->except(['active', 'thumbnail_path', 'tags']),
+            ['active' => $request->has('active') ? true : false,]
+        ));
+
+        $tags = collect($request->tags);
+        $tags->each(function ($i) use ($post){
+           DB::table('taggables')->insert([
+            'tag_id' => $i,
+            'taggable_id' => $post->id,
+            'taggable_type' => get_class($post),
+           ]);
+        });
+
+
+
+        return redirect()->route('webmaster.posts.index')->with('toast_success', __('messages.posts.created'));
+    }
+
     public function show(Post $post)
     {
         return view('webmaster.content.posts.show', compact('post'));

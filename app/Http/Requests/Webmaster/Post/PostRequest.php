@@ -25,16 +25,16 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:posts,title|min:10|max:255',
-            'description' => 'required|string|min:10|max:255',
+            // 'description' => 'required|string|min:10|max:255',
             'body' => 'required|string',
             'thumbnail_path' => 'required',
             'images' => 'nullable',
-            'parent_id' => 'nullable',
+            'category_id' => 'nullable',
             'author_id' => 'nullable',
-            'imauthor' => 'nullable',
             'attachments' => 'nullable',
+            'type' => 'nullable',
             'tags' => 'nullable',
-            'categories' => 'nullable',
+            'active' => 'nullable',
         ];
     }
 }

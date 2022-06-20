@@ -18,6 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Laravelir | @yield('title') </title>
     <!-- CSS files -->
+    <link rel="shortcut icon" href="{{ asset('/public/statics/shared/images/laravel-logo.png') }}" type="image/x-icon">
     <link href="{{ asset('/statics/shared/dist/css/tabler.rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/statics/shared/dist/css/tabler-flags.rtl.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/statics/shared/dist/css/tabler-payments.rtl.min.css') }}" rel="stylesheet" />

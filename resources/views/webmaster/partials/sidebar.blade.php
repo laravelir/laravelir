@@ -349,7 +349,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="dropend">
+                                {{-- <div class="dropend">
                                     <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
                                         data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
                                         aria-expanded="false">
@@ -378,7 +378,7 @@
                                             در انتظار تایید
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -413,7 +413,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -448,8 +448,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li> --}}
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -478,8 +478,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li> --}}
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -517,7 +517,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
@@ -541,9 +541,9 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="{{ route('webmaster.skills.index') }}">
+                                {{-- <a class="dropdown-item" href="{{ route('webmaster.skills.index') }}">
                                     مهارت ها
-                                </a>
+                                </a> --}}
                                 <a class="dropdown-item" href="{{ route('webmaster.acquaints.index') }}">
                                     نحوه آشنایی با ما
                                 </a>
@@ -581,7 +581,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -625,7 +625,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="./changelog.html">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">

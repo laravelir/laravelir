@@ -27,6 +27,7 @@ use App\Http\Controllers\Webmaster\Achievement\AchievementController;
 use App\Http\Controllers\Webmaster\Content\Podcast\PodcastController;
 use App\Http\Controllers\Webmaster\Acl\Permission\PermissionController;
 use App\Http\Controllers\Webmaster\Content\Category\CategoryController;
+use App\Http\Controllers\Webmaster\Discussion\DiscussionController;
 use App\Http\Controllers\Webmaster\Miscellaneous\Faq\FaqGroupController;
 use App\Http\Controllers\Webmaster\Miscellaneous\AcquaintedUs\AcquaintedUsController;
 
@@ -81,7 +82,7 @@ Route::group(['prefix' => 'webmaster', 'as' => 'webmaster.', 'middleware' => []]
         'categories' => CategoryController::class,
         'subjects' => TicketSubjectController::class,
         'discounts' => DiscountController::class,
-        'discussions' => DiscountController::class,
+        'discussions' => DiscussionController::class,
         'comments' => CommentController::class,
         'countries' => CountryController::class,
         'provinces' => ProvinceController::class,

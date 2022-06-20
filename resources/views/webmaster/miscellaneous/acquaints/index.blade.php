@@ -19,9 +19,9 @@
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
-        ثبت کاربر جدید
+        ثبت نحوه آشنایی با ما جدید
     </a>
-    <a href="{{ route('webmaster.acquaints.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت کاربر جدید">
+    <a href="{{ route('webmaster.acquaints.create') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="ثبت نحوه آشنایی با ما جدید">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -105,7 +105,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">کاربر جدید</h5>
+                    <h5 class="modal-title">نحوه آشنایی با ما جدید</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('webmaster.acquaints.store') }}" method="post" enctype="multipart/form-data">
@@ -155,7 +155,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">کاربر ادمین باشد.</span>
+                                        <span class="col">نحوه آشنایی با ما ادمین باشد.</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>
@@ -169,7 +169,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label class="row">
-                                        <span class="col">ثبت شدن را به کاربر اطلاع بده (ایمیل)</span>
+                                        <span class="col">ثبت شدن را به نحوه آشنایی با ما اطلاع بده (ایمیل)</span>
                                         <span class="col-auto">
                                             <label class="form-check form-check-single form-switch">
                                                 <input class="form-check-input" type="checkbox" checked>

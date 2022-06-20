@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\HasUUID;
+use Miladimos\Toolkit\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model

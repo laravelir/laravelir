@@ -74,15 +74,15 @@
                 @forelse ($posts as $item)
                     <div class="col-sm-6 col-lg-4">
                         <div class="card card-sm">
-                            <a href="" class="d-block"><img src="https://picsum.photos/536/354"
+                            <a href="{{ $item->url() }}" class="d-block"><img src="{{ $item->thumbnail }}"
                                     class="card-img-top"></a>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <a href=""><span class="avatar me-3 rounded"
-                                                style="background-image: url(https://picsum.photos/536/354)"></span></a>
+                                        {{-- <a href="{{ $item->url() }}"><span class="avatar me-3 rounded"
+                                                style="background-image: url({{ $item->thumbnail }})"></span></a> --}}
                                         <div>
-                                            <div><a href="" class="text-reset">Paweł Kuna</a></div>
+                                            <div><a href="{{ $item->url() }}" class="text-reset">{{ $item->title }}</a></div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@
                                                             d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
                                                     </svg>
                                                     <span class="text-muted"
-                                                        style="font-size: .7rem !important;">10</span>
+                                                        style="font-size: .7rem !important;">{{ $item->view_count }}</span>
                                                 </div>
                                                 <div class="">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -109,15 +109,14 @@
                                                         <line x1="8" y1="13" x2="14" y2="13" />
                                                     </svg>
                                                     <span class="text-muted"
-                                                        style="font-size: .7rem !important;">10</span>
+                                                        style="font-size: .7rem !important;">{{ $item->view_count }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-flex  flex-column">
                                         <div class="badge badge-outline bg-lime-lt mb-1"
-                                            style="font-size: .7rem !important;">
-                                            پکیج</div>
+                                            style="font-size: .7rem !important;">{{ $item->type() }}</div>
                                         <div class="text-muted" style="font-size: .7rem !important;">زمان مطالعه: 5
                                             دقیقه</div>
                                     </div>

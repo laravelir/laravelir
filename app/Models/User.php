@@ -155,7 +155,6 @@ class User extends Authenticatable
         return !!$this->isEmailActivated();
     }
 
-
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

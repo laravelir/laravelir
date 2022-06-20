@@ -37,6 +37,7 @@ class PostController extends Controller
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
+        $post->increment('view_count');
         return view('site.content.posts.show', compact('post'));
     }
 }

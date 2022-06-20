@@ -56,13 +56,13 @@
                                     <div class="text-muted">{{ $posts->firstItem() + $key }}</div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->title }}</div>
+                                    <div><a href="{{ $value->url() }}">{{ $value->title }}</a></div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->type }}</div>
+                                    <div>{{ $value->type() }}</div>
                                 </td>
                                 <td>
-                                    <div>{{ $value->category->title }}</div>
+                                    <div>{{ $value->category()->title }}</div>
                                 </td>
                                 <td>
                                     @if ($value->active)

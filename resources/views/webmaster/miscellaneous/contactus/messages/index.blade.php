@@ -95,7 +95,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-alert type='' level='warning' message='تا کنون هیچ پیام تماس با مای ثبت نشده است.'></x-alert>
+                            <x-alert type='' level='warning' message='تا کنون هیچ پیام تماس با ما ثبت نشده است.'></x-alert>
                         @endforelse
                     </tbody>
                 </table>

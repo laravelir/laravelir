@@ -1,25 +1,20 @@
 @extends('webmaster.layouts.master')
 
 @section('breadcrumb')
-<li class="breadcrumb-item"><a href="{{ route('webmaster.categories.index') }}">دسته بندی ها</a></li>
-<li class="breadcrumb-item active"><a href="#">ثبت دسته بندی</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('webmaster.users.index') }}">کاربران</a></li>
+    <li class="breadcrumb-item active"><a href="#">تخصیص نقش به کاربر</a></li>
 @endsection
 
 @section('title')
-    ثبت دسته بندی
+    تخصیص نقش به کاربر
 @endsection
-
-@section('page-title')
-    ثبت دسته بندی
-@endsection
-
 
 @section('scripts')
     <script src="{{ asset('/statics/shared/dist/libs/tom-select/dist/js/tom-select.base.min.js') }}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var el;
-            window.TomSelect && (new TomSelect(el = document.getElementById('parent_id'), {
+            window.TomSelect && (new TomSelect(el = document.getElementById('role_id'), {
                 copyClassesToDropdown: false,
                 dropdownClass: 'dropdown-menu',
                 optionClass: 'dropdown-item',
@@ -67,33 +62,29 @@
     </script>
 @endsection
 
+@section('page-title')
+    تخصیص نقش به کاربر
+@endsection
+
 @section('content')
     <div class="col-md-7 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ثبت دسته بندی</h3>
+                <h3 class="card-title">تخصیص نقش به کاربر</h3>
 
             </div>
             <div class="card-body">
                 @include('shared.errors')
 
-                <form action="{{ route('webmaster.categories.store') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('webmaster.roles.assign') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="row">
-                        <div class="col-5">
-                            <div class="form-group mb-3">
-                                <label class="form-label" for="title">نام</label>
-                                <input type="text" class="form-control " name="title" id="title"
-                                    value="{{ old('title') }}" required>
-                            </div>
-                        </div>
-                        <div class="col-5">
-                            <div class="mb-4">
-                                <label class="form-label">دسته بندی والد</label>
-                                <select type="text" class="form-select" placeholder="دسته بندی والد را انتخاب کنید"
-                                    id="parent_id" name="parent_id" required>
-                                    <option value="0" selected>بدون والد</option>
-                                    @foreach ($categories as $item)
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">نقش</label>
+                                <select type="text" class="form-select" placeholder="نقش را انتخاب کنید"
+                                    id="role_id" name="role_id" required>
+                                    @foreach ($roles as $item)
                                         <option value="{{ $item->id }}"
                                             data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->logo_path }}&quot; &gt;&lt;/&gt;">
                                             {{ $item->title }}</option>
@@ -101,21 +92,28 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-6">
                             <div class="mb-3">
-                                <label class="form-label">رنگ دسته بندی</label>
-                                <input type="color" class="form-control form-control-color" title="رنگ شاخص دسته بندی را انتخاب کنید" name="color_hex">
+                                <label class="form-label">کاربر</label>
+                                <select type="text" class="form-select" placeholder="کاربر را انتخاب کنید"
+                                    id="user_id" name="user_id" required>
+                                    @foreach ($users as $item)
+                                        <option value="{{ $item->id }}"
+                                            data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->avatar }}&quot; &gt;&lt;/&gt;">
+                                            {{ $item->label }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div>
                                 <label class="row">
-                                    <span class="col"> دسته بندی فعال شده باشد</span>
+                                    <span class="col">تخصیص نقش به شدن را به کاربر اطلاع بده (ایمیل)</span>
                                     <span class="col-auto">
                                         <label class="form-check form-check-single form-switch">
-                                            <input class="form-check-input" type="checkbox" name="active" checked>
+                                            <input class="form-check-input" type="checkbox" name="notify_email">
                                         </label>
                                     </span>
                                 </label>
@@ -123,7 +121,7 @@
                         </div>
                     </div>
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-success">ثبت</button>
+                        <button type="submit" class="btn btn-success">تخصیص</button>
                     </div>
                 </form>
             </div>

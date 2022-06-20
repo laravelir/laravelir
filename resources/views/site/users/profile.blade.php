@@ -1,7 +1,7 @@
 @extends('site.layouts.master')
 
 @section('title')
-    توسعه دهندگان
+    {{ $user->username }}
 @endsection
 
 {{-- @section('page-title')
@@ -12,8 +12,8 @@
 @endsection --}}
 
 @section('breadcrumb')
-    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">پست ها</a></li>
-    <li class="breadcrumb-item active"><a href="#">پست خوب ما</a></li>
+    <li class="breadcrumb-item "><a href="{{ route('site.users.index') }}">توسعه دهندگان</a></li>
+    <li class="breadcrumb-item active"><a href="#">{{ $user->username }}</a></li>
 @endsection
 
 @section('btn-list')
@@ -34,40 +34,40 @@
 @endsection
 
 @section('content')
-<div class="page-header">
-    <div class="row align-items-center">
-      <div class="col-auto">
-        <span class="avatar avatar-md" style="background-image: url(...)"></span>
-      </div>
-      <div class="col">
-        <h2 class="page-title">Paweł Kuna</h2>
-        <div class="page-subtitle">
-          <div class="row">
+    <div class="page-header">
+        <div class="row align-items-center">
             <div class="col-auto">
-              <!-- Download SVG icon from http://tabler-icons.io/i/building-skyscraper -->
-              <!-- SVG icon code -->
-              <a href="#" class="text-reset">UI Designer at Tabler</a>
+                <span class="avatar avatar-md" style="background-image: url({{ $user->avatar }})"></span>
             </div>
-            <div class="col-auto">
-              <!-- Download SVG icon from http://tabler-icons.io/i/users -->
-              <!-- SVG icon code -->
-              <a href="#" class="text-reset">194 friends</a>
+            <div class="col">
+                <h2 class="page-title">{{ $user->username }}</h2>
+                <div class="page-subtitle">
+                    <div class="row">
+                        <div class="col-auto">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/building-skyscraper -->
+                            <!-- SVG icon code -->
+                            <a href="#" class="text-reset">UI Designer at Tabler</a>
+                        </div>
+                        <div class="col-auto">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/users -->
+                            <!-- SVG icon code -->
+                            <a href="#" class="text-reset">194 friends</a>
+                        </div>
+                        <div class="col-auto text-success">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/check -->
+                            <!-- SVG icon code with class="text-green" -->
+                            Verified
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-auto text-success">
-              <!-- Download SVG icon from http://tabler-icons.io/i/check -->
-              <!-- SVG icon code with class="text-green" -->
-              Verified
+            <div class="col-auto d-none d-md-flex">
+                <a href="#" class="btn btn-primary">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/message -->
+                    <!-- SVG icon code -->
+                    Send message
+                </a>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="col-auto d-none d-md-flex">
-        <a href="#" class="btn btn-primary">
-          <!-- Download SVG icon from http://tabler-icons.io/i/message -->
-          <!-- SVG icon code -->
-          Send message
-        </a>
-      </div>
     </div>
-  </div>
 @endsection

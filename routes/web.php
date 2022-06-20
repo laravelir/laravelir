@@ -29,7 +29,7 @@ Route::group(['as' => 'site.'], function () {
     Route::get('/podcasts/{podcast}', [PodcastController::class, 'show'])->name('podcasts.show');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/1', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
     Route::resource('discussions', DiscussionController::class)->only(['index', 'show', 'create', 'store']);
 });

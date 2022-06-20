@@ -23,7 +23,6 @@
         .editor-container {
             direction: rtl !important;
         }
-
     </style>
 @endsection
 
@@ -59,9 +58,6 @@
         editor.on('text-change', function() {
             body.value = editor.root.innerHTML;
         });
-
-
-
     </script>
 @endsection
 
@@ -81,19 +77,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
-                                <label class="form-label required" for="fname">عنوان</label>
-                                <input type="text" class="form-control " name="fname" id="fname"
-                                    value="{{ old('fname') }}" required>
+                                <label class="form-label required" for="title">عنوان</label>
+                                <input type="text" class="form-control " name="title" id="title"
+                                    value="{{ old('title') }}" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
                             <div class="mb-4">
-                                <label class="form-label required">دسته بندی والد</label>
-                                <select type="text" class="form-select" placeholder="دسته بندی والد را انتخاب کنید"
-                                    id="parent_id" name="parent_id" required>
-                                    <option value="0" selected>بدون والد</option>
+                                <label class="form-label required">دسته بندی </label>
+                                <select type="text" class="form-select" placeholder="دسته بندی  را انتخاب کنید"
+                                    id="category_id" name="category_id" required>
+                                    <option value="0" selected>انتخاب کنید </option>
                                     @foreach ($categories as $item)
                                         <option value="{{ $item->id }}"
                                             data-custom-properties="&lt;img class=&quot;avatar avatar-xs&quot; src=&quot;{{ $item->logo_path }}&quot; &gt;&lt;/&gt;">
@@ -139,58 +135,35 @@
                     <div class="row">
                         <div class="col-md-6 col-xl-12">
                             <div class="mb-3">
-                              <label class="form-label">Simple selectgroup</label>
-                              <div class="form-selectgroup">
-                                <label class="form-selectgroup-item">
-                                  <input type="checkbox" name="name" value="HTML" class="form-selectgroup-input" checked>
-                                  <span class="form-selectgroup-label">HTML</span>
-                                </label>
-                                <label class="form-selectgroup-item">
-                                  <input type="checkbox" name="name" value="CSS" class="form-selectgroup-input">
-                                  <span class="form-selectgroup-label">CSS</span>
-                                </label>
-                                <label class="form-selectgroup-item">
-                                  <input type="checkbox" name="name" value="PHP" class="form-selectgroup-input">
-                                  <span class="form-selectgroup-label">PHP</span>
-                                </label>
-                                <label class="form-selectgroup-item">
-                                  <input type="checkbox" name="name" value="JavaScript" class="form-selectgroup-input">
-                                  <span class="form-selectgroup-label">JavaScript</span>
-                                </label>
-                              </div>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div>
-                                <label class="row">
-                                    <span class="col">ایمیل و موبایل پست فعال شده باشد</span>
-                                    <span class="col-auto">
-                                        <label class="form-check form-check-single form-switch">
-                                            <input class="form-check-input" type="checkbox" name="active" checked>
+                                <label class="form-label">برچسب های مرتبط</label>
+                                <div class="form-selectgroup">
+                                    @foreach ($tags as $item)
+                                        <label class="form-selectgroup-item">
+                                            <input type="checkbox" name="tags[]" value="{{ $item->id }}" class="form-selectgroup-input"
+                                                >
+                                            <span class="form-selectgroup-label">{{ $item->title }}</span>
                                         </label>
-                                    </span>
-                                </label>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div>
-                                <label class="row">
-                                    <span class="col">پست فعال و قابل مشاهده باشد</span>
-                                    <span class="col-auto">
-                                        <label class="form-check form-check-single form-switch">
-                                            <input class="form-check-input" type="checkbox" name="active">
-                                        </label>
-                                    </span>
-                                </label>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div>
+                                    <label class="row">
+                                        <span class="col">پست فعال و قابل مشاهده باشد</span>
+                                        <span class="col-auto">
+                                            <label class="form-check form-check-single form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active">
+                                            </label>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-footer">
-                        <button type="submit" class="btn btn-success">ثبت</button>
-                    </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-success">ثبت</button>
+                        </div>
                 </form>
             </div>
         </div>

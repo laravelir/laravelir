@@ -64,10 +64,16 @@ class RoleController extends Controller
 
     public function assignForm()
     {
-        $this->seo()->setTitle('نقش ها');
-
         $roles = Role::latest()->get();
         $users = User::latest()->get();
-        return view('webmaster.acl.roles.role_to_user', compact('roles', 'users'));
+        return view('webmaster.acl.roles.assign', compact('roles', 'users'));
+    }
+
+    public function assign(Request $request)
+    {
+        $role = Role::create($request->all());
+        $role->syncPermissions($request->permissions);
+
+        return redirect()->route('webmaster.roles.index')->with('toast_success', 'نقش مورد نظر با موفقیت تخصیص داده شد.');
     }
 }
