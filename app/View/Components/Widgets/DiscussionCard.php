@@ -2,20 +2,21 @@
 
 namespace App\View\Components\Widgets;
 
-use App\Models\Post;
+use App\Models\Discuss;
 use Illuminate\View\Component;
 
-class PostCard extends Component
+class DiscussionCard extends Component
 {
-    public $post;
+    public $discuss;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct(Discuss $discuss)
     {
-        $this->post = $post;
+        $this->discuss = $discuss;
     }
 
     /**
@@ -25,6 +26,6 @@ class PostCard extends Component
      */
     public function render()
     {
-        return view('components.widgets.post-card');
+        return view('components.widgets.discussion-card');
     }
 }

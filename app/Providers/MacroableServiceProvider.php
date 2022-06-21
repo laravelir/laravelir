@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\ServiceProvider;
 
 class MacroableServiceProvider extends ServiceProvider
 {
@@ -54,5 +55,14 @@ class MacroableServiceProvider extends ServiceProvider
             $t = $toast ? 'toast_' . $type : $type;
             return Redirect::back()->with($t, $message);
         });
+
+        // Str::macro('readDuration', function(...$text) {
+        //     $totalWords = str_word_count(implode(" ", $text));
+        //     $minutesToRead = round($totalWords / 200);
+
+        //     return (int)max(1, $minutesToRead);
+        // });
+
+        // echo Str::readDuration($post->text). ' min read';
     }
 }

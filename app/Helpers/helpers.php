@@ -67,46 +67,6 @@ function getTypeOfDoProjectTitle($type)
     }
 }
 
-function getAudienceDiscovery($type)
-{
-    switch ($type) {
-        case \App\Enum\AudienceDiscoveryEnum::A:
-            return 'وب سایت شخصی';
-        case \App\Enum\AudienceDiscoveryEnum::B:
-            return 'تمارکت‌پلیس‌ ها (مانند ترب و دیجی‌کالا)';
-        case \App\Enum\AudienceDiscoveryEnum::C:
-            return 'اینستاگرام';
-        case \App\Enum\AudienceDiscoveryEnum::D:
-            return 'توییتر';
-        case \App\Enum\AudienceDiscoveryEnum::E:
-            return 'لینکداین';
-        case \App\Enum\AudienceDiscoveryEnum::F:
-            return 'دیگر شبکه‌های اجتماعی';
-        case \App\Enum\AudienceDiscoveryEnum::G:
-            return 'افلاین';
-        default:
-            return '';
-    }
-}
-
-function getSeoProjectTechnology($tech, $locale = 'fa')
-{
-    switch ($tech) {
-        case SeoProjectTechnologyEnum::WORDPRESS:
-            return $locale == 'fa' ? 'وردپرس' : 'Wordpress';
-        case SeoProjectTechnologyEnum::PHP:
-            return $locale == 'fa' ? 'PHP' : 'PHP';
-        case SeoProjectTechnologyEnum::ASP:
-            return $locale == 'fa' ? 'Asp.net' : 'Asp.net';
-        case SeoProjectTechnologyEnum::OTHER:
-            return $locale == 'fa' ? 'دیگر سیستم های تولید محتوا' : 'Other CMS';
-        case SeoProjectTechnologyEnum::UNKNOWN:
-            return $locale == 'fa' ? 'نمیدانم' : "I don't know";
-        default:
-            return '';
-    }
-}
-
 function getAgeTitle($age)
 {
     switch ($age) {
@@ -177,53 +137,6 @@ function getPackageOrderType($type)
 
         default:
             return '';
-    }
-}
-
-function getPackageOrderStatus($status)
-{
-    switch ($status) {
-        case PackageOrderStatusEnum::NEW:
-            return 'درحال بررسی';
-        case PackageOrderStatusEnum::IN_PROGRESS:
-            return 'درحال انجام';
-        case PackageOrderStatusEnum::DONE:
-            return 'پایان یافته';
-        default:
-            # code...
-            break;
-    }
-}
-
-function getSeoProjectStatus($status)
-{
-    switch ($status) {
-        case \App\Enum\SeoProjectStatusEnum::NEW:
-            return 'درحال بررسی';
-        case \App\Enum\SeoProjectStatusEnum::APPROVED:
-            return 'تایید شده';
-        case \App\Enum\SeoProjectStatusEnum::REJECTED:
-            return 'رد شده';
-        case \App\Enum\SeoProjectStatusEnum::DONE:
-            return 'پایان یافته';
-        default:
-            # code...
-            break;
-    }
-}
-
-function getReportageOrderStatus($status)
-{
-    switch ($status) {
-        case ReportageOrderStatusEnum::NEW:
-            return 'درحال بررسی';
-        case ReportageOrderStatusEnum::WAIT_PUBLISH:
-            return 'در انتظار بارگذاری یا تایید محتوا';
-        case ReportageOrderStatusEnum::PUBLISHED:
-            return 'ارسال برای انتشار';
-        default:
-            # code...
-            break;
     }
 }
 
@@ -318,7 +231,21 @@ function getGender($gender)
     if ($gender === 'm') return 'مرد';
     if ($gender === 'u') return 'نا مشخص';
 }
+function readTime($text)
+{
 
+    $wordCount = str_word_count($text); // getting the number of words
+
+    $minutesToRead = round($wordCount / 200); // getting the number of minutes
+
+    if ($minutesToRead < 1) { // if the time is less than a minute
+        $minutes = '1 دقیقه';
+    } else {
+        $minutes = $minutesToRead . " دقیقه"; // saving the time in the variable
+    }
+
+    return $minutes;
+}
 // return user or freelancer
 function getUserType($type)
 {
@@ -520,10 +447,12 @@ function getFreelancerSkill($freelancer_id, $skill_id)
     ])->first();
 }
 
-function isInvalidInput($field) {
+function isInvalidInput($field)
+{
     return "@error($field) is-invalid @enderror";
 }
 
-function getImagePath($path) {
+function getImagePath($path)
+{
     //
 }

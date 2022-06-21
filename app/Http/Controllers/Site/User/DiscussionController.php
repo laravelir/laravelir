@@ -25,7 +25,7 @@ class DiscussionController extends Controller
 
         $discussions = user()->discussions()->latest()->paginate(18);
 
-        return view('site.discussions.index', compact('discussions'));
+        return view('site.users.account.discussions.index', compact('discussions'));
     }
 
     public function show(Discuss $discussion)

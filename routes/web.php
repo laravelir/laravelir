@@ -6,6 +6,7 @@ use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\PodcastController;
 use App\Http\Controllers\Site\User\UserController;
 use App\Http\Controllers\Site\DiscussionController;
+use App\Http\Controllers\Site\User\DiscussionController as UserDiscussionController;
 use App\Http\Controllers\Site\User\ProjectController;
 use App\Http\Controllers\Site\User\AccountController;
 
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => 'auth']
     Route::get('/favorites', [AccountController::class, 'editForm'])->name('favorites.index');
 
     Route::resources([
-        'discussions' => DiscussionController::class,
+        'discussions' => UserDiscussionController::class,
         'tickets' => DiscussionController::class,
         'projects' => ProjectController::class,
     ]);

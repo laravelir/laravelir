@@ -2,11 +2,11 @@
 
 
 @section('title')
-    حساب کاربری
+    گفتگو های من
 @endsection
 
 @section('account-title')
-    <h1 class="m-0">داشبورد</h1>
+    <h1 class="m-0">گفتگو های من</h1>
 @endsection
 
 {{-- @section('page-title')
@@ -17,8 +17,8 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item "><a href="{{ route('site.posts.index') }}">حساب کاربری</a></li>
-    <li class="breadcrumb-item active"><a href="{{ route('site.posts.index') }}">پروژه ها</a></li>
+    <li class="breadcrumb-item "><a href="{{ route('account.index') }}">حساب کاربری</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('account.discussions.index') }}">گفتگو های من</a></li>
 @endsection
 
 @section('btn-list')
@@ -40,5 +40,8 @@
 @endsection
 
 @section('inner-content')
-    dsfsdfsdf
+    @forelse ($discussions as $item)
+        <x-widgets.discussion-card :discuss="$item" />
+    @empty
+    @endforelse
 @endsection

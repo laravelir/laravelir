@@ -47,14 +47,15 @@ class DiscussionController extends Controller
 
     public function show($slug)
     {
-        SEOTools::setTitle('جامعه توسعه دهنگان لاراول ایران');
-        SEOTools::setDescription('جامعه توسعه دهنگان لاراول ایران');
+        SEOTools::setTitle($slug);
+        SEOTools::setDescription($slug);
         OpenGraph::addProperty('type', 'website');
         JsonLd::addImage(asset("/statics/shared/images/logo.png"));
         OpenGraph::addImage(asset("/statics/shared/images/logo.png"));
         TwitterCard::setImage(asset("/statics/shared/images/logo.png"));
 
         $discuss = Discuss::where('slug', $slug)->first();
+        $discuss->increment('view_count');
         return view('site.discussions.show', compact('discuss'));
     }
 
