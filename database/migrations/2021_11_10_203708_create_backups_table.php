@@ -18,8 +18,8 @@ class CreateBackupsTable extends Migration
             $table->uuid('uuid');
             $table->char('disk');
             $table->char('type');
-            $table->timestamp('start_at');
-            $table->timestamp('ended_at');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('ended_at')->nullable();
             $table->timestamps();
         });
     }
