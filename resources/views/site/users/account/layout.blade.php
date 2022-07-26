@@ -19,7 +19,7 @@
                         تغییر رمز عبور
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#projects" class="nav-link  {{ isActive('account.projects.index') }}" data-bs-toggle="collapse" aria-expanded="false">
                         پروژه ها
                         <span class="nav-link-toggle"></span>
@@ -57,7 +57,7 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> --}}
 
                 {{-- <li class="nav-item">
                     <a href="#tickets" class="nav-link  {{ isActive('account.tickets.index') }}" data-bs-toggle="collapse" aria-expanded="false">
@@ -79,7 +79,7 @@
                     </ul>
                 </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#favorites" class="nav-link  {{ isActive('account.favorites.index') }}" data-bs-toggle="collapse" aria-expanded="false">
                         علاقه مندی ها
                         <span class="nav-link-toggle"></span>
@@ -92,7 +92,7 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a href="{{ route('auth.logout') }}" class="nav-link bg-danger-lt">

@@ -13,8 +13,8 @@
 
         <a href="{{ user()->url() }}" class="dropdown-item">پروفایل</a>
         <a href="{{ route('account.index') }}" class="dropdown-item">حساب کاربری</a>
-        <a href="{{ route('account.projects.create') }}" class="dropdown-item">ثبت پروژه</a>
-        <a href="{{ route('account.discussions.index') }}" class="dropdown-item">گفتگو های من</a>
+        {{-- <a href="{{ route('account.projects.create') }}" class="dropdown-item">ثبت پروژه</a> --}}
+        {{-- <a href="{{ route('account.discussions.index') }}" class="dropdown-item">گفتگو های من</a> --}}
         <div class="dropdown-divider"></div>
         <a href="{{ route('site.index') }}" class="dropdown-item">تنظیمات</a>
         <a href="{{ route('auth.logout') }}" class="dropdown-item">خروج</a>
